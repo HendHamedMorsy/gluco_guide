@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">#2e0944</color>
+    <color name="textFieldBackground">#F3F2FB</color>
+    <color name="skyWhite">#FFFFFF</color>
+    <color name="subtitleText">#777777</color>
+    <color name="titleText">#111921</color>
+    <color name="successGreen">#00AE8D</color>
+    <color name="lightOrange">#FED3B5</color>
+    <color name="textBlack">#080808</color>
+    <color name="unselectedGrey">#AAAAAA</color>
+    <color name="greySmall">#777777</color>
+    <color name="bodyBlack">#2F2E41</color>
+    <color name="dividerGrey">#E6E6E6</color>
+    <color name="progressGreen">78DED4</color>
+    <color name="lightRed">#E07373</color>
+    <color name="lightRed2">#FCF1F1</color>
+    <color name="dotGrey">#D9D9D9</color>
+    <color name="cardGrey">#F5F4F8</color>
+    <color name="mustardYellow">#FFB700</color>
+    <color name="pickupYellow">#FFB800</color>
+    <color name="tileText">#58595B</color>
+
+    
+    
+    
+    
+</resources>
