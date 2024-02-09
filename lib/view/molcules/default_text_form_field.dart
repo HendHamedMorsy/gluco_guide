@@ -36,7 +36,8 @@ class DefaultTextFormField extends StatelessWidget {
     this.suffixText,
     this.innerTextInputStyle,
     this.autovalidateMode,
-    this.onTapOutside
+    this.onTapOutside,
+    this.hintStyle
   });
 
   final TextEditingController? controller;
@@ -66,6 +67,7 @@ class DefaultTextFormField extends StatelessWidget {
   final ValueChanged<String>? onFieldSubmitted;
   final AutovalidateMode? autovalidateMode;
   final Function(PointerDownEvent)? onTapOutside;
+  final TextStyle? hintStyle;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -106,6 +108,7 @@ class DefaultTextFormField extends StatelessWidget {
       textInputAction: action,
       decoration: InputDecoration(
         hintText: hint,
+        hintStyle: hintStyle,
         suffixIcon: suffixIcon,
         suffixIconConstraints: BoxConstraints(minWidth: suffixWidth ?? 0),
         errorText: errorText,

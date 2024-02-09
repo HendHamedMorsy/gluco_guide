@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../gen/colors.gen.dart';
-import '../../translations/locale_keys.g.dart';
 
 extension DateExtension on DateTime? {
   String toBackEndDateOnly() {
@@ -60,13 +59,6 @@ extension StringExtension on String {
 
   bool isNetworkImageUrl() {
     return (contains("http") || contains("https") && isNotEmpty) ? true : false;
-  }
-
-  String toCurrency(BuildContext context) {
-    double number = double.parse(this);
-    return NumberFormat.simpleCurrency(
-            locale: "ar_SA", name: " ${LocaleKeys.aed.tr()} ")
-        .format(number);
   }
 }
 

@@ -15,7 +15,7 @@ class TitleWithSubTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Text(
           title,
@@ -26,6 +26,7 @@ class TitleWithSubTitle extends StatelessWidget {
           subtitle,
           style: context.textTheme.bodyMedium
               ?.copyWith(fontWeight: FontWeight.w400),
+          textAlign: TextAlign.center,
         ),
       ],
     );
