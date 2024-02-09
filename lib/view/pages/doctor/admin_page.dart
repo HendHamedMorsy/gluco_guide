@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
 import 'package:gluco_guide/gen/colors.gen.dart';
-import 'package:gluco_guide/view/pages/register_page.dart';
+import 'package:gluco_guide/view/pages/patient/register_page.dart';
 
-import '../../gen/assets.gen.dart';
+import '../../../gen/assets.gen.dart';
 import 'admin_login_page.dart';
 
 class AdminPage extends StatelessWidget {

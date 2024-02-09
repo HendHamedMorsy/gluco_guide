@@ -2,16 +2,16 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
-import 'package:gluco_guide/view/pages/forgot_password_page.dart';
-import 'package:gluco_guide/view/pages/register_page.dart';
-import '../../core/constants/app_constants.dart';
-import '../../core/services/validator.dart';
-import '../../gen/colors.gen.dart';
-import '../../translations/locale_keys.g.dart';
-import '../atoms/app_logo.dart';
-import '../molcules/title_with_subtitle.dart';
-import '../organisms/text_form_field_with_title.dart';
-import 'home_page.dart';
+import 'package:gluco_guide/view/pages/patient/forgot_password_page.dart';
+import 'package:gluco_guide/view/pages/patient/register_page.dart';
+import '../../../core/constants/app_constants.dart';
+import '../../../core/services/validator.dart';
+import '../../../gen/colors.gen.dart';
+import '../../../translations/locale_keys.g.dart';
+import '../../atoms/app_logo.dart';
+import '../../molcules/title_with_subtitle.dart';
+import '../../molcules/text_form_field_with_title.dart';
+import 'bmi_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -103,7 +103,7 @@ class LoginPage extends StatelessWidget {
                   //     });
                   return FilledButton(
                       onPressed: () async {
-                        context.navigator.pushReplacement(MaterialPageRoute(builder: (context) => const HomePage(),));
+                        context.navigator.pushReplacement(MaterialPageRoute(builder: (context) => const BMIPage(),));
                         // authProvider.login(
                         //     mobile: completePhoneNumber,
                         //     password: _passwordCont.text);
