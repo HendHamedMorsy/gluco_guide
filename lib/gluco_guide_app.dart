@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gluco_guide/view/pages/admin_page.dart';
+import 'package:gluco_guide/view/pages/patient/main_page.dart';
 import 'core/constants/app_constants.dart';
 import 'core/themes/theme_manager.dart';
 import 'translations/codegen_loader.g.dart';
@@ -37,7 +37,7 @@ class GlucoGuideApp extends ConsumerWidget {
             home: child ?? Container(),
           );
         },
-        child: const AdminPage(),
+        child: const MainScreen(title: 'henda',),
       ),
     );
   }

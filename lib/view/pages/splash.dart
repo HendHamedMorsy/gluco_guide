@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../gen/assets.gen.dart';
-import 'admin_page.dart';
+import 'doctor/admin_page.dart';
 
 class SplashPage extends ConsumerStatefulWidget {
   const SplashPage({super.key});

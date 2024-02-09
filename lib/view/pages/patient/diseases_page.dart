@@ -1,13 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
-import '../../core/constants/app_constants.dart';
-import '../../core/services/enums.dart';
-import '../../gen/colors.gen.dart';
-import '../../translations/locale_keys.g.dart';
-import '../atoms/app_logo.dart';
-import '../molcules/title_with_subtitle.dart';
+import 'package:gluco_guide/view/pages/patient/workout_days_page.dart';
+import '../../../core/constants/app_constants.dart';
+import '../../../core/services/enums.dart';
+import '../../../gen/colors.gen.dart';
+import '../../../translations/locale_keys.g.dart';
+import '../../atoms/app_logo.dart';
+import '../../molcules/title_with_subtitle.dart';
 
 final StateProvider<Diseases> userDiseasesProvider = StateProvider<Diseases>((StateProviderRef<Diseases> ref) => Diseases.kidneyDisfunction);
 
@@ -61,7 +63,7 @@ class DiseasesPage extends ConsumerWidget {
                           borderRadius: BorderRadius.circular(10),
                         )),
                     items: Diseases.values
-                        ?.map(
+                        .map(
                             ( diseasesType) => DropdownMenuItem (
                           value: diseasesType,
                           child: Row(
@@ -85,12 +87,14 @@ class DiseasesPage extends ConsumerWidget {
                       //     .read(propertyStateNotifierProvider.notifier)
                       //     .setSpaceTypeId(value);
                     }),
+
                 context.vSpaceBox30,
+
                 Consumer(builder:
                     (BuildContext context, WidgetRef ref, Widget? child) {
                   return FilledButton(
                       onPressed: () async {
-                        // context.navigator.push(MaterialPageRoute(builder: (context) => DiseasPage() ,));
+                       context.navigator.push(MaterialPageRoute(builder: (context) => const WorkoutDaysPage() ,));
 
                       },
                       child: const Text("Continue"));

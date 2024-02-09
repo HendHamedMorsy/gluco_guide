@@ -2,20 +2,20 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
-import '../../core/constants/app_constants.dart';
-import '../../core/services/enums.dart';
-import '../../core/services/validator.dart';
-import '../../gen/colors.gen.dart';
-import '../../translations/locale_keys.g.dart';
-import '../atoms/app_logo.dart';
-import '../molcules/title_with_subtitle.dart';
-import '../organisms/text_form_field_with_title.dart';
+import '../../../core/constants/app_constants.dart';
+import '../../../core/services/enums.dart';
+import '../../../core/services/validator.dart';
+import '../../../gen/colors.gen.dart';
+import '../../../translations/locale_keys.g.dart';
+import '../../atoms/app_logo.dart';
+import '../../molcules/title_with_subtitle.dart';
+import '../../molcules/text_form_field_with_title.dart';
 import 'diseases_page.dart';
 final StateProvider<UserGender> userGenderProvider = StateProvider<UserGender>((StateProviderRef<UserGender> ref) => UserGender.male);
 final StateProvider<UserType> userTypeProvider = StateProvider<UserType>((StateProviderRef<UserType> ref) => UserType.type1);
 
-class HomePage extends ConsumerWidget {
-  const HomePage({super.key});
+class BMIPage extends ConsumerWidget {
+  const BMIPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -103,7 +103,7 @@ class HomePage extends ConsumerWidget {
                     borderRadius: BorderRadius.circular(10),
                   )),
               items: UserGender.values
-                  ?.map(
+                  .map(
                       ( menuGender) => DropdownMenuItem (
                     value: menuGender,
                     child: Row(
@@ -186,7 +186,7 @@ class HomePage extends ConsumerWidget {
                           borderRadius: BorderRadius.circular(10),
                         )),
                     items: UserType.values
-                        ?.map(
+                        .map(
                             ( menuType) => DropdownMenuItem (
                           value: menuType,
                           child: Row(
