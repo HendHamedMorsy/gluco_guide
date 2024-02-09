@@ -48,6 +48,8 @@ class $AssetsImagesGen {
   AssetGenImage get quicklyBlob =>
       const AssetGenImage('assets/images/quickly-blob.png');
 
+  $AssetsImagesWorkoutGen get workout => const $AssetsImagesWorkoutGen();
+
   /// List of all assets
   List<AssetGenImage> get values => [logoIcon, logo, quicklyBlob];
 }
@@ -112,6 +114,34 @@ class $AssetsFontsLatoGen {
         latoThin,
         latoThinItalic
       ];
+}
+
+class $AssetsImagesWorkoutGen {
+  const $AssetsImagesWorkoutGen();
+
+  /// File path: assets/images/workout/workout1.jpg
+  AssetGenImage get workout1 =>
+      const AssetGenImage('assets/images/workout/workout1.jpg');
+
+  /// File path: assets/images/workout/workout2.jpg
+  AssetGenImage get workout2 =>
+      const AssetGenImage('assets/images/workout/workout2.jpg');
+
+  /// File path: assets/images/workout/workout3.jpg
+  AssetGenImage get workout3 =>
+      const AssetGenImage('assets/images/workout/workout3.jpg');
+
+  /// File path: assets/images/workout/workout4.jpg
+  AssetGenImage get workout4 =>
+      const AssetGenImage('assets/images/workout/workout4.jpg');
+
+  /// File path: assets/images/workout/workout5.jpg
+  AssetGenImage get workout5 =>
+      const AssetGenImage('assets/images/workout/workout5.jpg');
+
+  /// List of all assets
+  List<AssetGenImage> get values =>
+      [workout1, workout2, workout3, workout4, workout5];
 }
 
 class Assets {
