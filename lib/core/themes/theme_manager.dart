@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gluco_guide/core/services/extensions.dart';
 
 import '../../gen/colors.gen.dart';
 import '../../gen/fonts.gen.dart';
@@ -27,8 +28,7 @@ class ThemeManager {
           bodyLarge: TextStyle(
               fontSize: 16.sp,
               fontFamily: FontFamily.lato,
-              fontWeight: FontWeight.w500,
-              height: 1.88.h,
+              fontWeight: FontWeight.w900,
               color: ColorName.bodyBlack),
           labelSmall: const TextStyle(
             color: Colors.black,
@@ -103,7 +103,7 @@ class ThemeManager {
         ),
         filledButtonTheme: FilledButtonThemeData(
           style: FilledButton.styleFrom(
-            backgroundColor: ColorName.primaryColor,
+            backgroundColor:  ColorName.primaryColor.withOpacity(0.8),
             minimumSize: Size.fromHeight(50.h),
           ),
         ),
@@ -111,9 +111,10 @@ class ThemeManager {
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
                 elevation: 0,
-                backgroundColor: ColorName.primaryColor,
+                textStyle: context.textTheme.titleLarge?.copyWith(color: Colors.white),
+                backgroundColor: ColorName.primaryColor.withOpacity(0.8),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.sp)),
+                    borderRadius: BorderRadius.circular(15.r)),
                 minimumSize: Size(double.infinity, 56.h))),
 
         inputDecorationTheme: InputDecorationTheme(

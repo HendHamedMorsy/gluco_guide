@@ -114,5 +114,7 @@ abstract class  LocaleKeys {
   static const workoutDaysTitle = 'workoutDaysTitle';
   static const workoutDaysSubTitle = 'workoutDaysSubTitle';
   static const weeklyTrainingDays = 'weeklyTrainingDays';
+  static const workout = 'workout';
+  static const workoutDetails = 'workoutDetails';
 
 }

@@ -129,6 +129,7 @@ flutter:
     - assets/icons/
     - assets/fonts/Lato/
     - assets/images/workout/
+    - assets/gif/
 
   fonts:
     - family: Lato

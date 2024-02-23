@@ -34,6 +34,32 @@ class $AssetsFontsGen {
   $AssetsFontsLatoGen get lato => const $AssetsFontsLatoGen();
 }
 
+class $AssetsGifGen {
+  const $AssetsGifGen();
+
+  /// File path: assets/gif/workoutgif.mp4
+  String get workoutgif => 'assets/gif/workoutgif.mp4';
+
+  /// List of all assets
+  List<String> get values => [workoutgif];
+}
+
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/age.png
+  AssetGenImage get age => const AssetGenImage('assets/icons/age.png');
+
+  /// File path: assets/icons/height.png
+  AssetGenImage get height => const AssetGenImage('assets/icons/height.png');
+
+  /// File path: assets/icons/weight.png
+  AssetGenImage get weight => const AssetGenImage('assets/icons/weight.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [age, height, weight];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -44,6 +70,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
+  /// File path: assets/images/profile_user.png
+  AssetGenImage get profileUser =>
+      const AssetGenImage('assets/images/profile_user.png');
+
   /// File path: assets/images/quickly-blob.png
   AssetGenImage get quicklyBlob =>
       const AssetGenImage('assets/images/quickly-blob.png');
@@ -51,7 +81,7 @@ class $AssetsImagesGen {
   $AssetsImagesWorkoutGen get workout => const $AssetsImagesWorkoutGen();
 
   /// List of all assets
-  List<AssetGenImage> get values => [logoIcon, logo, quicklyBlob];
+  List<AssetGenImage> get values => [logoIcon, logo, profileUser, quicklyBlob];
 }
 
 class $AssetsTranslationsGen {
@@ -149,6 +179,8 @@ class Assets {
 
   static const $AssetsEnvGen env = $AssetsEnvGen();
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
+  static const $AssetsGifGen gif = $AssetsGifGen();
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
 }

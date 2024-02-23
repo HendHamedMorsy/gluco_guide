@@ -7,8 +7,8 @@ import 'package:gluco_guide/gen/colors.gen.dart';
 import 'package:gluco_guide/view/pages/patient/diet_recommendation_page.dart';
 import 'package:gluco_guide/view/pages/patient/workout_page.dart';
 import 'package:gluco_guide/view/pages/patient/home_page.dart';
-import 'package:gluco_guide/view/pages/patient/profile_page.dart';
-import 'package:gluco_guide/view/pages/patient/settings_page.dart';
+import 'package:gluco_guide/view/pages/patient/report_page.dart';
+import 'package:gluco_guide/view/pages/patient/mine_page.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key, required this.title});
@@ -45,8 +45,8 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
   final screens = [
     const WorkoutPage(),
     const DietRecommendationPage(),
-    const ProfilePage(),
-    const SettingsPage(),
+    const ReportPage(),
+    const MinePage(),
     const HomePage()
   ];
 

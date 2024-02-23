@@ -69,7 +69,7 @@ class CodegenLoader extends AssetLoader{
   "seeResult": "See Results",
   "helpAndSupport": "Help and Support",
   "faq": "FAQ",
-  "logout": "Logout",
+  "logout": "Log out",
   "save": "Save",
   "privacyPolicy": "Privacy Policy",
   "description": "Description",
@@ -127,7 +127,9 @@ class CodegenLoader extends AssetLoader{
   "cancel": "Cancel",
   "workoutDaysTitle": "Set Your Weekly Goal",
   "workoutDaysSubTitle": "We recommend training at least 3 days weekly for a better result.",
-  "weeklyTrainingDays": "Weekly training days"
+  "weeklyTrainingDays": "Weekly training days",
+  "workout": "Workout",
+  "workoutDetails": "Workout Details"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en};
 }

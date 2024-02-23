@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
 import 'package:gluco_guide/view/pages/patient/bmi_page.dart';
-import 'package:gluco_guide/view/pages/patient/login_page.dart';
-import '../../../core/constants/app_constants.dart';
-import '../../../core/services/helpers.dart';
-import '../../../core/services/validator.dart';
-import '../../../gen/colors.gen.dart';
-import '../../../translations/locale_keys.g.dart';
-import '../../atoms/app_logo.dart';
-import '../../molcules/title_with_subtitle.dart';
-import '../../molcules/text_form_field_with_title.dart';
+import 'package:gluco_guide/view/pages/patient/auth/login_page.dart';
+import '../../../../core/constants/app_constants.dart';
+import '../../../../core/services/helpers.dart';
+import '../../../../core/services/validator.dart';
+import '../../../../gen/colors.gen.dart';
+import '../../../../translations/locale_keys.g.dart';
+import '../../../atoms/app_logo.dart';
+import '../../../molcules/title_with_subtitle.dart';
+import '../../../molcules/text_form_field_with_title.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
