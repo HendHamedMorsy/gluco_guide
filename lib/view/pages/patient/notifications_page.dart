@@ -82,7 +82,7 @@ class NotificationsPage extends StatelessWidget {
                                         title: LocaleKeys.deletePropertyInput
                                             .tr(args: <String>[
                                           // notification?.title ?? ""
-                                          "Hend"
+                                          ""
                                         ]),
                                       );
                                       if (delReq == OkCancelResult.cancel) {
@@ -97,24 +97,24 @@ class NotificationsPage extends StatelessWidget {
                               child: NotificationCard(
                                 title: notification?.name,
                                 desc: notification?.desc,
-                                // onAcceptNotification: () async {
-                                //   // ref
-                                //   //     .read(notificationStateNotifierProvider
-                                //   //     .notifier)
-                                //   //     .updateBookingStatus(
-                                //   //     bookingId: notification?.bookingId,
-                                //   //     status: "accepted",
-                                //   //     notificationId: notification?.id);
-                                // },
-                                // onDeclineNotification: () async {
-                                //   // ref
-                                //   //     .read(notificationStateNotifierProvider
-                                //   //     .notifier)
-                                //   //     .updateBookingStatus(
-                                //   //     bookingId: notification?.bookingId,
-                                //   //     status: "rejected",
-                                //   //     notificationId: notification?.id);
-                                // },
+                                onAcceptNotification: () async {
+                                  // ref
+                                  //     .read(notificationStateNotifierProvider
+                                  //     .notifier)
+                                  //     .updateBookingStatus(
+                                  //     bookingId: notification?.bookingId,
+                                  //     status: "accepted",
+                                  //     notificationId: notification?.id);
+                                },
+                                onDeclineNotification: () async {
+                                  // ref
+                                  //     .read(notificationStateNotifierProvider
+                                  //     .notifier)
+                                  //     .updateBookingStatus(
+                                  //     bookingId: notification?.bookingId,
+                                  //     status: "rejected",
+                                  //     notificationId: notification?.id);
+                                },
                               ),
                             ),
                           );

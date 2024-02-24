@@ -3,7 +3,6 @@ import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gluco_guide/translations/locale_keys.g.dart';
-
 import '../../core/services/extensions.dart';
 import '../../gen/colors.gen.dart';
 
@@ -13,11 +12,16 @@ class NotificationCard extends StatelessWidget {
         required this.desc,
         super.key,
         this.onExpansionChanged,
-        this.faqKey});
+        this.faqKey,
+        this.onDeclineNotification,
+        this.onAcceptNotification
+      });
   final Function(bool)? onExpansionChanged;
   final String? title;
   final String? desc;
   final Key? faqKey;
+  final VoidCallback? onAcceptNotification;
+  final VoidCallback? onDeclineNotification;
 
   @override
   Widget build(BuildContext context) {
@@ -63,11 +67,11 @@ class NotificationCard extends StatelessWidget {
             children: [
               Expanded(
                 flex: 1,
-                  child: FilledButton(onPressed: (){}, child: Text(LocaleKeys.accept.tr()))),
+                  child: FilledButton(onPressed: onAcceptNotification, child: Text(LocaleKeys.accept.tr()))),
                SizedBox(width: 10.h),
               Expanded(
                 flex: 1,
-                  child: FilledButton(onPressed: (){}, child: Text(LocaleKeys.cancel.tr()))),
+                  child: FilledButton(onPressed: onDeclineNotification, child: Text(LocaleKeys.cancel.tr()))),
           ],),
         ),
 
