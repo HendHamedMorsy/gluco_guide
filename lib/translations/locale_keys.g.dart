@@ -116,5 +116,9 @@ abstract class  LocaleKeys {
   static const weeklyTrainingDays = 'weeklyTrainingDays';
   static const workout = 'workout';
   static const workoutDetails = 'workoutDetails';
+  static const deleteMessage = 'deleteMessage';
+  static const deletePropertyInput = 'deletePropertyInput';
+  static const delete = 'delete';
+  static const contact = 'contact';
 
 }

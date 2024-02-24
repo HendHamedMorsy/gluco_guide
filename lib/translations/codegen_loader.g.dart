@@ -129,7 +129,9 @@ class CodegenLoader extends AssetLoader{
   "workoutDaysSubTitle": "We recommend training at least 3 days weekly for a better result.",
   "weeklyTrainingDays": "Weekly training days",
   "workout": "Workout",
-  "workoutDetails": "Workout Details"
+  "workoutDetails": "Workout Details",
+  "deleteMessage": "this Notification will be deleted and can't be recovered anymore.",
+  "deletePropertyInput": "Delete '{}' ?"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en};
 }

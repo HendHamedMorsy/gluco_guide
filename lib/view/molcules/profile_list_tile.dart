@@ -12,12 +12,10 @@ class ProfileListTile extends StatelessWidget {
       {super.key,
       this.icon,
       this.iconSize,
-      this.isNotificationField,
       this.title, this.onTap});
   final String? title;
   final IconData? icon;
   final double? iconSize;
-  final bool? isNotificationField;
   final VoidCallback? onTap;
 
   @override

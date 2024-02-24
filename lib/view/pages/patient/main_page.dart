@@ -40,7 +40,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
     "Workout",
     "Diet",
     "Report",
-    "Mine",
+    "Profile",
   ];
   final screens = [
     const WorkoutPage(),
