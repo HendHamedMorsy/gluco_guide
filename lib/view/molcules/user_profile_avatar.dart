@@ -5,10 +5,12 @@ import '../../../core/services/extensions.dart';
 import '../../../gen/colors.gen.dart';
 
 class UserProfileAvatar extends StatelessWidget {
-  const UserProfileAvatar({super.key, this.name, this.imageURL, this.email});
+  const UserProfileAvatar({super.key, this.name, this.imageURL, this.email, this.isEditProfile, this.isNameVisible});
   final String? imageURL;
   final String? name;
   final String? email;
+  final bool? isEditProfile;
+  final bool? isNameVisible;
 
   @override
   Widget build(BuildContext context) {
@@ -41,40 +43,49 @@ class UserProfileAvatar extends StatelessWidget {
               ),
             ),
 
-              Positioned(
-                  bottom:0,
-                  right: 0,
-                  left: 100,
-                  child: Container(
-                    decoration:  const BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle
-                    ),
-
+              Visibility(
+                visible: isEditProfile ?? false,
+                child: Positioned(
+                    bottom:0,
+                    right: 0,
+                    left: 100,
                     child: Container(
-                      height: 40,
-                      width: 40,
-                      padding: EdgeInsets.zero,
-                        decoration:  BoxDecoration(
-                          color: ColorName.primaryColor.withOpacity(0.6),
-                            shape: BoxShape.circle
-                        ),
-                        child: IconButton(
-                            onPressed: (){},
-                            icon: const Icon(
-                              Icons.edit,
-                              size: 25,
-                              color: Colors.white,))),
-                  ))
+                      decoration:  const BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle
+                      ),
+
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        padding: EdgeInsets.zero,
+                          decoration:  BoxDecoration(
+                            color: ColorName.primaryColor.withOpacity(0.6),
+                              shape: BoxShape.circle
+                          ),
+                          child: IconButton(
+                              onPressed: (){},
+                              icon: const Icon(
+                                Icons.edit,
+                                size: 25,
+                                color: Colors.white,))),
+                    )),
+              )
          ]),
-          context.vSpaceBox10,
-          Text(
-            name ?? "",
-            style: context.textTheme.titleLarge,
+          Visibility(
+            visible: isNameVisible ?? false ,
+            child: Column(children: [
+              context.vSpaceBox10,
+              Text(
+                name ?? "",
+                style: context.textTheme.titleLarge,
+              ),
+              context.vSpaceBox5,
+              Text(email ?? "",
+                style: context.textTheme.titleMedium?.copyWith(color: ColorName.primaryColor.withOpacity(0.8)),)
+            ],),
           ),
-          context.vSpaceBox5,
-          Text(email ?? "",
-            style: context.textTheme.titleMedium?.copyWith(color: ColorName.primaryColor.withOpacity(0.8)),)
+
         ],
       ),
     );

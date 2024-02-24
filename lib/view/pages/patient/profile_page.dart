@@ -3,15 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
 import 'package:gluco_guide/translations/locale_keys.g.dart';
-import 'package:gluco_guide/view/molcules/gluco_guide_app_bar.dart';
 import '../../../gen/assets.gen.dart';
-import '../../../gen/colors.gen.dart';
 import '../../molcules/profile_list_tile.dart';
 import '../../molcules/user_info_card.dart';
 import '../../molcules/user_profile_avatar.dart';
+import 'edit_profile_page.dart';
 
-class MinePage extends StatelessWidget {
-  const MinePage({super.key});
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +23,7 @@ class MinePage extends StatelessWidget {
             children: [
               Center(
                 child: UserProfileAvatar(
+                  isNameVisible: true,
                   imageURL: Assets.images.profileUser.path,
                   name: "Hend Hamed Morsy",
                   email: "hendhamedmorsy@gmail.com",
@@ -56,6 +56,9 @@ class MinePage extends StatelessWidget {
               ProfileListTile(
                 title: LocaleKeys.editProfile.tr(),
                 icon: Icons.manage_accounts_sharp,
+                onTap: ()async{
+                  context.navigator.push( MaterialPageRoute(builder: (context) => const EditProfilePage(),));
+                },
               ),
               context.vSpaceBox16,
               ProfileListTile(

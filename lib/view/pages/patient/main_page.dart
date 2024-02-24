@@ -8,7 +8,7 @@ import 'package:gluco_guide/view/pages/patient/diet_recommendation_page.dart';
 import 'package:gluco_guide/view/pages/patient/workout_page.dart';
 import 'package:gluco_guide/view/pages/patient/home_page.dart';
 import 'package:gluco_guide/view/pages/patient/report_page.dart';
-import 'package:gluco_guide/view/pages/patient/mine_page.dart';
+import 'package:gluco_guide/view/pages/patient/profile_page.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key, required this.title});
@@ -46,7 +46,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
     const WorkoutPage(),
     const DietRecommendationPage(),
     const ReportPage(),
-    const MinePage(),
+    const ProfilePage(),
     const HomePage()
   ];
 
