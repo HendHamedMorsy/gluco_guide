@@ -117,5 +117,6 @@
   "deleteMessage": "this Notification will be deleted and can't be recovered anymore.",
   "deletePropertyInput": "Delete '{}' ?",
   "delete": "Delete",
-  "contact": "Contact"
+  "contact": "Contact",
+  "report": "Report"
 }

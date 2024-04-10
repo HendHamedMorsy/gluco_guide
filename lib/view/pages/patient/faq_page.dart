@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
 import 'package:gluco_guide/view/molcules/faq_card.dart';
 import 'package:gluco_guide/view/molcules/gluco_guide_app_bar.dart';
+import '../../../core/constants/app_constants.dart';
 import '../../../core/models/faq_data_model.dart';
 import '../../../core/services/log_manager.dart';
 import '../../../translations/locale_keys.g.dart';
@@ -81,43 +82,46 @@ class FAQPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: GlucoGuideAppBar(
-          text: LocaleKeys.notifications.tr(),
+          text: LocaleKeys.faq.tr()
         ),
-        body: Consumer(
-            builder: (BuildContext context, WidgetRef ref, Widget? child) {
-              return ref.watch(faqFutureProvider).when(
-                  skipLoadingOnRefresh: false,
-                  skipLoadingOnReload: false,
-                  data: (List<FAQData?>? faqList) {
-                    return faqList?.isEmpty == true
-                        ? NoData(
-                      title: LocaleKeys.emptyWithInput
-                          .tr(args: <String>["Notifications"]),
-                    )
-                        : ListView.separated(
-                        separatorBuilder: (_, __) => context.vSpaceBox16,
-                        itemCount: faqList?.length ?? 0,
-                        itemBuilder: (BuildContext context, int index) {
-                          FAQData? faqData =
-                          faqList?[index];
-                          return Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20.0.w),
-                            child: FaqCard(
-                              question: faqData?.question,
-                              answer: faqData?.answer,
-                            ),
-                          );
-                        });
-                  },
-                  error: (Object error, StackTrace stackTrace) {
-                    LogManager.logToConsole(error, "error");
-                    return const Center(
-                      child: Text(
-                        "We couldn't load FAQs",
-                      ),
-                    );
-                  },
-                  loading: () => const AppLoading());
-            }));
+        body: Padding(
+          padding: AppConstants.shared.defaultScaffoldPadding,
+          child: Consumer(
+              builder: (BuildContext context, WidgetRef ref, Widget? child) {
+                return ref.watch(faqFutureProvider).when(
+                    skipLoadingOnRefresh: false,
+                    skipLoadingOnReload: false,
+                    data: (List<FAQData?>? faqList) {
+                      return faqList?.isEmpty == true
+                          ? NoData(
+                        title: LocaleKeys.emptyWithInput
+                            .tr(args: <String>["Notifications"]),
+                      )
+                          : ListView.separated(
+                          separatorBuilder: (_, __) => context.vSpaceBox16,
+                          itemCount: faqList?.length ?? 0,
+                          itemBuilder: (BuildContext context, int index) {
+                            FAQData? faqData =
+                            faqList?[index];
+                            return Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 20.0.w),
+                              child: FaqCard(
+                                question: faqData?.question,
+                                answer: faqData?.answer,
+                              ),
+                            );
+                          });
+                    },
+                    error: (Object error, StackTrace stackTrace) {
+                      LogManager.logToConsole(error, "error");
+                      return const Center(
+                        child: Text(
+                          "We couldn't load FAQs",
+                        ),
+                      );
+                    },
+                    loading: () => const AppLoading());
+              }),
+        ));
   }
 }

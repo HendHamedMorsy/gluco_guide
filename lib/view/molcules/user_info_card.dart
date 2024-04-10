@@ -18,8 +18,8 @@ class UserInfoCard extends StatelessWidget {
     return Padding(
       padding:  EdgeInsets.all(6.0.w),
       child: Container(
-        height: 90.h,
-        width: 108.w,
+        height: 150.h,
+        width: 180,
         padding: EdgeInsets.all(6.w),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.r),

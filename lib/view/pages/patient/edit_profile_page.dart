@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
 import 'package:gluco_guide/gen/colors.gen.dart';
 import 'package:gluco_guide/translations/locale_keys.g.dart';
@@ -8,6 +9,7 @@ import '../../../core/constants/app_constants.dart';
 import '../../../gen/assets.gen.dart';
 import '../../molcules/text_form_field_with_title.dart';
 import '../../molcules/user_profile_avatar.dart';
+
 
 class EditProfilePage extends StatelessWidget {
   const EditProfilePage({super.key});
@@ -53,17 +55,10 @@ class EditProfilePage extends StatelessWidget {
                 context.vSpaceBox50,
                 ElevatedButton(
                     onPressed: () {},
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(Icons.logout, color: Colors.white,),
-                        context.hSpaceBox10,
-                        Text(
-                          LocaleKeys.logout.tr(),
-                          style: context.textTheme.titleLarge
-                              ?.copyWith(color: Colors.white),
-                        ),
-                      ],
+                    child: Text(
+                      LocaleKeys.save.tr(),
+                      style: context.textTheme.titleLarge
+                          ?.copyWith(color: Colors.white),
                     )),
                 TextButton(child: Text(LocaleKeys.changePassword.tr(), style: context.textTheme.titleLarge?.copyWith(decoration: TextDecoration.underline,decorationColor:ColorName.primaryColor.withOpacity(0.5),color: ColorName.primaryColor.withOpacity(0.7)),),
                     onPressed: (){})

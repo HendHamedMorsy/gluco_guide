@@ -120,5 +120,6 @@ abstract class  LocaleKeys {
   static const deletePropertyInput = 'deletePropertyInput';
   static const delete = 'delete';
   static const contact = 'contact';
+  static const report = 'report';
 
 }
