@@ -53,6 +53,7 @@ extension StringExtension on String {
     return trim().isEmpty ? "0" : replaceAll(",", ".");
   }
 
+
   String toBearerToken() {
     return isEmpty ? "" : "Bearer $this";
   }

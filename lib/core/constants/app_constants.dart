@@ -74,6 +74,8 @@ class AppConstants {
   static const String CUSTOM_ROOM_NO = "custom_room_no";
   static const String CUSTOM_HOTEL_NAME = "custom_hotel_name";
   static const String DISABLED = "disabled";
+  static const String IDENTIFIER = "identifier";
+
 
   /// all addresses
   static const String FIELDS = "fields";

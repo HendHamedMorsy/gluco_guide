@@ -4,6 +4,7 @@ class DbConstants {
   DbConstants._();
   static const String USER_DATA_KEY = "user_data_key";
   static const String USER_BOX_KEY = "user_box";
+  static const String TOKEN_BOX_KEY = "token_box";
   static const String PUSH_TOKEN_BOX_KEY = "push_token_box";
   static const String LOCAL_NOTIFICATION_LIST_BOX_KEY =
       "local_notification_list_box_key";
