@@ -397,6 +397,7 @@ DoctorToken _$DoctorTokenFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DoctorToken {
+  @HiveField(0)
   @JsonKey(name: "access_token")
   String? get accessToken => throw _privateConstructorUsedError;
   @JsonKey(name: "expired_at")
@@ -416,7 +417,7 @@ abstract class $DoctorTokenCopyWith<$Res> {
       _$DoctorTokenCopyWithImpl<$Res, DoctorToken>;
   @useResult
   $Res call(
-      {@JsonKey(name: "access_token") String? accessToken,
+      {@HiveField(0) @JsonKey(name: "access_token") String? accessToken,
       @JsonKey(name: "expired_at") dynamic expiredAt,
       String? type});
 }
@@ -464,7 +465,7 @@ abstract class _$$DoctorTokenImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "access_token") String? accessToken,
+      {@HiveField(0) @JsonKey(name: "access_token") String? accessToken,
       @JsonKey(name: "expired_at") dynamic expiredAt,
       String? type});
 }
@@ -505,7 +506,7 @@ class __$$DoctorTokenImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DoctorTokenImpl implements _DoctorToken {
   const _$DoctorTokenImpl(
-      {@JsonKey(name: "access_token") this.accessToken,
+      {@HiveField(0) @JsonKey(name: "access_token") this.accessToken,
       @JsonKey(name: "expired_at") this.expiredAt,
       this.type});
 
@@ -513,6 +514,7 @@ class _$DoctorTokenImpl implements _DoctorToken {
       _$$DoctorTokenImplFromJson(json);
 
   @override
+  @HiveField(0)
   @JsonKey(name: "access_token")
   final String? accessToken;
   @override
@@ -558,7 +560,7 @@ class _$DoctorTokenImpl implements _DoctorToken {
 
 abstract class _DoctorToken implements DoctorToken {
   const factory _DoctorToken(
-      {@JsonKey(name: "access_token") final String? accessToken,
+      {@HiveField(0) @JsonKey(name: "access_token") final String? accessToken,
       @JsonKey(name: "expired_at") final dynamic expiredAt,
       final String? type}) = _$DoctorTokenImpl;
 
@@ -566,6 +568,7 @@ abstract class _DoctorToken implements DoctorToken {
       _$DoctorTokenImpl.fromJson;
 
   @override
+  @HiveField(0)
   @JsonKey(name: "access_token")
   String? get accessToken;
   @override
@@ -585,9 +588,13 @@ Doctor _$DoctorFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Doctor {
+  @HiveField(1)
   int? get id => throw _privateConstructorUsedError;
+  @HiveField(2)
   String? get name => throw _privateConstructorUsedError;
+  @HiveField(3)
   String? get email => throw _privateConstructorUsedError;
+  @HiveField(4)
   String? get mobile => throw _privateConstructorUsedError;
   @JsonKey(name: "created_at")
   DateTime? get createdAt => throw _privateConstructorUsedError;
@@ -605,10 +612,10 @@ abstract class $DoctorCopyWith<$Res> {
       _$DoctorCopyWithImpl<$Res, Doctor>;
   @useResult
   $Res call(
-      {int? id,
-      String? name,
-      String? email,
-      String? mobile,
+      {@HiveField(1) int? id,
+      @HiveField(2) String? name,
+      @HiveField(3) String? email,
+      @HiveField(4) String? mobile,
       @JsonKey(name: "created_at") DateTime? createdAt,
       @JsonKey(name: "updated_at") DateTime? updatedAt});
 }
@@ -670,10 +677,10 @@ abstract class _$$DoctorImplCopyWith<$Res> implements $DoctorCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int? id,
-      String? name,
-      String? email,
-      String? mobile,
+      {@HiveField(1) int? id,
+      @HiveField(2) String? name,
+      @HiveField(3) String? email,
+      @HiveField(4) String? mobile,
       @JsonKey(name: "created_at") DateTime? createdAt,
       @JsonKey(name: "updated_at") DateTime? updatedAt});
 }
@@ -729,10 +736,10 @@ class __$$DoctorImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DoctorImpl implements _Doctor {
   const _$DoctorImpl(
-      {this.id,
-      this.name,
-      this.email,
-      this.mobile,
+      {@HiveField(1) this.id,
+      @HiveField(2) this.name,
+      @HiveField(3) this.email,
+      @HiveField(4) this.mobile,
       @JsonKey(name: "created_at") this.createdAt,
       @JsonKey(name: "updated_at") this.updatedAt});
 
@@ -740,12 +747,16 @@ class _$DoctorImpl implements _Doctor {
       _$$DoctorImplFromJson(json);
 
   @override
+  @HiveField(1)
   final int? id;
   @override
+  @HiveField(2)
   final String? name;
   @override
+  @HiveField(3)
   final String? email;
   @override
+  @HiveField(4)
   final String? mobile;
   @override
   @JsonKey(name: "created_at")
@@ -795,22 +806,26 @@ class _$DoctorImpl implements _Doctor {
 
 abstract class _Doctor implements Doctor {
   const factory _Doctor(
-      {final int? id,
-      final String? name,
-      final String? email,
-      final String? mobile,
+      {@HiveField(1) final int? id,
+      @HiveField(2) final String? name,
+      @HiveField(3) final String? email,
+      @HiveField(4) final String? mobile,
       @JsonKey(name: "created_at") final DateTime? createdAt,
       @JsonKey(name: "updated_at") final DateTime? updatedAt}) = _$DoctorImpl;
 
   factory _Doctor.fromJson(Map<String, dynamic> json) = _$DoctorImpl.fromJson;
 
   @override
+  @HiveField(1)
   int? get id;
   @override
+  @HiveField(2)
   String? get name;
   @override
+  @HiveField(3)
   String? get email;
   @override
+  @HiveField(4)
   String? get mobile;
   @override
   @JsonKey(name: "created_at")
