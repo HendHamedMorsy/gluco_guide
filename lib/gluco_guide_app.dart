@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gluco_guide/providers/doctor/auth/providers/doctor_auth_state_notifier_provider.dart';
 import 'package:gluco_guide/view/pages/patient/main_page.dart';
 import 'package:gluco_guide/view/pages/splash.dart';
 import 'core/constants/app_constants.dart';
@@ -42,7 +43,9 @@ class GlucoGuideApp extends ConsumerWidget {
           body: Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: FilledButton(onPressed: (){}, child:Text(" Test API")),
+              child: Consumer(builder: (context, ref, child) =>  FilledButton(onPressed: (){
+                ref.read(doctorAuthStateNotifierProvider.notifier).registerWithPhoneAndPassword(email: "abdo@gmail.com", password: "123456", name: "Abdelrahman ", mobile: "01093279898");
+              }, child:Text(" Test API"))),
             ),
           ),
         ),

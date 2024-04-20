@@ -100,10 +100,10 @@ class HiveManager {
   bool isPatientTokenBoxInitialized() {
     return patientTokenBox.containsKey(DbConstants.PATIENT_TOKEN_BOX_KEY);
   }
-  bool isUserBoxInitialized() {
+  bool isDoctorBoxInitialized() {
     return doctorBox.containsKey(DbConstants.DOCTOR_TOKEN_BOX_KEY);
   }
-  bool isTokenBoxInitialized() {
+  bool isDoctorTokenBoxInitialized() {
     return doctorTokenBox.containsKey(DbConstants.DOCTOR_TOKEN_BOX_KEY);
   }
 

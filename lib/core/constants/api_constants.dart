@@ -10,34 +10,20 @@ abstract class ApiConstants {
   static const Duration receiveTimeout = Duration(milliseconds: 15000);
   static const Duration connectionTimeout = Duration(milliseconds: 30000);
   static const String contentType = "application/json";
-  static const String checkAuth = "customer/auth/checkAuth";
-  static const String register = "customer/auth/register";
-  static const String login = "customer/auth/login";
-  static const String resetPassword = "customer/resetPassword";
-  static const String userProfile = "customer/getProfile";
-  static const String logout = "customer/logout";
-  static const String updateProfile = "customer/updateProfile";
-  static const String changePassword = "customer/changePassword";
-  static const String updateProfileImage = "customer/updateImage";
-  static const String deleteAccount = "customer/delete";
-  static const String getServices = "services";
+  ///Doctor
+  static const String doctorRegister = "doctor/register";
+  static const String doctorLogin = "doctor/login";
+  static const String doctorProfile = "doctor/profile";
+  static const String doctorLogout = "doctor/logout";
+  static const String doctorUpdateProfile = "doctor/updateProfile";
+  static const String deleteDoctorAccount = "doctor/delete";
+  ///Patient
+   static const String patientRegister = "doctor/register";
+     static const String patientLogin = "doctor/login";
+    static const String patientProfile = "doctor/profile";
+     static const String patientLogout = "doctor/logout";
+     static const String patientUpdateProfile = "doctor/updateProfile";
+    static const String deletePatientAccount = "doctor/delete";
+  static const String patientResetPassword = "doctor/resetPassword";
 
-  ///Erp Endpoints
-  static const String createNewAddress = "resource/Address";
-  static const String updateAddressData = createNewAddress;
-  static const String customerAddressList = createNewAddress;
-  static const String deleteCustomerAddress = createNewAddress;
-  static const String getAddressDetails = createNewAddress;
-  static const String createNewOrder = "resource/Sales%20Order";
-  static const String orderList = "pickup/orders";
-  static const String createPickup = "pickup/create";
-  static const String getUserPoints = "resource/Customer";
-
-  /// Payment
-  static const String paymentCheckout = "payment/checkout";
-  static const String paymentCardsList = "customer/cards";
-  static const String defaultPaymentCard = "customer/defaultCard";
-  static const String paymentWallet = "customer/paymentWallet";
-  static const String walletAmount = "customer/walletAmount";
-  static const String deleteCard = "customer/removeCard";
 }
