@@ -396,6 +396,7 @@ PatientToken _$PatientTokenFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PatientToken {
+  @HiveField(0)
   @JsonKey(name: "access_token")
   String? get accessToken => throw _privateConstructorUsedError;
   @JsonKey(name: "expired_at")
@@ -415,7 +416,7 @@ abstract class $PatientTokenCopyWith<$Res> {
       _$PatientTokenCopyWithImpl<$Res, PatientToken>;
   @useResult
   $Res call(
-      {@JsonKey(name: "access_token") String? accessToken,
+      {@HiveField(0) @JsonKey(name: "access_token") String? accessToken,
       @JsonKey(name: "expired_at") dynamic expiredAt,
       String? type});
 }
@@ -463,7 +464,7 @@ abstract class _$$PatientTokenImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "access_token") String? accessToken,
+      {@HiveField(0) @JsonKey(name: "access_token") String? accessToken,
       @JsonKey(name: "expired_at") dynamic expiredAt,
       String? type});
 }
@@ -504,7 +505,7 @@ class __$$PatientTokenImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PatientTokenImpl implements _PatientToken {
   const _$PatientTokenImpl(
-      {@JsonKey(name: "access_token") this.accessToken,
+      {@HiveField(0) @JsonKey(name: "access_token") this.accessToken,
       @JsonKey(name: "expired_at") this.expiredAt,
       this.type});
 
@@ -512,6 +513,7 @@ class _$PatientTokenImpl implements _PatientToken {
       _$$PatientTokenImplFromJson(json);
 
   @override
+  @HiveField(0)
   @JsonKey(name: "access_token")
   final String? accessToken;
   @override
@@ -557,7 +559,7 @@ class _$PatientTokenImpl implements _PatientToken {
 
 abstract class _PatientToken implements PatientToken {
   const factory _PatientToken(
-      {@JsonKey(name: "access_token") final String? accessToken,
+      {@HiveField(0) @JsonKey(name: "access_token") final String? accessToken,
       @JsonKey(name: "expired_at") final dynamic expiredAt,
       final String? type}) = _$PatientTokenImpl;
 
@@ -565,6 +567,7 @@ abstract class _PatientToken implements PatientToken {
       _$PatientTokenImpl.fromJson;
 
   @override
+  @HiveField(0)
   @JsonKey(name: "access_token")
   String? get accessToken;
   @override
@@ -1073,24 +1076,38 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Patient {
   int? get id => throw _privateConstructorUsedError;
+  @HiveField(0)
   String? get name => throw _privateConstructorUsedError;
+  @HiveField(1)
   String? get email => throw _privateConstructorUsedError;
+  @HiveField(2)
   String? get mobile => throw _privateConstructorUsedError;
+  @HiveField(6)
   Doctor? get doctor => throw _privateConstructorUsedError;
+  @HiveField(7)
   String? get weight => throw _privateConstructorUsedError;
+  @HiveField(8)
   String? get height => throw _privateConstructorUsedError;
+  @HiveField(9)
   int? get age => throw _privateConstructorUsedError;
+  @HiveField(10)
   String? get gender => throw _privateConstructorUsedError;
+  @HiveField(11)
   @JsonKey(name: "BGL")
   String? get bgl => throw _privateConstructorUsedError;
+  @HiveField(12)
   @JsonKey(name: "waist_circumference")
   String? get waistCircumference => throw _privateConstructorUsedError;
+  @HiveField(13)
   @JsonKey(name: "neck_circumference")
   String? get neckCircumference => throw _privateConstructorUsedError;
+  @HiveField(14)
   @JsonKey(name: "hip_circumference")
   String? get hipCircumference => throw _privateConstructorUsedError;
+  @HiveField(15)
   @JsonKey(name: "lifestyle_type")
   String? get lifestyleType => throw _privateConstructorUsedError;
+  @HiveField(16)
   @JsonKey(name: "diabetes_type")
   String? get diabetesType => throw _privateConstructorUsedError;
   List<Illness>? get illnesses => throw _privateConstructorUsedError;
@@ -1117,20 +1134,26 @@ abstract class $PatientCopyWith<$Res> {
   @useResult
   $Res call(
       {int? id,
-      String? name,
-      String? email,
-      String? mobile,
-      Doctor? doctor,
-      String? weight,
-      String? height,
-      int? age,
-      String? gender,
-      @JsonKey(name: "BGL") String? bgl,
-      @JsonKey(name: "waist_circumference") String? waistCircumference,
-      @JsonKey(name: "neck_circumference") String? neckCircumference,
-      @JsonKey(name: "hip_circumference") String? hipCircumference,
-      @JsonKey(name: "lifestyle_type") String? lifestyleType,
-      @JsonKey(name: "diabetes_type") String? diabetesType,
+      @HiveField(0) String? name,
+      @HiveField(1) String? email,
+      @HiveField(2) String? mobile,
+      @HiveField(6) Doctor? doctor,
+      @HiveField(7) String? weight,
+      @HiveField(8) String? height,
+      @HiveField(9) int? age,
+      @HiveField(10) String? gender,
+      @HiveField(11) @JsonKey(name: "BGL") String? bgl,
+      @HiveField(12)
+      @JsonKey(name: "waist_circumference")
+      String? waistCircumference,
+      @HiveField(13)
+      @JsonKey(name: "neck_circumference")
+      String? neckCircumference,
+      @HiveField(14)
+      @JsonKey(name: "hip_circumference")
+      String? hipCircumference,
+      @HiveField(15) @JsonKey(name: "lifestyle_type") String? lifestyleType,
+      @HiveField(16) @JsonKey(name: "diabetes_type") String? diabetesType,
       List<Illness>? illnesses,
       PatientResults? results,
       List<Diet>? diet,
@@ -1305,20 +1328,26 @@ abstract class _$$PatientImplCopyWith<$Res> implements $PatientCopyWith<$Res> {
   @useResult
   $Res call(
       {int? id,
-      String? name,
-      String? email,
-      String? mobile,
-      Doctor? doctor,
-      String? weight,
-      String? height,
-      int? age,
-      String? gender,
-      @JsonKey(name: "BGL") String? bgl,
-      @JsonKey(name: "waist_circumference") String? waistCircumference,
-      @JsonKey(name: "neck_circumference") String? neckCircumference,
-      @JsonKey(name: "hip_circumference") String? hipCircumference,
-      @JsonKey(name: "lifestyle_type") String? lifestyleType,
-      @JsonKey(name: "diabetes_type") String? diabetesType,
+      @HiveField(0) String? name,
+      @HiveField(1) String? email,
+      @HiveField(2) String? mobile,
+      @HiveField(6) Doctor? doctor,
+      @HiveField(7) String? weight,
+      @HiveField(8) String? height,
+      @HiveField(9) int? age,
+      @HiveField(10) String? gender,
+      @HiveField(11) @JsonKey(name: "BGL") String? bgl,
+      @HiveField(12)
+      @JsonKey(name: "waist_circumference")
+      String? waistCircumference,
+      @HiveField(13)
+      @JsonKey(name: "neck_circumference")
+      String? neckCircumference,
+      @HiveField(14)
+      @JsonKey(name: "hip_circumference")
+      String? hipCircumference,
+      @HiveField(15) @JsonKey(name: "lifestyle_type") String? lifestyleType,
+      @HiveField(16) @JsonKey(name: "diabetes_type") String? diabetesType,
       List<Illness>? illnesses,
       PatientResults? results,
       List<Diet>? diet,
@@ -1465,20 +1494,24 @@ class __$$PatientImplCopyWithImpl<$Res>
 class _$PatientImpl implements _Patient {
   const _$PatientImpl(
       {this.id,
-      this.name,
-      this.email,
-      this.mobile,
-      this.doctor,
-      this.weight,
-      this.height,
-      this.age,
-      this.gender,
-      @JsonKey(name: "BGL") this.bgl,
-      @JsonKey(name: "waist_circumference") this.waistCircumference,
-      @JsonKey(name: "neck_circumference") this.neckCircumference,
-      @JsonKey(name: "hip_circumference") this.hipCircumference,
-      @JsonKey(name: "lifestyle_type") this.lifestyleType,
-      @JsonKey(name: "diabetes_type") this.diabetesType,
+      @HiveField(0) this.name,
+      @HiveField(1) this.email,
+      @HiveField(2) this.mobile,
+      @HiveField(6) this.doctor,
+      @HiveField(7) this.weight,
+      @HiveField(8) this.height,
+      @HiveField(9) this.age,
+      @HiveField(10) this.gender,
+      @HiveField(11) @JsonKey(name: "BGL") this.bgl,
+      @HiveField(12)
+      @JsonKey(name: "waist_circumference")
+      this.waistCircumference,
+      @HiveField(13)
+      @JsonKey(name: "neck_circumference")
+      this.neckCircumference,
+      @HiveField(14) @JsonKey(name: "hip_circumference") this.hipCircumference,
+      @HiveField(15) @JsonKey(name: "lifestyle_type") this.lifestyleType,
+      @HiveField(16) @JsonKey(name: "diabetes_type") this.diabetesType,
       final List<Illness>? illnesses,
       this.results,
       final List<Diet>? diet,
@@ -1495,37 +1528,51 @@ class _$PatientImpl implements _Patient {
   @override
   final int? id;
   @override
+  @HiveField(0)
   final String? name;
   @override
+  @HiveField(1)
   final String? email;
   @override
+  @HiveField(2)
   final String? mobile;
   @override
+  @HiveField(6)
   final Doctor? doctor;
   @override
+  @HiveField(7)
   final String? weight;
   @override
+  @HiveField(8)
   final String? height;
   @override
+  @HiveField(9)
   final int? age;
   @override
+  @HiveField(10)
   final String? gender;
   @override
+  @HiveField(11)
   @JsonKey(name: "BGL")
   final String? bgl;
   @override
+  @HiveField(12)
   @JsonKey(name: "waist_circumference")
   final String? waistCircumference;
   @override
+  @HiveField(13)
   @JsonKey(name: "neck_circumference")
   final String? neckCircumference;
   @override
+  @HiveField(14)
   @JsonKey(name: "hip_circumference")
   final String? hipCircumference;
   @override
+  @HiveField(15)
   @JsonKey(name: "lifestyle_type")
   final String? lifestyleType;
   @override
+  @HiveField(16)
   @JsonKey(name: "diabetes_type")
   final String? diabetesType;
   final List<Illness>? _illnesses;
@@ -1652,20 +1699,28 @@ class _$PatientImpl implements _Patient {
 abstract class _Patient implements Patient {
   const factory _Patient(
       {final int? id,
-      final String? name,
-      final String? email,
-      final String? mobile,
-      final Doctor? doctor,
-      final String? weight,
-      final String? height,
-      final int? age,
-      final String? gender,
-      @JsonKey(name: "BGL") final String? bgl,
-      @JsonKey(name: "waist_circumference") final String? waistCircumference,
-      @JsonKey(name: "neck_circumference") final String? neckCircumference,
-      @JsonKey(name: "hip_circumference") final String? hipCircumference,
-      @JsonKey(name: "lifestyle_type") final String? lifestyleType,
-      @JsonKey(name: "diabetes_type") final String? diabetesType,
+      @HiveField(0) final String? name,
+      @HiveField(1) final String? email,
+      @HiveField(2) final String? mobile,
+      @HiveField(6) final Doctor? doctor,
+      @HiveField(7) final String? weight,
+      @HiveField(8) final String? height,
+      @HiveField(9) final int? age,
+      @HiveField(10) final String? gender,
+      @HiveField(11) @JsonKey(name: "BGL") final String? bgl,
+      @HiveField(12)
+      @JsonKey(name: "waist_circumference")
+      final String? waistCircumference,
+      @HiveField(13)
+      @JsonKey(name: "neck_circumference")
+      final String? neckCircumference,
+      @HiveField(14)
+      @JsonKey(name: "hip_circumference")
+      final String? hipCircumference,
+      @HiveField(15)
+      @JsonKey(name: "lifestyle_type")
+      final String? lifestyleType,
+      @HiveField(16) @JsonKey(name: "diabetes_type") final String? diabetesType,
       final List<Illness>? illnesses,
       final PatientResults? results,
       final List<Diet>? diet,
@@ -1679,37 +1734,51 @@ abstract class _Patient implements Patient {
   @override
   int? get id;
   @override
+  @HiveField(0)
   String? get name;
   @override
+  @HiveField(1)
   String? get email;
   @override
+  @HiveField(2)
   String? get mobile;
   @override
+  @HiveField(6)
   Doctor? get doctor;
   @override
+  @HiveField(7)
   String? get weight;
   @override
+  @HiveField(8)
   String? get height;
   @override
+  @HiveField(9)
   int? get age;
   @override
+  @HiveField(10)
   String? get gender;
   @override
+  @HiveField(11)
   @JsonKey(name: "BGL")
   String? get bgl;
   @override
+  @HiveField(12)
   @JsonKey(name: "waist_circumference")
   String? get waistCircumference;
   @override
+  @HiveField(13)
   @JsonKey(name: "neck_circumference")
   String? get neckCircumference;
   @override
+  @HiveField(14)
   @JsonKey(name: "hip_circumference")
   String? get hipCircumference;
   @override
+  @HiveField(15)
   @JsonKey(name: "lifestyle_type")
   String? get lifestyleType;
   @override
+  @HiveField(16)
   @JsonKey(name: "diabetes_type")
   String? get diabetesType;
   @override

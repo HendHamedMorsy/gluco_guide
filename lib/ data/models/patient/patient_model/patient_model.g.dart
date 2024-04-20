@@ -3,6 +3,175 @@
 part of 'patient_model.dart';
 
 // **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class PatientModelAdapter extends TypeAdapter<PatientModel> {
+  @override
+  final int typeId = 4;
+
+  @override
+  PatientModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return PatientModel();
+  }
+
+  @override
+  void write(BinaryWriter writer, PatientModel obj) {
+    writer.writeByte(0);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PatientModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class PatientDataAdapter extends TypeAdapter<PatientData> {
+  @override
+  final int typeId = 5;
+
+  @override
+  PatientData read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return PatientData();
+  }
+
+  @override
+  void write(BinaryWriter writer, PatientData obj) {
+    writer.writeByte(0);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PatientDataAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class PatientTokenAdapter extends TypeAdapter<PatientToken> {
+  @override
+  final int typeId = 6;
+
+  @override
+  PatientToken read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return PatientToken(
+      accessToken: fields[0] as String?,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, PatientToken obj) {
+    writer
+      ..writeByte(1)
+      ..writeByte(0)
+      ..write(obj.accessToken);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PatientTokenAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class PatientAdapter extends TypeAdapter<Patient> {
+  @override
+  final int typeId = 7;
+
+  @override
+  Patient read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Patient(
+      name: fields[0] as String?,
+      email: fields[1] as String?,
+      mobile: fields[2] as String?,
+      doctor: fields[6] as Doctor?,
+      weight: fields[7] as String?,
+      height: fields[8] as String?,
+      age: fields[9] as int?,
+      gender: fields[10] as String?,
+      bgl: fields[11] as String?,
+      waistCircumference: fields[12] as String?,
+      neckCircumference: fields[13] as String?,
+      hipCircumference: fields[14] as String?,
+      lifestyleType: fields[15] as String?,
+      diabetesType: fields[16] as String?,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Patient obj) {
+    writer
+      ..writeByte(14)
+      ..writeByte(0)
+      ..write(obj.name)
+      ..writeByte(1)
+      ..write(obj.email)
+      ..writeByte(2)
+      ..write(obj.mobile)
+      ..writeByte(6)
+      ..write(obj.doctor)
+      ..writeByte(7)
+      ..write(obj.weight)
+      ..writeByte(8)
+      ..write(obj.height)
+      ..writeByte(9)
+      ..write(obj.age)
+      ..writeByte(10)
+      ..write(obj.gender)
+      ..writeByte(11)
+      ..write(obj.bgl)
+      ..writeByte(12)
+      ..write(obj.waistCircumference)
+      ..writeByte(13)
+      ..write(obj.neckCircumference)
+      ..writeByte(14)
+      ..write(obj.hipCircumference)
+      ..writeByte(15)
+      ..write(obj.lifestyleType)
+      ..writeByte(16)
+      ..write(obj.diabetesType);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PatientAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 

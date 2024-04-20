@@ -1,9 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:gluco_guide/%20data/models/doctor/doctor_model/doctor_model.dart';
+import 'package:hive/hive.dart';
 part 'patient_model.freezed.dart';
 part 'patient_model.g.dart';
 
 @freezed
+@HiveType(typeId: 4)
 class PatientModel with _$PatientModel{
 
   const factory PatientModel({
@@ -17,6 +19,7 @@ class PatientModel with _$PatientModel{
 }
 
 @freezed
+@HiveType(typeId: 5)
 class PatientData with _$PatientData{
 
   const factory PatientData({
@@ -32,9 +35,11 @@ class PatientData with _$PatientData{
 }
 
 @freezed
+@HiveType(typeId: 6)
 class PatientToken with _$PatientToken{
 
   const factory PatientToken({
+    @HiveField(0)
     @JsonKey(name: "access_token")
     String? accessToken,
     @JsonKey(name: "expired_at")
@@ -78,28 +83,42 @@ class PatientResults with _$PatientResults{
 }
 
 @freezed
+@HiveType(typeId: 7)
 class Patient with _$Patient{
 
   const factory Patient({
     int? id,
+    @HiveField(0)
     String? name,
+    @HiveField(1)
     String? email,
+    @HiveField(2)
     String? mobile,
+    @HiveField(6)
     Doctor? doctor,
+    @HiveField(7)
     String? weight,
+    @HiveField(8)
     String? height,
+    @HiveField(9)
     int? age,
+    @HiveField(10)
     String? gender,
+    @HiveField(11)
     @JsonKey(name: "BGL")
     String? bgl,
-    @JsonKey(name: "waist_circumference")
+    @HiveField(12) @JsonKey(name: "waist_circumference")
     String? waistCircumference,
+    @HiveField(13)
     @JsonKey(name: "neck_circumference")
     String? neckCircumference,
+    @HiveField(14)
     @JsonKey(name: "hip_circumference")
     String? hipCircumference,
+    @HiveField(15)
     @JsonKey(name: "lifestyle_type")
     String? lifestyleType,
+    @HiveField(16)
     @JsonKey(name: "diabetes_type")
     String? diabetesType,
     List<Illness>? illnesses,
