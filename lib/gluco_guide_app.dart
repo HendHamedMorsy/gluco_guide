@@ -38,7 +38,14 @@ class GlucoGuideApp extends ConsumerWidget {
             home: child ?? Container(),
           );
         },
-        child: const SplashPage(),
+        child:  Scaffold(
+          body: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: FilledButton(onPressed: (){}, child:Text(" Test API")),
+            ),
+          ),
+        ),
       ),
     );
   }
