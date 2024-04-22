@@ -1,13 +1,24 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gluco_guide/%20data/models/doctor/doctor_model/doctor_model.dart';
 import 'package:gluco_guide/%20data/models/patient/patient_model/patient_model.dart';
 import '../../../../ data/dio_helpers/dio_exceptions.dart';
 import '../../../../ data/repository/remote_repo/patient/auth/patient_auth_repo_imp.dart';
 import '../../../../core/services/log_manager.dart';
 import '../states/patient_base_state.dart';
 
+final AutoDisposeStateProvider<bool> isPatientPasswordHiddenProvider =
+StateProvider.autoDispose<bool>((AutoDisposeStateProviderRef<bool> ref) {
+  return true;
+});
+final AutoDisposeStateProvider<bool> isCurrentPatientPasswordHiddenProvider =
+StateProvider.autoDispose<bool>((AutoDisposeStateProviderRef<bool> ref) {
+  return true;
+});
+final AutoDisposeStateProvider<bool> isConfirmedPatientPasswordHiddenProvider =
+StateProvider.autoDispose<bool>((AutoDisposeStateProviderRef<bool> ref) {
+  return true;
+});
 
 class PatientAuthStateNotifier extends StateNotifier<PatientBaseState> {
   PatientAuthStateNotifier(this._patientAuthRepoImp)

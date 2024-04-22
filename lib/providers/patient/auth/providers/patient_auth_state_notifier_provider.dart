@@ -6,7 +6,7 @@ import '../notifiers/patient_auth_state_notifier.dart';
 import '../states/patient_base_state.dart';
 
 final StateNotifierProvider<PatientAuthStateNotifier, PatientBaseState>
-    doctorAuthStateNotifierProvider =
+    patientAuthStateNotifierProvider =
     StateNotifierProvider<PatientAuthStateNotifier, PatientBaseState>(
         (StateNotifierProviderRef<PatientAuthStateNotifier, PatientBaseState> ref) {
   return PatientAuthStateNotifier(getIt.get<PatientAuthRepoImp>());

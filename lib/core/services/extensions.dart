@@ -132,7 +132,7 @@ extension BuildContextExtensions on BuildContext {
         height: 20.h,
       );
   SizedBox get vSpaceBox25 => SizedBox(
-        height: 205.h,
+        height: 25.h,
       );
   SizedBox get vSpaceBox30 => SizedBox(
         height: 30.h,

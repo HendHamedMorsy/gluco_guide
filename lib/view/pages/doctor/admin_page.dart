@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
 import 'package:gluco_guide/gen/colors.gen.dart';
 import 'package:gluco_guide/view/pages/patient/auth/register_page.dart';
-
 import '../../../gen/assets.gen.dart';
-import 'admin_login_page.dart';
+import 'auth/doctor_login_page.dart';
+import 'auth/doctor_register_page.dart';
 
 class AdminPage extends StatelessWidget {
   const AdminPage({super.key});
@@ -34,7 +35,7 @@ class AdminPage extends StatelessWidget {
                     children: [
                       Icon(Icons.person, size: 80.w, color: Colors.white),
                       Text(
-                        "User",
+                        "Patient",
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
@@ -47,7 +48,7 @@ class AdminPage extends StatelessWidget {
                SizedBox(width: 50.w,),
               InkWell(
                     onTap: (){
-                      context.navigator.push(MaterialPageRoute(builder: (context) => const AdminLoginPage()));
+                      context.navigator.push(MaterialPageRoute(builder: (context) => const DoctorRegisterPage()));
 
                     },
                 child: Container(
@@ -58,9 +59,9 @@ class AdminPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15.r)),
                   child:  Column(
                     children: [
-                      Icon(Icons.lock_person_outlined, size: 80.w, color: Colors.white),
+                      SvgPicture.asset(Assets.icons.doctor.path,color: Colors.white,width: 80.w,),
                       Text(
-                        "Admin",
+                        "Doctor",
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w500,

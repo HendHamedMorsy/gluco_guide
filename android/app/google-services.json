@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "960945048289",
+    "project_id": "gluco-guide-8242a",
+    "storage_bucket": "gluco-guide-8242a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:960945048289:android:9d72d9331fcff953a085a0",
+        "android_client_info": {
+          "package_name": "com.example.gluco_guide"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDd0qXIrXlCqI12MA3i8zQipteGknqpCd8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -10,6 +10,6 @@ class AppLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
         alignment: Alignment.topCenter,
-        child: Assets.images.logo.image(scale: 2));
+        child: Assets.images.logo.image(scale: 2.5));
   }
 }

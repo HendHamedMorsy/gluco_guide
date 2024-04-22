@@ -8,15 +8,15 @@ import '../../../../core/services/log_manager.dart';
 import '../states/doctor_base_state.dart';
 
 
-final AutoDisposeStateProvider<bool> isPasswordHiddenProvider =
+final AutoDisposeStateProvider<bool> isDoctorPasswordHiddenProvider =
 StateProvider.autoDispose<bool>((AutoDisposeStateProviderRef<bool> ref) {
   return true;
 });
-final AutoDisposeStateProvider<bool> isCurrentPasswordHiddenProvider =
+final AutoDisposeStateProvider<bool> isCurrentDoctorPasswordHiddenProvider =
 StateProvider.autoDispose<bool>((AutoDisposeStateProviderRef<bool> ref) {
   return true;
 });
-final AutoDisposeStateProvider<bool> isConfirmedPasswordHiddenProvider =
+final AutoDisposeStateProvider<bool> isConfirmedDoctorPasswordHiddenProvider =
 StateProvider.autoDispose<bool>((AutoDisposeStateProviderRef<bool> ref) {
   return true;
 });
