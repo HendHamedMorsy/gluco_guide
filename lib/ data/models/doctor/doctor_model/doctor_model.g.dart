@@ -164,15 +164,15 @@ _$DoctorDataImpl _$$DoctorDataImplFromJson(Map<String, dynamic> json) =>
       doctorToken: json['token'] == null
           ? null
           : DoctorToken.fromJson(json['token'] as Map<String, dynamic>),
-      doctorData: json['user'] == null
+      doctor: json['user'] == null
           ? null
-          : DoctorData.fromJson(json['user'] as Map<String, dynamic>),
+          : Doctor.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$DoctorDataImplToJson(_$DoctorDataImpl instance) =>
     <String, dynamic>{
       'token': instance.doctorToken,
-      'user': instance.doctorData,
+      'user': instance.doctor,
     };
 
 _$DoctorTokenImpl _$$DoctorTokenImplFromJson(Map<String, dynamic> json) =>

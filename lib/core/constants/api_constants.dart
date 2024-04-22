@@ -7,8 +7,8 @@ abstract class ApiConstants {
   //     Env.crispWebsiteId ?? "crispWebSiteId  Not Found";
 
   static String googleMapKey = Env.googleMapKey ?? "Google Map Key  Not Found";
-  static const Duration receiveTimeout = Duration(milliseconds: 15000);
-  static const Duration connectionTimeout = Duration(milliseconds: 30000);
+  static const Duration receiveTimeout = Duration(milliseconds: 60000);
+  static const Duration connectionTimeout = Duration(milliseconds: 60000);
   static const String contentType = "application/json";
   ///Doctor
   static const String doctorRegister = "doctor/register";

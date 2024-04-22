@@ -64,8 +64,17 @@ class $AssetsIconsGen {
   /// File path: assets/icons/weight.png
   AssetGenImage get weight => const AssetGenImage('assets/icons/weight.png');
 
+  /// File path: assets/icons/whatsapp_dark.png
+  AssetGenImage get whatsappDark =>
+      const AssetGenImage('assets/icons/whatsapp_dark.png');
+
+  /// File path: assets/icons/whatsapp_light.png
+  AssetGenImage get whatsappLight =>
+      const AssetGenImage('assets/icons/whatsapp_light.png');
+
   /// List of all assets
-  List<dynamic> get values => [group, age, doctor, height, weight];
+  List<dynamic> get values =>
+      [group, age, doctor, height, weight, whatsappDark, whatsappLight];
 }
 
 class $AssetsImagesGen {

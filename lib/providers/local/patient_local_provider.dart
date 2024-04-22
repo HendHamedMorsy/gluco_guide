@@ -8,7 +8,7 @@ final Provider<Patient?> patientLocalProvider =
     Provider<Patient?>((ProviderRef<Patient?> ref) {
   return HiveManager.instance().patientBox.get(DbConstants.PATIENT_BOX_KEY);
 });
-final Provider<PatientToken?> patientTokenProvider =
-Provider<PatientToken?>((ProviderRef<PatientToken?> ref) {
-  return HiveManager.instance().patientTokenBox.get(DbConstants.PATIENT_TOKEN_BOX_KEY);
+final Provider<String?> patientTokenProvider =
+Provider<String?>((ProviderRef<String?> ref) {
+  return HiveManager.instance().patientTokenBox.get(DbConstants.PATIENT_TOKEN_BOX_KEY)?.accessToken;
 });

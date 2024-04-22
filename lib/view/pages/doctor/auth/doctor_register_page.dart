@@ -15,7 +15,7 @@ import '../../../../translations/locale_keys.g.dart';
 import '../../../atoms/app_logo.dart';
 import '../../../molcules/title_with_subtitle.dart';
 import '../../../molcules/text_form_field_with_title.dart';
-import 'doctor_home_page.dart';
+import '../doctor_home_page.dart';
 import 'doctor_login_page.dart';
 
 class DoctorRegisterPage extends ConsumerStatefulWidget {

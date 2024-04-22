@@ -80,17 +80,17 @@ class HiveManager {
     if (patientData == null) return;
     patientBox.put(DbConstants.PATIENT_BOX_KEY, patientData);
   }
-  Future<void> createOrUpdatePatientTokenBoxValue(DoctorToken? doctorToken) async {
-    if (doctorToken == null) return;
-    doctorTokenBox.put(DbConstants.DOCTOR_TOKEN_BOX_KEY, doctorToken);
+  Future<void> createOrUpdatePatientTokenBoxValue(PatientToken? patientToken) async {
+    if (patientToken == null) return;
+    patientTokenBox.put(DbConstants.DOCTOR_TOKEN_BOX_KEY, patientToken);
   }
   Future<void> createOrUpdateDoctorBoxValue(Doctor? doctorData) async {
     if (doctorData == null) return;
     doctorBox.put(DbConstants.DOCTOR_BOX_KEY, doctorData);
   }
-  Future<void> createOrUpdateDoctorTokenBoxValue(PatientToken? patientToken) async {
-    if (patientToken == null) return;
-    patientTokenBox.put(DbConstants.PATIENT_TOKEN_BOX_KEY, patientToken);
+  Future<void> createOrUpdateDoctorTokenBoxValue(DoctorToken? doctorToken) async {
+    if (doctorToken == null) return;
+    doctorTokenBox.put(DbConstants.PATIENT_TOKEN_BOX_KEY, doctorToken );
   }
 
 

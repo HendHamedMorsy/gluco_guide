@@ -27,7 +27,7 @@ class DoctorData with _$DoctorData{
     @JsonKey(name: "token")
     DoctorToken? doctorToken,
     @JsonKey(name: "user")
-    DoctorData? doctorData,
+    Doctor? doctor,
   }) = _DoctorData;
 
   factory DoctorData.fromJson(Map<String, Object?> json) =>

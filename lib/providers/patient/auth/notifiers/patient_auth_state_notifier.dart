@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluco_guide/%20data/models/patient/patient_model/patient_model.dart';
 import '../../../../ data/dio_helpers/dio_exceptions.dart';
+import '../../../../ data/repository/locale_repo/hive_manager.dart';
 import '../../../../ data/repository/remote_repo/patient/auth/patient_auth_repo_imp.dart';
 import '../../../../core/services/log_manager.dart';
 import '../states/patient_base_state.dart';
@@ -36,14 +37,14 @@ class PatientAuthStateNotifier extends StateNotifier<PatientBaseState> {
     try {
       await _patientAuthRepoImp.logoutPatient();
       state = const PatientBaseState.unknown();
-      // HiveManager.instance().deleteUserFromLocalStorage();
+      HiveManager.instance().deletePatientFromLocalStorage();
     } on DioException catch (e) {
       final DioExceptions exception = DioExceptions.fromDioError(e);
       state = PatientBaseStateError(exception.message);
       LogManager.logToConsole(e.message);
       state = state.copyWithIsLoading(false);
     } finally {
-      // HiveManager.instance().deleteUserFromLocalStorage();
+      HiveManager.instance().deletePatientFromLocalStorage();
       state = state.copyWithIsLoading(false);
     }
   }
@@ -57,7 +58,8 @@ class PatientAuthStateNotifier extends StateNotifier<PatientBaseState> {
         identifier: identifier,
        password: password);
       state = PatientAuthStateLoginSuccess(response);
-  //    HiveManager.instance().createOrUpdateUserBoxValue(response.data);
+    HiveManager.instance().createOrUpdatePatientBoxValue(response.patientData?.patient);
+    HiveManager.instance().createOrUpdatePatientTokenBoxValue(response.patientData?.patientToken);
       state = state.copyWithIsLoading(false);
     } on DioException catch (e) {
       final DioExceptions exception = DioExceptions.fromDioError(e);
@@ -110,10 +112,8 @@ class PatientAuthStateNotifier extends StateNotifier<PatientBaseState> {
         hipCircumference: hipCircumference
       );
       state = PatientAuthStateRegisterSuccess(response);
-
-      // HiveManager.instance().createOrUpdateDoctorBoxValue(response.data);
-      // HiveManager.instance()
-      //     .setSecuredAccessToken(accessToken: response.data?.token ?? "error");
+      HiveManager.instance().createOrUpdatePatientBoxValue(response.patientData?.patient);
+      HiveManager.instance().createOrUpdatePatientTokenBoxValue(response.patientData?.patientToken);
       state = state.copyWithIsLoading(false);
       return true;
     } on DioException catch (e) {

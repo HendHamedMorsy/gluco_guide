@@ -13,9 +13,14 @@ import '../../../atoms/app_logo.dart';
 import '../../../molcules/title_with_subtitle.dart';
 import '../../../molcules/text_form_field_with_title.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
 
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

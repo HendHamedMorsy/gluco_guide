@@ -4,9 +4,10 @@ import 'package:gluco_guide/core/services/extensions.dart';
 import 'package:gluco_guide/gen/colors.gen.dart';
 
 class DoctorUserListTile extends StatelessWidget {
-  const DoctorUserListTile({super.key,this.name,this.desc,this.onTap});
+  const DoctorUserListTile({super.key,this.name,this.weight,this.age,this.onTap});
   final String? name;
-  final String? desc;
+  final String? weight;
+  final String? age;
   final VoidCallback? onTap;
 
   @override
@@ -21,7 +22,7 @@ class DoctorUserListTile extends StatelessWidget {
         ),
           child: const Icon(Icons.person,size: 35,color: ColorName.skyWhite,)),
       title: Text(name ?? "",style: context.textTheme.displayLarge?.copyWith(color: ColorName.primaryColor.withOpacity(0.8)),),
-      subtitle: Text(desc ?? "",style: context.textTheme.displayMedium),
+      subtitle: Text("$weight Kg  |  $age years",style: context.textTheme.displayMedium),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gluco_guide/view/pages/doctor/doctor_home_page.dart';
 import 'package:gluco_guide/view/pages/splash.dart';
 import 'core/constants/app_constants.dart';
 import 'core/themes/theme_manager.dart';
@@ -37,7 +38,7 @@ class GlucoGuideApp extends ConsumerWidget {
             home: child ?? Container(),
           );
         },
-        child: const SplashPage()
+        child: const DoctorHomePage()
 
 
         // Scaffold(

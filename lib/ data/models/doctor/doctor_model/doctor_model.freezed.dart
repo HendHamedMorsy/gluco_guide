@@ -200,7 +200,7 @@ mixin _$DoctorData {
   @JsonKey(name: "token")
   DoctorToken? get doctorToken => throw _privateConstructorUsedError;
   @JsonKey(name: "user")
-  DoctorData? get doctorData => throw _privateConstructorUsedError;
+  Doctor? get doctor => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -216,10 +216,10 @@ abstract class $DoctorDataCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "token") DoctorToken? doctorToken,
-      @JsonKey(name: "user") DoctorData? doctorData});
+      @JsonKey(name: "user") Doctor? doctor});
 
   $DoctorTokenCopyWith<$Res>? get doctorToken;
-  $DoctorDataCopyWith<$Res>? get doctorData;
+  $DoctorCopyWith<$Res>? get doctor;
 }
 
 /// @nodoc
@@ -236,17 +236,17 @@ class _$DoctorDataCopyWithImpl<$Res, $Val extends DoctorData>
   @override
   $Res call({
     Object? doctorToken = freezed,
-    Object? doctorData = freezed,
+    Object? doctor = freezed,
   }) {
     return _then(_value.copyWith(
       doctorToken: freezed == doctorToken
           ? _value.doctorToken
           : doctorToken // ignore: cast_nullable_to_non_nullable
               as DoctorToken?,
-      doctorData: freezed == doctorData
-          ? _value.doctorData
-          : doctorData // ignore: cast_nullable_to_non_nullable
-              as DoctorData?,
+      doctor: freezed == doctor
+          ? _value.doctor
+          : doctor // ignore: cast_nullable_to_non_nullable
+              as Doctor?,
     ) as $Val);
   }
 
@@ -264,13 +264,13 @@ class _$DoctorDataCopyWithImpl<$Res, $Val extends DoctorData>
 
   @override
   @pragma('vm:prefer-inline')
-  $DoctorDataCopyWith<$Res>? get doctorData {
-    if (_value.doctorData == null) {
+  $DoctorCopyWith<$Res>? get doctor {
+    if (_value.doctor == null) {
       return null;
     }
 
-    return $DoctorDataCopyWith<$Res>(_value.doctorData!, (value) {
-      return _then(_value.copyWith(doctorData: value) as $Val);
+    return $DoctorCopyWith<$Res>(_value.doctor!, (value) {
+      return _then(_value.copyWith(doctor: value) as $Val);
     });
   }
 }
@@ -285,12 +285,12 @@ abstract class _$$DoctorDataImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "token") DoctorToken? doctorToken,
-      @JsonKey(name: "user") DoctorData? doctorData});
+      @JsonKey(name: "user") Doctor? doctor});
 
   @override
   $DoctorTokenCopyWith<$Res>? get doctorToken;
   @override
-  $DoctorDataCopyWith<$Res>? get doctorData;
+  $DoctorCopyWith<$Res>? get doctor;
 }
 
 /// @nodoc
@@ -305,17 +305,17 @@ class __$$DoctorDataImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? doctorToken = freezed,
-    Object? doctorData = freezed,
+    Object? doctor = freezed,
   }) {
     return _then(_$DoctorDataImpl(
       doctorToken: freezed == doctorToken
           ? _value.doctorToken
           : doctorToken // ignore: cast_nullable_to_non_nullable
               as DoctorToken?,
-      doctorData: freezed == doctorData
-          ? _value.doctorData
-          : doctorData // ignore: cast_nullable_to_non_nullable
-              as DoctorData?,
+      doctor: freezed == doctor
+          ? _value.doctor
+          : doctor // ignore: cast_nullable_to_non_nullable
+              as Doctor?,
     ));
   }
 }
@@ -325,7 +325,7 @@ class __$$DoctorDataImplCopyWithImpl<$Res>
 class _$DoctorDataImpl implements _DoctorData {
   const _$DoctorDataImpl(
       {@JsonKey(name: "token") this.doctorToken,
-      @JsonKey(name: "user") this.doctorData});
+      @JsonKey(name: "user") this.doctor});
 
   factory _$DoctorDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$DoctorDataImplFromJson(json);
@@ -335,11 +335,11 @@ class _$DoctorDataImpl implements _DoctorData {
   final DoctorToken? doctorToken;
   @override
   @JsonKey(name: "user")
-  final DoctorData? doctorData;
+  final Doctor? doctor;
 
   @override
   String toString() {
-    return 'DoctorData(doctorToken: $doctorToken, doctorData: $doctorData)';
+    return 'DoctorData(doctorToken: $doctorToken, doctor: $doctor)';
   }
 
   @override
@@ -349,13 +349,12 @@ class _$DoctorDataImpl implements _DoctorData {
             other is _$DoctorDataImpl &&
             (identical(other.doctorToken, doctorToken) ||
                 other.doctorToken == doctorToken) &&
-            (identical(other.doctorData, doctorData) ||
-                other.doctorData == doctorData));
+            (identical(other.doctor, doctor) || other.doctor == doctor));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, doctorToken, doctorData);
+  int get hashCode => Object.hash(runtimeType, doctorToken, doctor);
 
   @JsonKey(ignore: true)
   @override
@@ -374,7 +373,7 @@ class _$DoctorDataImpl implements _DoctorData {
 abstract class _DoctorData implements DoctorData {
   const factory _DoctorData(
       {@JsonKey(name: "token") final DoctorToken? doctorToken,
-      @JsonKey(name: "user") final DoctorData? doctorData}) = _$DoctorDataImpl;
+      @JsonKey(name: "user") final Doctor? doctor}) = _$DoctorDataImpl;
 
   factory _DoctorData.fromJson(Map<String, dynamic> json) =
       _$DoctorDataImpl.fromJson;
@@ -384,7 +383,7 @@ abstract class _DoctorData implements DoctorData {
   DoctorToken? get doctorToken;
   @override
   @JsonKey(name: "user")
-  DoctorData? get doctorData;
+  Doctor? get doctor;
   @override
   @JsonKey(ignore: true)
   _$$DoctorDataImplCopyWith<_$DoctorDataImpl> get copyWith =>

@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gluco_guide/view/pages/doctor/doctor_home_page.dart';
+import 'package:gluco_guide/view/pages/patient/main_page.dart';
 import '../../gen/assets.gen.dart';
+import '../../providers/doctor/auth/providers/doctor_auth_state_notifier_provider.dart';
+import '../../providers/local/doctor_local_provider.dart';
+import '../../providers/local/patient_local_provider.dart';
 import 'doctor/admin_page.dart';
 
 class SplashPage extends ConsumerStatefulWidget {
@@ -25,11 +30,33 @@ class _SplashPageState extends  ConsumerState<SplashPage> with SingleTickerProvi
     _animation = Tween<double>(begin: 0, end: 1).animate(_animationController);
 
     _animationController.forward().then((value) {
+      var patientToken = ref.read(patientTokenProvider);
+      var doctorToken = ref.read(doctorTokenProvider);
+      /// Neither Doctor nor Patient have any tokens
+       if(patientToken == null && doctorToken == null)
+         {
+           Navigator.pushReplacement(
+             context,
+             MaterialPageRoute(builder: (context) => const AdminPage()),
+           );
+         }
+       /// Patient has token
+       else if(patientToken != null && doctorToken == null)
+         {
+           Navigator.pushReplacement(
+             context,
+             MaterialPageRoute(builder: (context) => const MainScreen(title: "Patient")),
+           );
+         }
+       ///Doctor has token
+       else if(patientToken == null && doctorToken != null){
+         Navigator.pushReplacement(
+           context,
+           MaterialPageRoute(builder: (context) => const DoctorHomePage()),
+         );
+       }
 
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const AdminPage()),
-      );
+
     });
   }
 

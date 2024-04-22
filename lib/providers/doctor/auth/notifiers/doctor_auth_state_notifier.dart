@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluco_guide/%20data/models/doctor/doctor_model/doctor_model.dart';
 import 'package:gluco_guide/%20data/repository/remote_repo/doctor/auth/doctor_auth_repo_imp.dart';
 import '../../../../ data/dio_helpers/dio_exceptions.dart';
+import '../../../../ data/repository/locale_repo/hive_manager.dart';
 import '../../../../core/services/log_manager.dart';
 import '../states/doctor_base_state.dart';
 
@@ -37,14 +38,14 @@ class DoctorAuthStateNotifier extends StateNotifier<DoctorBaseState> {
     try {
       await _doctorAuthRepoImp.logoutDoctor();
       state = const DoctorBaseState.unknown();
-      // HiveManager.instance().deleteUserFromLocalStorage();
+      HiveManager.instance().deleteDoctorFromLocalStorage();
     } on DioException catch (e) {
       final DioExceptions exception = DioExceptions.fromDioError(e);
       state = DoctorBaseStateError(exception.message);
       LogManager.logToConsole(e.message);
       state = state.copyWithIsLoading(false);
     } finally {
-      // HiveManager.instance().deleteUserFromLocalStorage();
+      HiveManager.instance().deleteDoctorFromLocalStorage();
       state = state.copyWithIsLoading(false);
     }
   }
@@ -58,7 +59,8 @@ class DoctorAuthStateNotifier extends StateNotifier<DoctorBaseState> {
         identifier: identifier,
        password: password);
       state = DoctorAuthStateLoginSuccess(response);
-  //    HiveManager.instance().createOrUpdateUserBoxValue(response.data);
+      HiveManager.instance().createOrUpdateDoctorBoxValue(response.doctorData?.doctor);
+      HiveManager.instance().createOrUpdateDoctorTokenBoxValue(response.doctorData?.doctorToken);
       state = state.copyWithIsLoading(false);
     } on DioException catch (e) {
       final DioExceptions exception = DioExceptions.fromDioError(e);
@@ -85,9 +87,9 @@ class DoctorAuthStateNotifier extends StateNotifier<DoctorBaseState> {
           password: password);
       state = DoctorAuthStateRegisterSuccess(response);
 
-      // HiveManager.instance().createOrUpdateDoctorBoxValue(response.data);
-      // HiveManager.instance()
-      //     .setSecuredAccessToken(accessToken: response.data?.token ?? "error");
+      HiveManager.instance().createOrUpdateDoctorBoxValue(response.doctorData?.doctor);
+      HiveManager.instance().createOrUpdateDoctorTokenBoxValue(response.doctorData?.doctorToken);
+
       state = state.copyWithIsLoading(false);
       return true;
     } on DioException catch (e) {

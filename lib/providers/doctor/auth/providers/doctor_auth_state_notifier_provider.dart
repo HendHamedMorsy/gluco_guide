@@ -16,10 +16,10 @@ final StateNotifierProvider<DoctorAuthStateNotifier, DoctorBaseState>
 
 final AutoDisposeStateProvider<bool> isDoctorLoggedInProvider =
 StateProvider.autoDispose<bool>((StateProviderRef<bool?> ref) {
-  return HiveManager.instance().isPatientBoxInitialized();
+  return HiveManager.instance().isDoctorBoxInitialized();
 });
 
-final AutoDisposeStateProvider<bool> doctorTokenProvider =
+final AutoDisposeStateProvider<bool> isDoctorTokenProviderInitialized =
 StateProvider.autoDispose<bool>((StateProviderRef<bool?> ref) {
-  return HiveManager.instance().isPatientTokenBoxInitialized();
+  return HiveManager.instance().isDoctorTokenBoxInitialized();
 });
