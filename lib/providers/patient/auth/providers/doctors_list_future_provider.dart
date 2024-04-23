@@ -1,0 +1,20 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../ data/models/patient/doctor_list_model/doctor_list_model.dart';
+import '../../../../ data/models/patient/illnesses_list_model/illnesses_list_model.dart';
+import '../../../../ data/repository/remote_repo/patient/auth/patient_auth_repo_imp.dart';
+import '../../../../injection/service_locator.dart';
+
+final AutoDisposeFutureProvider<List<DoctorListData>> allDoctorsFutureProvider =
+FutureProvider.autoDispose<List<DoctorListData>>(
+        (AutoDisposeFutureProviderRef<List<DoctorListData>> ref) async {
+          DoctorListModel? response = await getIt.get<PatientAuthRepoImp>().getDoctorsList();
+      return response.doctorsList ?? <DoctorListData>[];
+    });
+
+
+final AutoDisposeFutureProvider<List<IllnessesListData>> allIllnessesFutureProvider =
+FutureProvider.autoDispose<List<IllnessesListData>>(
+        (AutoDisposeFutureProviderRef<List<IllnessesListData>> ref) async {
+          IllnessesListModel? response = await getIt.get<PatientAuthRepoImp>().getAllIllnesses();
+      return response.illnessesList ?? <IllnessesListData>[];
+    });
