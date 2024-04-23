@@ -50,7 +50,7 @@ class ThemeManager {
               height: 2.14,
               color: ColorName.unselectedGrey),
           labelMedium: TextStyle(
-            color: ColorName.greySmall,
+            color: ColorName.subtitleText,
             fontSize: 16.sp,
             fontFamily: FontFamily.lato,
             fontWeight: FontWeight.w500,

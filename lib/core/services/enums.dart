@@ -98,68 +98,6 @@ typedef SpecialInstructionItem = ({
   String instructionStatus
 });
 
-enum ApartmentTypes {
-  apartment((
-    backendKey: "apartment",
-    valueName: "Apartment",
-    id: 0,
-    dayInterval: null
-  )),
-  villa((backendKey: "villa", valueName: "Villa", id: 1, dayInterval: null)),
-  office((backendKey: "office", valueName: "Office", id: 2, dayInterval: null)),
-  hotel((backendKey: "hotel", valueName: "Hotel", id: 3, dayInterval: null));
-
-  const ApartmentTypes(this.name);
-  final OrderChip name;
-}
-
-enum SpecialInstructions {
-  specialCare((
-    backendCode: "TS-002",
-    valueName: "Special Care",
-    id: 0,
-    iconPath: "Assets.icons.specialCare.path",
-    instructionStatus: "+20 AED"
-  )),
-  folded((
-    backendCode: "TS-011",
-    valueName: "Folded",
-    id: 1,
-    iconPath: "Assets.icons.folded.path",
-    instructionStatus: "Free"
-  )),
-  ecoPack((
-    backendCode: "TS-013",
-    valueName: "Eco Pack",
-    id: 2,
-    iconPath: "Assets.icons.ecoPack.path",
-    instructionStatus: "Free"
-  )),
-  starch((
-    backendCode: "TS-014",
-    valueName: "Starch",
-    id: 3,
-    iconPath: "Assets.icons.starch.path",
-    instructionStatus: "+20 AED"
-  )),
-  onHanger((
-    backendCode: "TS-015",
-    valueName: "On Hanger",
-    id: 4,
-    iconPath: "Assets.icons.clothesHanger.path",
-    instructionStatus: "Free"
-  )),
-  alteration((
-    backendCode: "TS-016",
-    valueName: "Alteration",
-    id: 5,
-    iconPath: "Assets.icons.alteration.path",
-    instructionStatus: "Free"
-  ));
-
-  const SpecialInstructions(this.specialInstructionItem);
-  final SpecialInstructionItem specialInstructionItem;
-}
 
 enum DateTypes {
   standardDay((

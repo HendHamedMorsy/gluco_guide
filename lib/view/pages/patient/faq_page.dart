@@ -23,14 +23,10 @@ FutureProvider.autoDispose<List<FAQData>?>(
             answer: "This app is designed to help users achieve their fitness goals by providing personalized workout plans, nutritional guidance, and tracking progress."),
         const FAQData(
             id: 2,
-            question: "Can I create a custom workout plan based on my fitness level and goals?",
+            question: "Can I create a custom diet plan based on my fitness level and goals?",
             answer:
-            "Yes, the app allows you to create custom workout plans tailored to your fitness level and specific goals."),
-        const FAQData(
-            id: 2,
-            question: "Can I create a custom workout plan based on my fitness level and goals?",
-            answer:
-            "Yes, the app allows you to create custom workout plans tailored to your fitness level and specific goals."),
+            "Yes, the app allows you to create custom diet plans tailored to your fitness level and specific goals."),
+
         const FAQData(
             id: 3,
             question: "How does the app track my progress?",
@@ -41,11 +37,6 @@ FutureProvider.autoDispose<List<FAQData>?>(
             question: "Is the app suitable for beginners?",
             answer:
             "Absolutely! The app offers beginner-friendly workout plans and provides guidance on proper form and technique. It also offers tips for healthy eating and gradual progression to more advanced workout routines."),
-        const FAQData(
-            id: 5,
-            question: "Can I access the app's features without an internet connection?",
-            answer:
-            "Some features, like workout plans and basic tracking, can be accessed offline. However, for features like syncing data and accessing additional resources, an internet connection is required."),
 
         const FAQData(
             id: 6,
@@ -53,20 +44,10 @@ FutureProvider.autoDispose<List<FAQData>?>(
             answer:
             "The app sources its nutritional information from trusted databases and nutrition experts. It also offers options for custom food entries and scanning barcodes to ensure accuracy in tracking your calorie intake."),
         const FAQData(
-            id: 7,
-            question: "Are there any social features in the app, like connecting with friends or joining challenges?",
-            answer:
-            "Yes, the app may include social features such as connecting with friends, joining groups, or participating in challenges to keep you motivated and engaged in your fitness journey."),
-        const FAQData(
             id: 8,
             question: "How often should I update my workout and diet plans?",
             answer:
             "The app recommends reviewing and updating your plans periodically to ensure continuous progress and to adapt to any changes in your fitness goals or lifestyle."),
-        const FAQData(
-            id: 9,
-            question: "Is there customer support available if I have questions or issues with the app?",
-            answer:
-            "The app usually offers customer support through in-app messaging, email, or phone. They can assist you with any questions or issues you may encounter while using the app."),
         const FAQData(
             id: 10,
             question: "How does the app protect my personal information and data privacy?",

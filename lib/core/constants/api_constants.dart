@@ -17,6 +17,7 @@ abstract class ApiConstants {
   static const String doctorLogout = "doctor/logout";
   static const String doctorUpdateProfile = "doctor/updateProfile";
   static const String deleteDoctorAccount = "doctor/delete";
+  static const String getPatients = "doctor/users";
   ///Patient
    static const String patientRegister = "doctor/register";
      static const String patientLogin = "doctor/login";
@@ -25,5 +26,7 @@ abstract class ApiConstants {
      static const String patientUpdateProfile = "doctor/updateProfile";
     static const String deletePatientAccount = "doctor/delete";
   static const String patientResetPassword = "doctor/resetPassword";
+  static const String getDoctors = "doctors";
+  static const String getIllnesses = "illnesses";
 
 }

@@ -31,7 +31,26 @@ class PatientAuthStateNotifier extends StateNotifier<PatientBaseState> {
   TextEditingController emailCont = TextEditingController();
   TextEditingController mobileCont = TextEditingController();
   TextEditingController passwordCont = TextEditingController();
+  TextEditingController confirmPasswordCont = TextEditingController();
+  GlobalKey<FormState> createAccountFormKey =
+  GlobalKey<FormState>(debugLabel: "create_Account_Form_Key");
 
+//BMI
+  TextEditingController heightCont = TextEditingController();
+  TextEditingController weightCont = TextEditingController();
+  TextEditingController ageCont = TextEditingController();
+  TextEditingController bglCont = TextEditingController();
+  TextEditingController waistCont = TextEditingController();
+  TextEditingController neckCont = TextEditingController();
+  TextEditingController hipCont = TextEditingController();
+
+  int? _doctorID;
+  void setDoctorId(int? doctorId){
+    _doctorID = doctorId;
+  }
+int? getDoctorId(){
+    return _doctorID;
+}
   Future<void> logOut() async {
     state = state.copyWithIsLoading(true);
     try {
@@ -125,6 +144,7 @@ class PatientAuthStateNotifier extends StateNotifier<PatientBaseState> {
     }
     return false;
   }
+
 
 
 

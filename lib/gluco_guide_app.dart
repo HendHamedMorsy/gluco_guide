@@ -38,7 +38,7 @@ class GlucoGuideApp extends ConsumerWidget {
             home: child ?? Container(),
           );
         },
-        child: const DoctorHomePage()
+        child: const SplashPage()
 
 
         // Scaffold(

@@ -2,29 +2,36 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
+import 'package:gluco_guide/core/services/log_manager.dart';
+import 'package:gluco_guide/providers/patient/auth/providers/doctors_list_future_provider.dart';
 import 'package:gluco_guide/view/pages/patient/bmi_page.dart';
 import 'package:gluco_guide/view/pages/patient/auth/login_page.dart';
+import '../../../../ data/models/patient/doctor_list_model/doctor_list_model.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/services/helpers.dart';
 import '../../../../core/services/validator.dart';
 import '../../../../gen/colors.gen.dart';
+import '../../../../providers/patient/auth/notifiers/patient_auth_state_notifier.dart';
+import '../../../../providers/patient/auth/providers/patient_auth_state_notifier_provider.dart';
 import '../../../../translations/locale_keys.g.dart';
 import '../../../atoms/app_logo.dart';
 import '../../../molcules/title_with_subtitle.dart';
 import '../../../molcules/text_form_field_with_title.dart';
 
-class RegisterPage extends StatefulWidget {
+class RegisterPage extends ConsumerStatefulWidget {
   const RegisterPage({super.key});
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  ConsumerState<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _RegisterPageState extends ConsumerState<RegisterPage> {
   @override
   Widget build(BuildContext context) {
+    PatientAuthStateNotifier patientAuthStateNotifier =
+        ref.read(patientAuthStateNotifierProvider.notifier);
     return Scaffold(
-      appBar:  AppBar(
+      appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
       extendBodyBehindAppBar: true,
@@ -32,7 +39,7 @@ class _RegisterPageState extends State<RegisterPage> {
         child: Padding(
           padding: AppConstants.shared.defaultScaffoldPadding,
           child: Form(
-            // key: authProvider.createAccountFormKey,
+            key: patientAuthStateNotifier.createAccountFormKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -42,7 +49,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     subtitle: LocaleKeys.fillYourInfo.tr()),
                 context.vSpaceBox30,
                 TextFormFieldWithTitle(
-                  // controller: authProvider.fullNameCont,
+                  controller: patientAuthStateNotifier.nameCont,
                   floatingTitle: LocaleKeys.fullName.tr(),
                   hint: LocaleKeys.nameHint.tr(),
                   action: TextInputAction.next,
@@ -50,7 +57,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 context.vSpaceBox10,
                 TextFormFieldWithTitle(
-                  // controller: authProvider.emailCont,
+                  controller: patientAuthStateNotifier.emailCont,
                   action: TextInputAction.next,
                   keyboardType: TextInputType.emailAddress,
                   floatingTitle: LocaleKeys.email.tr(),
@@ -59,7 +66,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 context.vSpaceBox10,
                 TextFormFieldWithTitle(
-                  // controller: authProvider.emailCont,
+                  controller: patientAuthStateNotifier.emailCont,
                   action: TextInputAction.next,
                   keyboardType: TextInputType.phone,
                   floatingTitle: LocaleKeys.phoneNumber.tr(),
@@ -69,84 +76,108 @@ class _RegisterPageState extends State<RegisterPage> {
                 context.vSpaceBox10,
                 TextFormFieldWithTitle(
                   maxLines: 1,
-                  // secure: ref.watch(isPasswordHiddenProvider),
-                  // controller: authProvider.passwordCont,
+                  secure: ref.watch(isPatientPasswordHiddenProvider),
+                  controller: patientAuthStateNotifier.passwordCont,
                   floatingTitle: LocaleKeys.password.tr(),
                   hint: LocaleKeys.passwordHint.tr(),
                   validator: Validator.isShortPassword,
                   action: TextInputAction.next,
-                  // suffixIcon: IconButton(
-                  //   icon: ref.watch(isPasswordHiddenProvider)
-                  //       ? const Icon(Icons.visibility_off)
-                  //       : const Icon(Icons.remove_red_eye),
-                  //   onPressed: () async {
-                  //     ref
-                  //         .read(isPasswordHiddenProvider.notifier)
-                  //         .update((bool state) => !state);
-                  //   },
-                  // ),
+                  suffixIcon: IconButton(
+                    icon: ref.watch(isPatientPasswordHiddenProvider)
+                        ? const Icon(Icons.visibility_off)
+                        : const Icon(Icons.remove_red_eye),
+                    onPressed: () async {
+                      ref
+                          .read(isPatientPasswordHiddenProvider.notifier)
+                          .update((bool state) => !state);
+                    },
+                  ),
                 ),
                 context.vSpaceBox10,
                 TextFormFieldWithTitle(
-                  // secure: ref.watch(isConfirmedPasswordHiddenProvider),
+                  secure: ref.watch(isPatientPasswordHiddenProvider),
                   maxLines: 1,
-                  // controller: authProvider.confirmPasswordCont,
+                  controller: patientAuthStateNotifier.confirmPasswordCont,
                   floatingTitle: LocaleKeys.confirmPassword.tr(),
                   hint: LocaleKeys.passwordHint.tr(),
                   action: TextInputAction.done,
-                  // validator: (String? confirmPassword) =>
-                  //     Validator.isPasswordMatchingConfirm(
-                  //         authProvider.passwordCont.text, confirmPassword),
-                  // suffixIcon: IconButton(
-                  //   icon: ref.watch(isConfirmedPasswordHiddenProvider)
-                  //       ? const Icon(Icons.visibility_off)
-                  //       : const Icon(Icons.remove_red_eye),
-                  //   onPressed: () async {
-                  //     ref
-                  //         .read(isConfirmedPasswordHiddenProvider.notifier)
-                  //         .update((bool state) => !state);
-                  //   },
-                  // ),
+                  validator: (String? confirmPassword) =>
+                      Validator.isPasswordMatchingConfirm(
+                          patientAuthStateNotifier.passwordCont.text,
+                          confirmPassword),
+                  suffixIcon: IconButton(
+                    icon: ref.watch(isConfirmedPatientPasswordHiddenProvider)
+                        ? const Icon(Icons.visibility_off)
+                        : const Icon(Icons.remove_red_eye),
+                    onPressed: () async {
+                      ref
+                          .read(
+                              isConfirmedPatientPasswordHiddenProvider.notifier)
+                          .update((bool state) => !state);
+                    },
+                  ),
                 ),
+                context.vSpaceBox25,
+                DropdownButtonFormField<int?>(
+                            value: ref.watch(allDoctorsFutureProvider).value?.first.id,
+                            isDense: true,
+                            icon: Transform.rotate(
+                                angle: -11,
+                                child: const Icon(
+                                  Icons.arrow_forward_ios_rounded,
+                                  size: 15,
+                                  color: ColorName.primaryColor,
+                                )),
+                            decoration: InputDecoration(
+                                contentPadding:
+                                    const EdgeInsets.symmetric(horizontal: 24),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: ColorName.primaryColor
+                                          .withOpacity(0.5)),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Colors.transparent),
+                                  borderRadius: BorderRadius.circular(10),
+                                )),
+                            items: ref.watch(allDoctorsFutureProvider).value
+                               ?.map((DoctorListData? doctor) => DropdownMenuItem(
+                                      value: doctor?.id,
+                                      child: Row(
+                                        children: <Widget>[
+                                          Text(
+                                            doctor?.name ?? "",
+                                            style: context
+                                                .textTheme.displayMedium
+                                                ?.copyWith(
+                                                    color: ColorName
+                                                        .primaryColor
+                                                        .withOpacity(0.5)),
+                                          ),
+                                        ],
+                                      ),
+                                    ))
+                                .toList(),
+                            onChanged: ( value) async {
+                              if (value == null) return;
+                              ref
+                                  .watch(patientAuthStateNotifierProvider.notifier)
+                                  .setDoctorId(value);
+                              LogManager.logToConsole(ref.read(patientAuthStateNotifierProvider.notifier).getDoctorId(),"DocID");
+                            }),
+
                 context.vSpaceBox30,
                 Consumer(builder:
                     (BuildContext context, WidgetRef ref, Widget? child) {
-                  // ref.listen(authStateNotifierProvider,
-                  //         (BaseState? previous, BaseState next) async {
-                  //       if (next is BaseStateError ||
-                  //           next is FirebaseAuthStateException) {
-                  //         showOkAlertDialog(
-                  //             context: context,
-                  //             title: LocaleKeys.somethingWent.tr(),
-                  //             message: next.message);
-                  //       }
-                  //       if (next is OTPCodeSentSuccess) {
-                  //         context.push(RouteNames.otpPageRoute);
-                  //       }
-                  //     });
                   return FilledButton(
                       onPressed: () async {
-                        context.navigator.pushReplacement(MaterialPageRoute(builder: (context) => const BMIPage(),));
-                        // if (authProvider.createAccountFormKey.currentState
-                        //     ?.validate() ==
-                        //     false) return;
-                        // ref
-                        //     .read(authStateNotifierProvider.notifier)
-                        //     .checkUserAuth(
-                        //     mobile: authProvider.getPhoneNumber())
-                        //     .then((bool? isUserExist) {
-                        //   if (isUserExist == true) {
-                        //     context.pushReplacement(
-                        //         RouteNames.loginAccountPageRoute);
-                        //   } else {
-                        //     ref
-                        //         .read(authStateNotifierProvider.notifier)
-                        //         .verifyPhoneNumber(
-                        //         phone: authProvider.getPhoneNumber());
-                        //   }
-                        // });
+                        context.navigator.push(MaterialPageRoute(
+                          builder: (context) => const BMIPage(),
+                        ));
                       },
-                      child: Text(LocaleKeys.getStarted.tr()));
+                      child: Text(LocaleKeys.continuePickup.tr()));
                 }),
                 context.vSpaceBox30,
                 Visibility(
@@ -161,7 +192,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       context.hSpaceBox6,
                       InkWell(
                         onTap: () async {
-                         context.navigator.push(MaterialPageRoute(builder: (context) => const LoginPage(),));
+                          context.navigator.push(MaterialPageRoute(
+                            builder: (context) => const LoginPage(),
+                          ));
                         },
                         child: Text(
                           LocaleKeys.login.tr(),
@@ -172,19 +205,6 @@ class _RegisterPageState extends State<RegisterPage> {
                     ],
                   ),
                 ),
-                // context.vSpaceBox10,
-                // Align(
-                //     alignment: Alignment.center,
-                //     child: InkWell(
-                //       onTap: () {
-                //         // context.go(RouteNames.mainPageRoute);
-                //       },
-                //       child: Text(
-                //         LocaleKeys.continueAsGuest.tr(),
-                //         style: context.textTheme.bodyMedium
-                //             ?.copyWith(fontWeight: FontWeight.w700),
-                //       ),
-                //     )),
                 context.vSpaceBox30,
               ],
             ),

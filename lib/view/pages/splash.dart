@@ -68,8 +68,7 @@ class _SplashPageState extends  ConsumerState<SplashPage> with SingleTickerProvi
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return  Scaffold(
         backgroundColor: Colors.white,
         body: Center(
           child: AnimatedBuilder(
@@ -82,7 +81,6 @@ class _SplashPageState extends  ConsumerState<SplashPage> with SingleTickerProvi
             },
           ),
         ),
-      ),
     );
   }
 }

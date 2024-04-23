@@ -6,6 +6,8 @@ import '../../../core/constants/app_constants.dart';
 import '../../../core/services/enums.dart';
 import '../../../core/services/validator.dart';
 import '../../../gen/colors.gen.dart';
+import '../../../providers/patient/auth/notifiers/patient_auth_state_notifier.dart';
+import '../../../providers/patient/auth/providers/patient_auth_state_notifier_provider.dart';
 import '../../../translations/locale_keys.g.dart';
 import '../../atoms/app_logo.dart';
 import '../../molcules/title_with_subtitle.dart';
@@ -19,6 +21,8 @@ class BMIPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    PatientAuthStateNotifier patientAuthStateNotifier =
+    ref.read(patientAuthStateNotifierProvider.notifier);
     return Scaffold(
       appBar:  AppBar(
         backgroundColor: Colors.transparent,
@@ -42,8 +46,8 @@ class BMIPage extends ConsumerWidget {
                     Expanded(
                       flex: 1,
                       child: TextFormFieldWithTitle(
+                        controller: patientAuthStateNotifier.heightCont,
                         keyboardType: TextInputType.number,
-                        // controller: authProvider.fullNameCont,
                         floatingTitle: LocaleKeys.height.tr(),
                         hint:"0.0",
                         action: TextInputAction.next,
@@ -54,8 +58,8 @@ class BMIPage extends ConsumerWidget {
                     Expanded(
                       flex: 1,
                       child: TextFormFieldWithTitle(
+                        controller: patientAuthStateNotifier.weightCont,
                         keyboardType: TextInputType.number,
-                        // controller: authProvider.fullNameCont,
                         floatingTitle: LocaleKeys.weight.tr(),
                         hint: "0.0",
                         action: TextInputAction.next,
@@ -66,7 +70,7 @@ class BMIPage extends ConsumerWidget {
                 ),
                 context.vSpaceBox16,
                 TextFormFieldWithTitle(
-                  // controller: authProvider.emailCont,
+                  controller: patientAuthStateNotifier.ageCont,
                   action: TextInputAction.next,
                   keyboardType: TextInputType.number,
                   floatingTitle: LocaleKeys.age.tr(),
@@ -76,7 +80,7 @@ class BMIPage extends ConsumerWidget {
                 context.vSpaceBox16,
 
             Text( LocaleKeys.gender.tr(),
-            style: context.textTheme.displaySmall,
+            style: context.textTheme.displayMedium,
           ),
           context.vSpaceBox8,
           DropdownButtonFormField(
@@ -122,10 +126,6 @@ class BMIPage extends ConsumerWidget {
                   .toList(),
               onChanged: ( UserGender? value) async {
                 ref.read(userGenderProvider.notifier).update((state) => value ?? UserGender.male);
-                // if (value == null) return;
-                // ref
-                //     .read(propertyStateNotifierProvider.notifier)
-                //     .setSpaceTypeId(value);
               }),
                 context.vSpaceBox16,
                 Row(
@@ -136,7 +136,7 @@ class BMIPage extends ConsumerWidget {
                       child: TextFormFieldWithTitle(
                         keyboardType: TextInputType.number,
                         // controller: authProvider.fullNameCont,
-                        floatingTitle: LocaleKeys.waist.tr(),
+                        floatingTitle: LocaleKeys.waistCircumference.tr(),
                         hint:"e.g. 80 cm",
                         action: TextInputAction.next,
                         validator: Validator.validateText,
@@ -157,9 +157,27 @@ class BMIPage extends ConsumerWidget {
                   ],
                 ),
                 context.vSpaceBox16,
+                TextFormFieldWithTitle(
+                  controller: patientAuthStateNotifier.hipCont,
+                  action: TextInputAction.next,
+                  keyboardType: TextInputType.number,
+                  floatingTitle: "Hip Circumference",
+                  hint: "Enter your hip circumference (e.g. 90)",
+                  validator: Validator.validateEmail,
+                ),
+                context.vSpaceBox16,
+                TextFormFieldWithTitle(
+                  controller: patientAuthStateNotifier.bglCont,
+                  action: TextInputAction.next,
+                  keyboardType: TextInputType.number,
+                  floatingTitle: "Blod Glucose Level Random (BGL)",
+                  hint: "Enter your BGL (e.g. 150)",
+                  validator: Validator.validateEmail,
+                ),
 
+                context.vSpaceBox16,
                 Text( LocaleKeys.typeOfDiabetes.tr(),
-                  style: context.textTheme.displaySmall,
+                  style: context.textTheme.displayMedium,
                 ),
                 context.vSpaceBox8,
                 DropdownButtonFormField(

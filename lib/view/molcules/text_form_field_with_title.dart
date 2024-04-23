@@ -40,15 +40,9 @@ class TextFormFieldWithTitle extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(
-              floatingTitle,
-              style: floatingTextStyle ?? context.textTheme.labelMedium,
-            ),
-            endWidget ?? const SizedBox.shrink()
-          ],
+        Text(
+          floatingTitle,
+          style: floatingTextStyle ?? context.textTheme.displayMedium,
         ),
         context.vSpaceBox10,
         DefaultTextFormField(

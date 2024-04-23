@@ -81,5 +81,32 @@ final class PatientAuthApi extends PatientBaseApi {
       rethrow;
     }
   }
+  Future<Response<dynamic>> doctorsListApiRequest() async {
+    try {
+      final Response<dynamic> response =
+      await patientDioClient.get(ApiConstants.getDoctors);
+      return response;
+    } on DioException {
+      rethrow;
+    }
+  }
 
+  Future<Response<dynamic>> illnessesListApiRequest() async {
+    try {
+      final Response<dynamic> response =
+      await patientDioClient.get(ApiConstants.getIllnesses);
+      return response;
+    } on DioException {
+      rethrow;
+    }
+  }
+  Future<Response<dynamic>> getPatientProfileApiRequest() async {
+    try {
+      final Response<dynamic> response =
+      await patientDioClient.get(ApiConstants.patientProfile);
+      return response;
+    } on DioException {
+      rethrow;
+    }
+  }
 }
