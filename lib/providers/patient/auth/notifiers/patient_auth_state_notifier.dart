@@ -51,7 +51,7 @@ class PatientAuthStateNotifier extends StateNotifier<PatientBaseState> {
 int? getDoctorId(){
     return _doctorID;
 }
-  Future<void> logOut() async {
+  Future<void> logOutPatient() async {
     state = state.copyWithIsLoading(true);
     try {
       await _patientAuthRepoImp.logoutPatient();
@@ -68,7 +68,7 @@ int? getDoctorId(){
     }
   }
 
-  Future<void> login(
+  Future<void> loginPatient(
       {required String? identifier, required String? password}) async {
     state = state.copyWithIsLoading(true);
 
@@ -90,7 +90,7 @@ int? getDoctorId(){
     }
   }
 
-  Future<bool> registerWithPhoneAndPassword({
+  Future<bool> registerPatient({
     required String? name,
     required String? email,
     required String? password,

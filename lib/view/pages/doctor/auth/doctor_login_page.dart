@@ -3,10 +3,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
+import 'package:gluco_guide/core/services/log_manager.dart';
+import 'package:gluco_guide/providers/doctor/auth/providers/doctor_auth_state_notifier_provider.dart';
 import 'package:gluco_guide/providers/local/doctor_local_provider.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/services/validator.dart';
 import '../../../../gen/colors.gen.dart';
+import '../../../../providers/doctor/auth/states/doctor_base_state.dart';
 import '../../../../providers/patient/auth/notifiers/patient_auth_state_notifier.dart';
 import '../../../../providers/patient/auth/providers/patient_auth_state_notifier_provider.dart';
 import '../../../../providers/patient/auth/states/patient_base_state.dart';
@@ -94,15 +97,15 @@ class _DoctorLoginPageState extends ConsumerState<DoctorLoginPage> {
                 context.vSpaceBox30,
                 Consumer(builder:
                     (BuildContext context, WidgetRef ref, Widget? child) {
-                  ref.listen(patientAuthStateNotifierProvider,
-                          (PatientBaseState? previous, PatientBaseState next) async {
-                        if (next is PatientBaseStateError) {
+                  ref.listen(doctorAuthStateNotifierProvider,
+                          (DoctorBaseState? previous, DoctorBaseState next) async {
+                        if (next is DoctorBaseStateError) {
                           showOkAlertDialog(
                               context: context,
                               title: LocaleKeys.somethingWent.tr(),
                               message: next.message);
                         }
-                        if (next is PatientAuthStateLoginSuccess) {
+                        if (next is DoctorAuthStateLoginSuccess) {
                           ref.invalidate(doctorLocalProvider);
                           ref.invalidate(doctorTokenProvider);
                           context.navigator.pushReplacement(MaterialPageRoute(builder: (context) => const DoctorHomePage(),));
@@ -111,8 +114,9 @@ class _DoctorLoginPageState extends ConsumerState<DoctorLoginPage> {
                       });
                   return FilledButton(
                       onPressed: () async {
-                        ref.read(patientAuthStateNotifierProvider.notifier
-                        ).login(identifier: _identifierCont.text,
+                        LogManager.logToConsole(ref.read(doctorTokenProvider),"docToken");
+                        ref.read(doctorAuthStateNotifierProvider.notifier
+                        ).loginDoctor(identifier: _identifierCont.text,
                         password: _passwordCont.text);
                         ref.invalidate(doctorLocalProvider);
                         ref.invalidate(doctorTokenProvider);

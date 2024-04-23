@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gluco_guide/%20data/repository/locale_repo/hive_manager.dart';
 import 'package:gluco_guide/view/pages/doctor/doctor_home_page.dart';
 import 'package:gluco_guide/view/pages/patient/main_page.dart';
 import '../../gen/assets.gen.dart';
@@ -29,9 +30,11 @@ class _SplashPageState extends  ConsumerState<SplashPage> with SingleTickerProvi
 
     _animation = Tween<double>(begin: 0, end: 1).animate(_animationController);
 
-    _animationController.forward().then((value) {
-      var patientToken = ref.read(patientTokenProvider);
-      var doctorToken = ref.read(doctorTokenProvider);
+    _animationController.forward().then((value) async{
+      var patientToken = await HiveManager.instance()
+          .getLocalUnSecuredPatientTokenFromStorage();
+      var doctorToken = await HiveManager.instance()
+          .getLocalUnSecuredDoctorTokenFromStorage();
       /// Neither Doctor nor Patient have any tokens
        if(patientToken == null && doctorToken == null)
          {

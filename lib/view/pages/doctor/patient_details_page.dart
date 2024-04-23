@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
+import 'package:gluco_guide/providers/local/doctor_local_provider.dart';
 
+import '../../../core/services/util.dart';
 import '../../../gen/assets.gen.dart';
 import '../../organisms/illnesses_card.dart';
 import '../../organisms/patient_health_card.dart';
@@ -14,18 +17,36 @@ class PatientDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(centerTitle: true,
-        title: const Text("Patient Details"),actions: [IconButton(onPressed: (){}, icon: Image.asset(Assets.icons.whatsappDark.path,width: 50,height: 50,),)],),
-      body:  SingleChildScrollView(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("Patient Details"),
+        actions: [
+          Consumer(
+            builder: (context, ref, child) =>
+            IconButton(
+              onPressed: () {
+                String? doctorMobile = ref.read(doctorLocalProvider)?.mobile;
+                Utils.instance().launchWhatsappBrowser("+2$doctorMobile");
+              },
+              icon: Image.asset(
+                Assets.icons.whatsappDark.path,
+                width: 50,
+                height: 50,
+              ),
+            ),
+          )
+        ],
+      ),
+      body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(16.0),
           child: Column(
             children: [
               PatientPersonalCard(
-                name :"Hend Hamed",
+                name: "Hend Hamed",
                 email: "hendhamedmorsy@gmail.com",
                 phone: "01093279897",
-                age :"26",
+                age: "26",
                 gender: "Female",
               ),
               context.vSpaceBox8,

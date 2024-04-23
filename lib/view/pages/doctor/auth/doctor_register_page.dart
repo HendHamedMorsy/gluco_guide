@@ -166,7 +166,7 @@ class _DoctorRegisterPageState extends ConsumerState<DoctorRegisterPage> {
                             false) return;
                         ref
                             .read(doctorAuthStateNotifierProvider.notifier)
-                            .registerWithPhoneAndPassword(
+                            .registerDoctor(
                                 email: _emailCont.text,
                                 password: _passwordCont.text,
                                 name: _passwordCont.text,

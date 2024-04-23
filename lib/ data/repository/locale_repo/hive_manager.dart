@@ -75,22 +75,25 @@ class HiveManager {
     }
   }
 
-
+///patient
   Future<void> createOrUpdatePatientBoxValue(Patient? patientData) async {
     if (patientData == null) return;
     patientBox.put(DbConstants.PATIENT_BOX_KEY, patientData);
   }
+  /// patient token
   Future<void> createOrUpdatePatientTokenBoxValue(PatientToken? patientToken) async {
     if (patientToken == null) return;
-    patientTokenBox.put(DbConstants.DOCTOR_TOKEN_BOX_KEY, patientToken);
+    patientTokenBox.put(DbConstants.PATIENT_TOKEN_BOX_KEY, patientToken);
   }
+  /// Doctor
   Future<void> createOrUpdateDoctorBoxValue(Doctor? doctorData) async {
     if (doctorData == null) return;
     doctorBox.put(DbConstants.DOCTOR_BOX_KEY, doctorData);
   }
+  ///Doctor token
   Future<void> createOrUpdateDoctorTokenBoxValue(DoctorToken? doctorToken) async {
     if (doctorToken == null) return;
-    doctorTokenBox.put(DbConstants.PATIENT_TOKEN_BOX_KEY, doctorToken );
+    doctorTokenBox.put(DbConstants.DOCTOR_TOKEN_BOX_KEY, doctorToken );
   }
 
 
@@ -101,7 +104,7 @@ class HiveManager {
     return patientTokenBox.containsKey(DbConstants.PATIENT_TOKEN_BOX_KEY);
   }
   bool isDoctorBoxInitialized() {
-    return doctorBox.containsKey(DbConstants.DOCTOR_TOKEN_BOX_KEY);
+    return doctorBox.containsKey(DbConstants.DOCTOR_BOX_KEY);
   }
   bool isDoctorTokenBoxInitialized() {
     return doctorTokenBox.containsKey(DbConstants.DOCTOR_TOKEN_BOX_KEY);
@@ -148,7 +151,7 @@ class HiveManager {
     return doctorBox.get(DbConstants.DOCTOR_BOX_KEY);
   }
 
-  Future<DoctorToken?> getTokenFromStorage() async {
+  Future<DoctorToken?> getDoctorTokenFromStorage() async {
     return doctorTokenBox.get(DbConstants.DOCTOR_TOKEN_BOX_KEY);
   }
   Future<String?> getLocalUnSecuredDoctorTokenFromStorage() async {

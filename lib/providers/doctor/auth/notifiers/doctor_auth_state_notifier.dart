@@ -33,7 +33,7 @@ class DoctorAuthStateNotifier extends StateNotifier<DoctorBaseState> {
   TextEditingController mobileCont = TextEditingController();
   TextEditingController passwordCont = TextEditingController();
 
-  Future<void> logOut() async {
+  Future<void> logOutDoctor() async {
     state = state.copyWithIsLoading(true);
     try {
       await _doctorAuthRepoImp.logoutDoctor();
@@ -50,29 +50,30 @@ class DoctorAuthStateNotifier extends StateNotifier<DoctorBaseState> {
     }
   }
 
-  Future<void> login(
+  Future<void> loginDoctor(
       {required String? identifier, required String? password}) async {
-    state = state.copyWithIsLoading(true);
+    // state = state.copyWithIsLoading(true);
 
     try {
       DoctorModel response = await _doctorAuthRepoImp.loginDoctor(
         identifier: identifier,
        password: password);
-      state = DoctorAuthStateLoginSuccess(response);
+      // state = DoctorAuthStateLoginSuccess(response);
       HiveManager.instance().createOrUpdateDoctorBoxValue(response.doctorData?.doctor);
       HiveManager.instance().createOrUpdateDoctorTokenBoxValue(response.doctorData?.doctorToken);
+
       state = state.copyWithIsLoading(false);
     } on DioException catch (e) {
       final DioExceptions exception = DioExceptions.fromDioError(e);
-      state = DoctorBaseStateError(exception.message);
-      LogManager.logToConsole(e.message);
-      state = state.copyWithIsLoading(false);
+      // state = DoctorBaseStateError(exception.message);
+      // LogManager.logToConsole(e.message);
+      // state = state.copyWithIsLoading(false);
     } finally {
-      state = state.copyWithIsLoading(false);
+      // state = state.copyWithIsLoading(false);
     }
   }
 
-  Future<bool> registerWithPhoneAndPassword({
+  Future<bool> registerDoctor({
     required String? email,
     required String? password,
     required String? name,
