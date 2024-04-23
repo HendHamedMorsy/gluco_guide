@@ -1,18 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
 import 'package:gluco_guide/gen/colors.gen.dart';
 import 'package:gluco_guide/view/pages/patient/auth/register_page.dart';
+import '../../../core/services/log_manager.dart';
 import '../../../gen/assets.gen.dart';
+import '../../../providers/loading/is_loading_provider.dart';
+import '../../organisms/loading_overlay.dart';
 import 'auth/doctor_login_page.dart';
 import 'auth/doctor_register_page.dart';
 
-class AdminPage extends StatelessWidget {
+class AdminPage extends ConsumerStatefulWidget {
   const AdminPage({super.key});
 
   @override
+  ConsumerState<AdminPage> createState() => _AdminPageState();
+}
+
+class _AdminPageState extends ConsumerState<AdminPage> {
+  @override
   Widget build(BuildContext context) {
+    ref.listen<bool>(isLoadingProvider, (bool? previous, bool isLoading) {
+      LogManager.logToConsole(
+          "the previous state of loading is $previous and the next state is $isLoading");
+      if (isLoading) {
+        LoadingOverlay.instance().show(context: context);
+      } else {
+        LoadingOverlay.instance().hide();
+      }
+    });
+
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
