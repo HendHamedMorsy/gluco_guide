@@ -7,6 +7,7 @@ import 'package:gluco_guide/gen/colors.gen.dart';
 import 'package:gluco_guide/providers/local/doctor_local_provider.dart';
 import 'package:gluco_guide/translations/locale_keys.g.dart';
 import 'package:gluco_guide/view/molcules/gluco_guide_app_bar.dart';
+import 'package:gluco_guide/view/pages/doctor/admin_page.dart';
 import 'package:gluco_guide/view/pages/doctor/auth/doctor_login_page.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../gen/assets.gen.dart';
@@ -121,7 +122,7 @@ class _DoctorProfilePageState extends ConsumerState<DoctorProfilePage> {
                               ref.invalidate(doctorLocalProvider);
 
                             });
-                        context.navigator.pushReplacement(MaterialPageRoute(builder: (context) => DoctorLoginPage(),));
+                        context.navigator.pushReplacement(MaterialPageRoute(builder: (context) => AdminPage(),));
                       });
                     })
               ],
