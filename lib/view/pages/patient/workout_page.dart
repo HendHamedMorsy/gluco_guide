@@ -84,12 +84,7 @@ class WorkoutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(LocaleKeys.workout.tr(), style: context.textTheme.headlineLarge?.copyWith(color: ColorName.primaryColor),),
-      ),
-        body: Consumer(
+    return  Consumer(
             builder:
                 (BuildContext context, WidgetRef ref, Widget? child) {
               return
@@ -120,7 +115,6 @@ class WorkoutPage extends StatelessWidget {
                   );
                 },
                     loading: () => const AppLoading());
-            })
-    );
+            });
   }
 }

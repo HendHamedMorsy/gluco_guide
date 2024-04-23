@@ -72,7 +72,7 @@ class WorkoutDaysPage extends StatelessWidget {
 
           const Spacer(flex: 8,),
           FilledButton(onPressed: (){
-            context.navigator.push(MaterialPageRoute(builder: (context) =>   MainScreen(title: "",) ,));
+            context.navigator.pushReplacement(MaterialPageRoute(builder: (context) =>   MainScreen(title: "",) ,));
 
           }, child: const Text("Continue")),
           const Spacer(flex: 1,),

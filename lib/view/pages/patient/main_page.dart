@@ -2,7 +2,9 @@ import 'dart:async';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gluco_guide/core/services/extensions.dart';
 import 'package:gluco_guide/gen/colors.gen.dart';
 import 'package:gluco_guide/view/pages/patient/diet_recommendation_page.dart';
 import 'package:gluco_guide/view/pages/patient/workout_page.dart';
@@ -124,23 +126,26 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
         onNotification: onScrollNotification,
         child:  screens[_bottomNavIndex],
       ),
-      floatingActionButton: FloatingActionButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
-        child: Icon(
-          Icons.home,
-          color: Colors.white,
-          size: 35.w,
-        ),
-        onPressed: () {
-          setState(() {
-            isHomeScreen = true;
-          });
+      floatingActionButton: Consumer(
+        builder: (context, ref, child) => FloatingActionButton(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
+          child: Icon(
+            Icons.home,
+            color: Colors.white,
+            size: 35.w,
+          ),
+          onPressed: () {
+            setState(() {
+              context.navigator.push(MaterialPageRoute(builder: (context) => HomePage(),));
+              // ref.read(bottomNavIndexProvider.notifier).state = HOME_TABS.home
+            });
 
-          _fabAnimationController.reset();
-          _borderRadiusAnimationController.reset();
-          _borderRadiusAnimationController.forward();
-          _fabAnimationController.forward();
-        },
+            _fabAnimationController.reset();
+            _borderRadiusAnimationController.reset();
+            _borderRadiusAnimationController.forward();
+            _fabAnimationController.forward();
+          },
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar.builder(
