@@ -41,7 +41,7 @@ class DoctorAuthStateNotifier extends StateNotifier<DoctorBaseState> {
       HiveManager.instance().deleteDoctorFromLocalStorage();
     } on DioException catch (e) {
       final DioExceptions exception = DioExceptions.fromDioError(e);
-      state = DoctorBaseStateError(exception.message);
+      //state = DoctorBaseStateError(exception.message);
       LogManager.logToConsole(e.message);
       state = state.copyWithIsLoading(false);
     } finally {
@@ -62,14 +62,12 @@ class DoctorAuthStateNotifier extends StateNotifier<DoctorBaseState> {
       HiveManager.instance().createOrUpdateDoctorBoxValue(response.doctorData?.doctor);
       HiveManager.instance().createOrUpdateDoctorTokenBoxValue(response.doctorData?.doctorToken);
 
-      state = state.copyWithIsLoading(false);
+      // state = state.copyWithIsLoading(false);
     } on DioException catch (e) {
       final DioExceptions exception = DioExceptions.fromDioError(e);
       // state = DoctorBaseStateError(exception.message);
       // LogManager.logToConsole(e.message);
-      // state = state.copyWithIsLoading(false);
-    } finally {
-      // state = state.copyWithIsLoading(false);
+     // state = state.copyWithIsLoading(false);
     }
   }
 
@@ -86,7 +84,7 @@ class DoctorAuthStateNotifier extends StateNotifier<DoctorBaseState> {
           mobile: mobile,
           email: email,
           password: password);
-      state = DoctorAuthStateRegisterSuccess(response);
+      //state = DoctorAuthStateRegisterSuccess(response);
 
       HiveManager.instance().createOrUpdateDoctorBoxValue(response.doctorData?.doctor);
       HiveManager.instance().createOrUpdateDoctorTokenBoxValue(response.doctorData?.doctorToken);
@@ -96,9 +94,7 @@ class DoctorAuthStateNotifier extends StateNotifier<DoctorBaseState> {
     } on DioException catch (e) {
       final DioExceptions exception = DioExceptions.fromDioError(e);
       state = state.copyWithIsLoading(false);
-      state = DoctorBaseStateError(exception.message);
-    } finally {
-      state = state.copyWithIsLoading(false);
+     // state = DoctorBaseStateError(exception.message);
     }
     return false;
   }

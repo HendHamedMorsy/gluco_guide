@@ -1,6 +1,6 @@
 import 'package:gluco_guide/%20data/models/doctor/doctor_model/doctor_model.dart';
-import 'package:gluco_guide/%20data/models/patient/patient_model/patient_model.dart';
 import '../../../../models/base/base_model.dart';
+import '../../../../models/doctor/patients_list_model/patient_list_model.dart';
 
 abstract class DoctorAuthRepo {
   Future<DoctorModel> registerDoctor({
@@ -16,4 +16,5 @@ abstract class DoctorAuthRepo {
   });
 
   Future<BaseModel> logoutDoctor();
+  Future<PatientListModel>getAllPatients();
 }

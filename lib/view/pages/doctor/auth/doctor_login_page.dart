@@ -97,32 +97,29 @@ class _DoctorLoginPageState extends ConsumerState<DoctorLoginPage> {
                 context.vSpaceBox30,
                 Consumer(builder:
                     (BuildContext context, WidgetRef ref, Widget? child) {
-                  ref.listen(doctorAuthStateNotifierProvider,
-                          (DoctorBaseState? previous, DoctorBaseState next) async {
-                        if (next is DoctorBaseStateError) {
-                          showOkAlertDialog(
-                              context: context,
-                              title: LocaleKeys.somethingWent.tr(),
-                              message: next.message);
-                        }
-                        if (next is DoctorAuthStateLoginSuccess) {
-                          ref.invalidate(doctorLocalProvider);
-                          ref.invalidate(doctorTokenProvider);
-                          context.navigator.pushReplacement(MaterialPageRoute(builder: (context) => const DoctorHomePage(),));
+                      // ref.listen(doctorAuthStateNotifierProvider,
+                      //         (DoctorBaseState? previous, DoctorBaseState next) async {
+                      //       if (next is DoctorBaseStateError &&
+                      //          context.navigator.canPop() == false) {
+                      //         showOkAlertDialog(
+                      //             context: context,
+                      //             title: LocaleKeys.somethingWent.tr(),
+                      //             message: next.message);
+                      //       }
+                      //       if (next is DoctorAuthStateLoginSuccess) {
+                      //         ref.invalidate(doctorLocalProvider);
+                      //         context.navigator.pushReplacement(MaterialPageRoute(builder: (context) => DoctorHomePage(),));
+                      //       }
+                      //     });
+                      return FilledButton(
+                          onPressed: () async {
+                            ref.read(doctorAuthStateNotifierProvider.notifier).loginDoctor(identifier: _identifierCont.text, password: _passwordCont.text);
+                            context.navigator.pushReplacement(MaterialPageRoute(builder: (context) => DoctorHomePage(),));
+                          },
 
-                        }
-                      });
-                  return FilledButton(
-                      onPressed: () async {
-                        LogManager.logToConsole(ref.read(doctorTokenProvider),"docToken");
-                        ref.read(doctorAuthStateNotifierProvider.notifier
-                        ).loginDoctor(identifier: _identifierCont.text,
-                        password: _passwordCont.text);
-                        ref.invalidate(doctorLocalProvider);
-                        ref.invalidate(doctorTokenProvider);
-                      },
-                      child: Text(LocaleKeys.login.tr()));
-                }),
+    child: Text(LocaleKeys.login.tr()));})
+
+                ,
                 context.vSpaceBox30,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

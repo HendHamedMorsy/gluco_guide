@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:gluco_guide/%20data/api_providers/doctor/doctor_auth_api.dart';
 import 'package:gluco_guide/%20data/models/base/base_model.dart';
 import 'package:gluco_guide/%20data/models/doctor/doctor_model/doctor_model.dart';
+import 'package:gluco_guide/core/services/log_manager.dart';
+import '../../../../models/doctor/patients_list_model/patient_list_model.dart';
 import 'doctor_auth_repo.dart';
 
 class DoctorAuthRepoImp implements DoctorAuthRepo {
@@ -46,6 +48,17 @@ class DoctorAuthRepoImp implements DoctorAuthRepo {
     try {
       response = await _doctorAuthApi.logoutDoctorApiRequest();
       return BaseModel.fromJson(response.data as Map<String, dynamic>);
+    } on DioException {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<PatientListModel> getAllPatients()async {
+    Response<dynamic>? response;
+    try {
+      response = await _doctorAuthApi.patientsListApiRequest();
+      return PatientListModel.fromJson(response.data as Map<String, dynamic>);
     } on DioException {
       rethrow;
     }

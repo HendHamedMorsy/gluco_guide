@@ -33,61 +33,61 @@ class DoctorBaseState extends Equatable {
   List<Object?> get props => <Object?>[result, isLoading];
   @override
   String toString() {
-    return "AuthState()";
+    return "DoctorBaseState()";
   }
 }
 
-class DoctorAuthStateSuccess extends DoctorBaseState {
-  @override
-  final String? message;
+// class DoctorAuthStateSuccess extends DoctorBaseState {
+//   @override
+//   final String? message;
+//
+//   const DoctorAuthStateSuccess(this.message);
+//
+//   @override
+//   List<Object?> get props => <Object?>[];
+//   @override
+//   String toString() {
+//     return "AuthStateSuccess()";
+//   }
+// }
 
-  const DoctorAuthStateSuccess(this.message);
-
-  @override
-  List<Object?> get props => <Object?>[];
-  @override
-  String toString() {
-    return "AuthStateSuccess()";
-  }
-}
-
-class DoctorAuthStateLoginSuccess extends DoctorBaseState {
-  final DoctorModel loginResponse;
-
-  const DoctorAuthStateLoginSuccess(this.loginResponse);
-
-  @override
-  List<Object?> get props => <Object?>[];
-  @override
-  String toString() {
-    return "AuthStateSuccessLogin()";
-  }
-}
-
-class DoctorAuthStateRegisterSuccess extends DoctorBaseState {
-  final DoctorModel registerResponse;
-
-  const DoctorAuthStateRegisterSuccess(this.registerResponse);
-
-  @override
-  List<Object?> get props => <Object?>[];
-  @override
-  String toString() {
-    return "AuthStateRegisterSuccess()";
-  }
-}
-
-class DoctorBaseStateError extends DoctorBaseState {
-  @override
-  final String? message;
-
-  const DoctorBaseStateError(this.message);
-
-  @override
-  List<Object?> get props => <Object?>[];
-
-  @override
-  String toString() {
-    return "AuthStateError($message)";
-  }
-}
+// class DoctorAuthStateLoginSuccess extends DoctorBaseState {
+//   final DoctorModel loginResponse;
+//
+//   const DoctorAuthStateLoginSuccess(this.loginResponse);
+//
+//   @override
+//   List<Object?> get props => <Object?>[];
+//   @override
+//   String toString() {
+//     return "AuthStateSuccessLogin()";
+//   }
+// }
+//
+// class DoctorAuthStateRegisterSuccess extends DoctorBaseState {
+//   final DoctorModel registerResponse;
+//
+//   const DoctorAuthStateRegisterSuccess(this.registerResponse);
+//
+//   @override
+//   List<Object?> get props => <Object?>[];
+//   @override
+//   String toString() {
+//     return "AuthStateRegisterSuccess()";
+//   }
+// }
+//
+// class DoctorBaseStateError extends DoctorBaseState {
+//   @override
+//   final String? message;
+//
+//   const DoctorBaseStateError(this.message);
+//
+//   @override
+//   List<Object?> get props => <Object?>[];
+//
+//   @override
+//   String toString() {
+//     return "AuthStateError($message)";
+//   }
+// }

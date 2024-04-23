@@ -146,20 +146,20 @@ class _DoctorRegisterPageState extends ConsumerState<DoctorRegisterPage> {
                 context.vSpaceBox30,
                 Consumer(builder:
                     (BuildContext context, WidgetRef ref, Widget? child) {
-                  ref.listen(doctorAuthStateNotifierProvider,
-                      (DoctorBaseState? previous, DoctorBaseState next) async {
-                    if(next is DoctorAuthStateRegisterSuccess){
-                      context.navigator.pushReplacement(MaterialPageRoute(
-                        builder: (context) => const DoctorHomePage(),
-                      ));
-                    }
-                    else if (next is DoctorBaseState) {
-                      showOkAlertDialog(
-                          context: context,
-                          title: LocaleKeys.somethingWent.tr(),
-                          message: next.message);
-                    }
-                  });
+                  // ref.listen(doctorAuthStateNotifierProvider,
+                  //     (DoctorBaseState? previous, DoctorBaseState next) async {
+                  //   if(next is DoctorAuthStateRegisterSuccess){
+                  //     context.navigator.pushReplacement(MaterialPageRoute(
+                  //       builder: (context) => const DoctorHomePage(),
+                  //     ));
+                  //   }
+                  //   else if (next is DoctorBaseState) {
+                  //     showOkAlertDialog(
+                  //         context: context,
+                  //         title: LocaleKeys.somethingWent.tr(),
+                  //         message: next.message);
+                  //   }
+                  // });
                   return FilledButton(
                       onPressed: () async {
                         if (_doctorRegisterFormKey.currentState?.validate() ==

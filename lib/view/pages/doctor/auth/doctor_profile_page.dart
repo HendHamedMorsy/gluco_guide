@@ -1,3 +1,4 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,8 +7,10 @@ import 'package:gluco_guide/gen/colors.gen.dart';
 import 'package:gluco_guide/providers/local/doctor_local_provider.dart';
 import 'package:gluco_guide/translations/locale_keys.g.dart';
 import 'package:gluco_guide/view/molcules/gluco_guide_app_bar.dart';
+import 'package:gluco_guide/view/pages/doctor/auth/doctor_login_page.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../gen/assets.gen.dart';
+import '../../../../providers/doctor/auth/providers/doctor_auth_state_notifier_provider.dart';
 import '../../../molcules/text_form_field_with_title.dart';
 import '../../../molcules/user_profile_avatar.dart';
 
@@ -95,7 +98,32 @@ class _DoctorProfilePageState extends ConsumerState<DoctorProfilePage> {
                           ?.copyWith(color: Colors.white),
                     )),
                 TextButton(child: Text(LocaleKeys.logout.tr(), style: context.textTheme.titleLarge?.copyWith(decoration: TextDecoration.underline,decorationColor:ColorName.primaryColor.withOpacity(0.5),color: ColorName.primaryColor.withOpacity(0.7)),),
-                    onPressed: (){})
+                    onPressed: () async {
+                      OkCancelResult delReq = await showOkCancelAlertDialog(
+                          context: context,
+                          message: LocaleKeys.logoutMsg.tr(),
+                          isDestructiveAction: true,
+                          barrierDismissible: false,
+                          okLabel: LocaleKeys.yes.tr(),
+                          cancelLabel: LocaleKeys.no.tr(),
+                          title: LocaleKeys.logout.tr());
+                      if (delReq == OkCancelResult.cancel) {
+                        return;
+                      }
+                      ref
+                          .read(doctorAuthStateNotifierProvider.notifier)
+                          .logOutDoctor()
+                          .then((_) {
+                        Future<void>.delayed(const Duration(milliseconds: 100),
+                                () {
+
+                          ref.invalidate(doctorAuthStateNotifierProvider);
+                              ref.invalidate(doctorLocalProvider);
+
+                            });
+                        context.navigator.pushReplacement(MaterialPageRoute(builder: (context) => DoctorLoginPage(),));
+                      });
+                    })
               ],
             ),
           ),
