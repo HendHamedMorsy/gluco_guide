@@ -111,8 +111,11 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   //     });
                   return FilledButton(
                       onPressed: () async {
-                        ref.read(patientAuthStateNotifierProvider.notifier).loginPatient(identifier: _identifierCont.text, password: _passwordCont.text);
-                        context.navigator.pushReplacement(MaterialPageRoute(builder: (context) => MainScreen(title: "Gluco Guide App"),));
+                        ref.read(patientAuthStateNotifierProvider.notifier).loginPatient(identifier: _identifierCont.text, password: _passwordCont.text).then((value) {
+                          if(value ==true){
+                            context.navigator.pushReplacement(MaterialPageRoute(builder: (context) => const MainScreen(title: "Gluco Guide App"),));
+                          }
+                        });
                       },
                       child: Text(LocaleKeys.login.tr()));
                 }),
@@ -128,7 +131,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     InkWell(
                       onTap: () async {
                         context.navigator.push(MaterialPageRoute(builder: (context) => const RegisterPage(),));
-                        // context.go(RouteNames.createAccountPageRoute);
                       },
                       child: Text(
                         LocaleKeys.createAccount.tr(),
@@ -138,19 +140,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     ),
                   ],
                 ),
-                // context.vSpaceBox10,
-                // Align(
-                //     alignment: Alignment.center,
-                //     child: InkWell(
-                //       onTap: () {
-                //         // context.go(RouteNames.mainPageRoute);
-                //       },
-                //       child: Text(
-                //         LocaleKeys.continueAsGuest.tr(),
-                //         style: context.textTheme.bodyMedium
-                //             ?.copyWith(fontWeight: FontWeight.w700),
-                //       ),
-                //     )),
                 context.vSpaceBox30,
               ],
             ),

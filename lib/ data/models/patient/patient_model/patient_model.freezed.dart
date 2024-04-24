@@ -1826,7 +1826,6 @@ mixin _$ResultsWorkout {
   int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: "diabetes_type")
   String? get diabetesType => throw _privateConstructorUsedError;
-  WorkoutWorkout? get workout => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1840,12 +1839,7 @@ abstract class $ResultsWorkoutCopyWith<$Res> {
           ResultsWorkout value, $Res Function(ResultsWorkout) then) =
       _$ResultsWorkoutCopyWithImpl<$Res, ResultsWorkout>;
   @useResult
-  $Res call(
-      {int? id,
-      @JsonKey(name: "diabetes_type") String? diabetesType,
-      WorkoutWorkout? workout});
-
-  $WorkoutWorkoutCopyWith<$Res>? get workout;
+  $Res call({int? id, @JsonKey(name: "diabetes_type") String? diabetesType});
 }
 
 /// @nodoc
@@ -1863,7 +1857,6 @@ class _$ResultsWorkoutCopyWithImpl<$Res, $Val extends ResultsWorkout>
   $Res call({
     Object? id = freezed,
     Object? diabetesType = freezed,
-    Object? workout = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -1874,23 +1867,7 @@ class _$ResultsWorkoutCopyWithImpl<$Res, $Val extends ResultsWorkout>
           ? _value.diabetesType
           : diabetesType // ignore: cast_nullable_to_non_nullable
               as String?,
-      workout: freezed == workout
-          ? _value.workout
-          : workout // ignore: cast_nullable_to_non_nullable
-              as WorkoutWorkout?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $WorkoutWorkoutCopyWith<$Res>? get workout {
-    if (_value.workout == null) {
-      return null;
-    }
-
-    return $WorkoutWorkoutCopyWith<$Res>(_value.workout!, (value) {
-      return _then(_value.copyWith(workout: value) as $Val);
-    });
   }
 }
 
@@ -1902,13 +1879,7 @@ abstract class _$$ResultsWorkoutImplCopyWith<$Res>
       __$$ResultsWorkoutImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? id,
-      @JsonKey(name: "diabetes_type") String? diabetesType,
-      WorkoutWorkout? workout});
-
-  @override
-  $WorkoutWorkoutCopyWith<$Res>? get workout;
+  $Res call({int? id, @JsonKey(name: "diabetes_type") String? diabetesType});
 }
 
 /// @nodoc
@@ -1924,7 +1895,6 @@ class __$$ResultsWorkoutImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? diabetesType = freezed,
-    Object? workout = freezed,
   }) {
     return _then(_$ResultsWorkoutImpl(
       id: freezed == id
@@ -1935,10 +1905,6 @@ class __$$ResultsWorkoutImplCopyWithImpl<$Res>
           ? _value.diabetesType
           : diabetesType // ignore: cast_nullable_to_non_nullable
               as String?,
-      workout: freezed == workout
-          ? _value.workout
-          : workout // ignore: cast_nullable_to_non_nullable
-              as WorkoutWorkout?,
     ));
   }
 }
@@ -1947,9 +1913,7 @@ class __$$ResultsWorkoutImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ResultsWorkoutImpl implements _ResultsWorkout {
   const _$ResultsWorkoutImpl(
-      {this.id,
-      @JsonKey(name: "diabetes_type") this.diabetesType,
-      this.workout});
+      {this.id, @JsonKey(name: "diabetes_type") this.diabetesType});
 
   factory _$ResultsWorkoutImpl.fromJson(Map<String, dynamic> json) =>
       _$$ResultsWorkoutImplFromJson(json);
@@ -1959,12 +1923,10 @@ class _$ResultsWorkoutImpl implements _ResultsWorkout {
   @override
   @JsonKey(name: "diabetes_type")
   final String? diabetesType;
-  @override
-  final WorkoutWorkout? workout;
 
   @override
   String toString() {
-    return 'ResultsWorkout(id: $id, diabetesType: $diabetesType, workout: $workout)';
+    return 'ResultsWorkout(id: $id, diabetesType: $diabetesType)';
   }
 
   @override
@@ -1974,13 +1936,12 @@ class _$ResultsWorkoutImpl implements _ResultsWorkout {
             other is _$ResultsWorkoutImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.diabetesType, diabetesType) ||
-                other.diabetesType == diabetesType) &&
-            (identical(other.workout, workout) || other.workout == workout));
+                other.diabetesType == diabetesType));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, diabetesType, workout);
+  int get hashCode => Object.hash(runtimeType, id, diabetesType);
 
   @JsonKey(ignore: true)
   @override
@@ -1999,9 +1960,9 @@ class _$ResultsWorkoutImpl implements _ResultsWorkout {
 
 abstract class _ResultsWorkout implements ResultsWorkout {
   const factory _ResultsWorkout(
-      {final int? id,
-      @JsonKey(name: "diabetes_type") final String? diabetesType,
-      final WorkoutWorkout? workout}) = _$ResultsWorkoutImpl;
+          {final int? id,
+          @JsonKey(name: "diabetes_type") final String? diabetesType}) =
+      _$ResultsWorkoutImpl;
 
   factory _ResultsWorkout.fromJson(Map<String, dynamic> json) =
       _$ResultsWorkoutImpl.fromJson;
@@ -2012,210 +1973,8 @@ abstract class _ResultsWorkout implements ResultsWorkout {
   @JsonKey(name: "diabetes_type")
   String? get diabetesType;
   @override
-  WorkoutWorkout? get workout;
-  @override
   @JsonKey(ignore: true)
   _$$ResultsWorkoutImplCopyWith<_$ResultsWorkoutImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-WorkoutWorkout _$WorkoutWorkoutFromJson(Map<String, dynamic> json) {
-  return _WorkoutWorkout.fromJson(json);
-}
-
-/// @nodoc
-mixin _$WorkoutWorkout {
-  @JsonKey(name: "Maintain healthy life style")
-  String? get maintainHealthyLifeStyle => throw _privateConstructorUsedError;
-  @JsonKey(name: "Loose weight")
-  String? get looseWeight => throw _privateConstructorUsedError;
-  @JsonKey(name: "Gain muscle")
-  String? get gainMuscle => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $WorkoutWorkoutCopyWith<WorkoutWorkout> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $WorkoutWorkoutCopyWith<$Res> {
-  factory $WorkoutWorkoutCopyWith(
-          WorkoutWorkout value, $Res Function(WorkoutWorkout) then) =
-      _$WorkoutWorkoutCopyWithImpl<$Res, WorkoutWorkout>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: "Maintain healthy life style")
-      String? maintainHealthyLifeStyle,
-      @JsonKey(name: "Loose weight") String? looseWeight,
-      @JsonKey(name: "Gain muscle") String? gainMuscle});
-}
-
-/// @nodoc
-class _$WorkoutWorkoutCopyWithImpl<$Res, $Val extends WorkoutWorkout>
-    implements $WorkoutWorkoutCopyWith<$Res> {
-  _$WorkoutWorkoutCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? maintainHealthyLifeStyle = freezed,
-    Object? looseWeight = freezed,
-    Object? gainMuscle = freezed,
-  }) {
-    return _then(_value.copyWith(
-      maintainHealthyLifeStyle: freezed == maintainHealthyLifeStyle
-          ? _value.maintainHealthyLifeStyle
-          : maintainHealthyLifeStyle // ignore: cast_nullable_to_non_nullable
-              as String?,
-      looseWeight: freezed == looseWeight
-          ? _value.looseWeight
-          : looseWeight // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gainMuscle: freezed == gainMuscle
-          ? _value.gainMuscle
-          : gainMuscle // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$WorkoutWorkoutImplCopyWith<$Res>
-    implements $WorkoutWorkoutCopyWith<$Res> {
-  factory _$$WorkoutWorkoutImplCopyWith(_$WorkoutWorkoutImpl value,
-          $Res Function(_$WorkoutWorkoutImpl) then) =
-      __$$WorkoutWorkoutImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: "Maintain healthy life style")
-      String? maintainHealthyLifeStyle,
-      @JsonKey(name: "Loose weight") String? looseWeight,
-      @JsonKey(name: "Gain muscle") String? gainMuscle});
-}
-
-/// @nodoc
-class __$$WorkoutWorkoutImplCopyWithImpl<$Res>
-    extends _$WorkoutWorkoutCopyWithImpl<$Res, _$WorkoutWorkoutImpl>
-    implements _$$WorkoutWorkoutImplCopyWith<$Res> {
-  __$$WorkoutWorkoutImplCopyWithImpl(
-      _$WorkoutWorkoutImpl _value, $Res Function(_$WorkoutWorkoutImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? maintainHealthyLifeStyle = freezed,
-    Object? looseWeight = freezed,
-    Object? gainMuscle = freezed,
-  }) {
-    return _then(_$WorkoutWorkoutImpl(
-      maintainHealthyLifeStyle: freezed == maintainHealthyLifeStyle
-          ? _value.maintainHealthyLifeStyle
-          : maintainHealthyLifeStyle // ignore: cast_nullable_to_non_nullable
-              as String?,
-      looseWeight: freezed == looseWeight
-          ? _value.looseWeight
-          : looseWeight // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gainMuscle: freezed == gainMuscle
-          ? _value.gainMuscle
-          : gainMuscle // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$WorkoutWorkoutImpl implements _WorkoutWorkout {
-  const _$WorkoutWorkoutImpl(
-      {@JsonKey(name: "Maintain healthy life style")
-      this.maintainHealthyLifeStyle,
-      @JsonKey(name: "Loose weight") this.looseWeight,
-      @JsonKey(name: "Gain muscle") this.gainMuscle});
-
-  factory _$WorkoutWorkoutImpl.fromJson(Map<String, dynamic> json) =>
-      _$$WorkoutWorkoutImplFromJson(json);
-
-  @override
-  @JsonKey(name: "Maintain healthy life style")
-  final String? maintainHealthyLifeStyle;
-  @override
-  @JsonKey(name: "Loose weight")
-  final String? looseWeight;
-  @override
-  @JsonKey(name: "Gain muscle")
-  final String? gainMuscle;
-
-  @override
-  String toString() {
-    return 'WorkoutWorkout(maintainHealthyLifeStyle: $maintainHealthyLifeStyle, looseWeight: $looseWeight, gainMuscle: $gainMuscle)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$WorkoutWorkoutImpl &&
-            (identical(
-                    other.maintainHealthyLifeStyle, maintainHealthyLifeStyle) ||
-                other.maintainHealthyLifeStyle == maintainHealthyLifeStyle) &&
-            (identical(other.looseWeight, looseWeight) ||
-                other.looseWeight == looseWeight) &&
-            (identical(other.gainMuscle, gainMuscle) ||
-                other.gainMuscle == gainMuscle));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, maintainHealthyLifeStyle, looseWeight, gainMuscle);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$WorkoutWorkoutImplCopyWith<_$WorkoutWorkoutImpl> get copyWith =>
-      __$$WorkoutWorkoutImplCopyWithImpl<_$WorkoutWorkoutImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$WorkoutWorkoutImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _WorkoutWorkout implements WorkoutWorkout {
-  const factory _WorkoutWorkout(
-          {@JsonKey(name: "Maintain healthy life style")
-          final String? maintainHealthyLifeStyle,
-          @JsonKey(name: "Loose weight") final String? looseWeight,
-          @JsonKey(name: "Gain muscle") final String? gainMuscle}) =
-      _$WorkoutWorkoutImpl;
-
-  factory _WorkoutWorkout.fromJson(Map<String, dynamic> json) =
-      _$WorkoutWorkoutImpl.fromJson;
-
-  @override
-  @JsonKey(name: "Maintain healthy life style")
-  String? get maintainHealthyLifeStyle;
-  @override
-  @JsonKey(name: "Loose weight")
-  String? get looseWeight;
-  @override
-  @JsonKey(name: "Gain muscle")
-  String? get gainMuscle;
-  @override
-  @JsonKey(ignore: true)
-  _$$WorkoutWorkoutImplCopyWith<_$WorkoutWorkoutImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2890,5 +2649,154 @@ abstract class _PatientPivot implements PatientPivot {
   @override
   @JsonKey(ignore: true)
   _$$PatientPivotImplCopyWith<_$PatientPivotImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Workout _$WorkoutFromJson(Map<String, dynamic> json) {
+  return _Workout.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Workout {
+  String? get key => throw _privateConstructorUsedError;
+  String? get value => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $WorkoutCopyWith<Workout> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $WorkoutCopyWith<$Res> {
+  factory $WorkoutCopyWith(Workout value, $Res Function(Workout) then) =
+      _$WorkoutCopyWithImpl<$Res, Workout>;
+  @useResult
+  $Res call({String? key, String? value});
+}
+
+/// @nodoc
+class _$WorkoutCopyWithImpl<$Res, $Val extends Workout>
+    implements $WorkoutCopyWith<$Res> {
+  _$WorkoutCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? key = freezed,
+    Object? value = freezed,
+  }) {
+    return _then(_value.copyWith(
+      key: freezed == key
+          ? _value.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as String?,
+      value: freezed == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$WorkoutImplCopyWith<$Res> implements $WorkoutCopyWith<$Res> {
+  factory _$$WorkoutImplCopyWith(
+          _$WorkoutImpl value, $Res Function(_$WorkoutImpl) then) =
+      __$$WorkoutImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? key, String? value});
+}
+
+/// @nodoc
+class __$$WorkoutImplCopyWithImpl<$Res>
+    extends _$WorkoutCopyWithImpl<$Res, _$WorkoutImpl>
+    implements _$$WorkoutImplCopyWith<$Res> {
+  __$$WorkoutImplCopyWithImpl(
+      _$WorkoutImpl _value, $Res Function(_$WorkoutImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? key = freezed,
+    Object? value = freezed,
+  }) {
+    return _then(_$WorkoutImpl(
+      key: freezed == key
+          ? _value.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as String?,
+      value: freezed == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$WorkoutImpl implements _Workout {
+  const _$WorkoutImpl({this.key, this.value});
+
+  factory _$WorkoutImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WorkoutImplFromJson(json);
+
+  @override
+  final String? key;
+  @override
+  final String? value;
+
+  @override
+  String toString() {
+    return 'Workout(key: $key, value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$WorkoutImpl &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, key, value);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$WorkoutImplCopyWith<_$WorkoutImpl> get copyWith =>
+      __$$WorkoutImplCopyWithImpl<_$WorkoutImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WorkoutImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Workout implements Workout {
+  const factory _Workout({final String? key, final String? value}) =
+      _$WorkoutImpl;
+
+  factory _Workout.fromJson(Map<String, dynamic> json) = _$WorkoutImpl.fromJson;
+
+  @override
+  String? get key;
+  @override
+  String? get value;
+  @override
+  @JsonKey(ignore: true)
+  _$$WorkoutImplCopyWith<_$WorkoutImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

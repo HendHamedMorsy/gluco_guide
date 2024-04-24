@@ -81,8 +81,8 @@ class WorkoutDaysPage extends StatelessWidget {
                   var patientAuthProvider =    ref.read(patientAuthStateNotifierProvider.notifier);
                   patientAuthProvider
                       .registerPatient(
-                      name: patientAuthProvider.nameCont.text,
-                      email: patientAuthProvider.emailCont.text,
+                      name: patientAuthProvider.nameCont.text ,
+                      email: patientAuthProvider.emailCont.text ,
                       password: patientAuthProvider.passwordCont.text,
                       mobile: patientAuthProvider.mobileCont.text,
                       doctorId: patientAuthProvider.getDoctorId(),
@@ -96,11 +96,15 @@ class WorkoutDaysPage extends StatelessWidget {
                       hipCircumference: patientAuthProvider.hipCont.text,
                       lifestyleType:"2",
                       diabetesType: "2",
-                      workDays: _selectedWorkoutDayNum,
-                      illnesses:{1, 2, 3, 4, 5});
-                  // context.navigator.pushReplacement(
-                  //     MaterialPageRoute(builder: (context) => MainScreen(
-                  //       title: "",),));
+                      workDays: _selectedWorkoutDayNum??1,
+                      illnesses:{1, 2, 3, 4, 5}).then((value) {
+
+                          context.navigator.pushReplacement(
+                              MaterialPageRoute(builder: (context) => const MainScreen(
+                                title: "",),));
+
+                  });
+
                 }, child: const Text("Continue"));
             }
           ),

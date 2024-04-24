@@ -29,7 +29,7 @@ class DoctorHomePage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: IconButton(
                   onPressed: () {
-                    context.navigator.push(MaterialPageRoute(builder: (context) => DoctorProfilePage(),));
+                    context.navigator.push(MaterialPageRoute(builder: (context) => const DoctorProfilePage(),));
                   },
                   icon: const Icon(
                     Icons.person,

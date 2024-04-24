@@ -8,87 +8,80 @@ import 'package:gluco_guide/translations/locale_keys.g.dart';
 import 'package:gluco_guide/view/atoms/app_loading.dart';
 import '../../../core/models/workout_data_model.dart';
 import '../../../gen/assets.gen.dart';
+import '../../../providers/local/patient_local_provider.dart';
 import '../../molcules/no_data.dart';
 import '../../molcules/workout_list_tile_card.dart';
 import 'auth/workout_details_page.dart';
-
 final AutoDisposeFutureProvider<List<WorkoutData>?>
-    getAllWorkoutFutureProvider =
+    getAllWorkoutFutureProviderForDiabetesOne =
     FutureProvider.autoDispose<List<WorkoutData>?>(
         (AutoDisposeFutureProviderRef<List<WorkoutData>?> ref) {
   List<WorkoutData> workoutList = <WorkoutData>[
     WorkoutData(
         id: 1,
         imageUrl: Assets.images.workout.workout1.path,
-        name: "Squat Movement Exercise",
+        name: "Aerobic exercise",
         desc:
-            "10 min | intermediate"),
+            "30 min, 3-7 days"),
     WorkoutData(
         id: 2,
         imageUrl: Assets.images.workout.workout2.path,
-        name: "Full Body Stretching ",
+        name: "Resistance exercise ",
         desc:
-            "6 min | intermediate"),
+            "8-10 ex, 1-3 set, 10-15 rep, 2-3 times/week"),
     WorkoutData(
         id: 3,
         imageUrl: Assets.images.workout.workout3.path,
-        name: "Yoga woman Exercise",
+        name: "Flexibility exercise",
         desc:
-            "8 min | intermediate"),
-    WorkoutData(
-        id: 4,
-        imageUrl: Assets.images.workout.workout4.path,
-        name: "Yoga Movement Exercise",
-        desc:
-            "10 min | intermediate "),
-    WorkoutData(
-        id: 5,
-        imageUrl: Assets.images.workout.workout5.path,
-        name: "Abdominal Exercise",
-        desc:"15 min | intermediate"),
-    WorkoutData(
-        id: 6,
-        imageUrl: Assets.images.workout.workout1.path,
-        name: "Squat Movement Exercise",
-        desc:
-        "10 min | intermediate"),
-    WorkoutData(
-        id: 7,
-        imageUrl: Assets.images.workout.workout2.path,
-        name: "Full Body Stretching ",
-        desc:
-        "6 min | intermediate"),
-    WorkoutData(
-        id: 8,
-        imageUrl: Assets.images.workout.workout3.path,
-        name: "Yoga woman Exercise",
-        desc:
-        "8 min | intermediate"),
-    WorkoutData(
-        id: 9,
-        imageUrl: Assets.images.workout.workout4.path,
-        name: "Yoga Movement Exercise",
-        desc:
-        "10 min | intermediate "),
-    WorkoutData(
-        id: 10,
-        imageUrl: Assets.images.workout.workout5.path,
-        name: "Abdominal Exercise",
-        desc:"15 min | intermediate")
+            " 2-3 times/week"),
   ];
   return workoutList;
 });
 
-class WorkoutPage extends StatelessWidget {
+final AutoDisposeFutureProvider<List<WorkoutData>?>
+getAllWorkoutFutureProviderForDiabetesTwo =
+FutureProvider.autoDispose<List<WorkoutData>?>(
+        (AutoDisposeFutureProviderRef<List<WorkoutData>?> ref) {
+      List<WorkoutData> workoutList = <WorkoutData>[
+        WorkoutData(
+            id: 1,
+            imageUrl: Assets.images.workout.workout1.path,
+            name: "Maintain healthy life style",
+            desc:
+            "30 min / day"),
+        WorkoutData(
+            id: 2,
+            imageUrl: Assets.images.workout.workout2.path,
+            name: "Loose weight ",
+            desc:
+            "45-60 min / day"),
+        WorkoutData(
+            id: 3,
+            imageUrl: Assets.images.workout.workout3.path,
+            name: "Gain muscle",
+            desc:
+            "Strength training 4-5 times a week, focusing on compound exercises such as squats, deadlifts, bench presses, and rows. Aim for 45-60 minutes per session."),
+      ];
+      return workoutList;
+    });
+class WorkoutPage extends ConsumerStatefulWidget {
   const WorkoutPage({super.key});
 
   @override
+  ConsumerState<WorkoutPage> createState() => _WorkoutPageState();
+}
+
+class _WorkoutPageState extends ConsumerState<WorkoutPage> {
+  @override
   Widget build(BuildContext context) {
-    return  Consumer(
+    var patientData = ref.watch(patientLocalProvider)?.diabetesType;
+    return  patientData == "1" ?
+    Consumer(
             builder:
                 (BuildContext context, WidgetRef ref, Widget? child) {
               return
-                ref.watch(getAllWorkoutFutureProvider).when(data: (List<WorkoutData>? workoutList) {
+                ref.watch(getAllWorkoutFutureProviderForDiabetesOne).when(data: (List<WorkoutData>? workoutList) {
                   return ListView.separated(
                       separatorBuilder: (_, __) => context.vSpaceBox16,
                       itemCount: workoutList?.length ?? 0,
@@ -110,11 +103,43 @@ class WorkoutPage extends StatelessWidget {
                   return NoData(
                     title: "We couldn't load FAQ List",
                     onTap: () {
-                      ref.invalidate(getAllWorkoutFutureProvider);
+                      ref.invalidate(getAllWorkoutFutureProviderForDiabetesOne);
                     },
                   );
                 },
                     loading: () => const AppLoading());
-            });
+            }) :
+    Consumer(
+        builder:
+            (BuildContext context, WidgetRef ref, Widget? child) {
+          return
+            ref.watch(getAllWorkoutFutureProviderForDiabetesOne).when(data: (List<WorkoutData>? workoutList) {
+              return ListView.separated(
+                  separatorBuilder: (_, __) => context.vSpaceBox16,
+                  itemCount: workoutList?.length ?? 0,
+                  itemBuilder: (BuildContext context, int index) {
+                    WorkoutData? workoutData = workoutList?[index];
+                    return Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 30.0.w),
+                      child:  WorkoutListTileCard(
+                          onTap: (){
+                            context.navigator.push(MaterialPageRoute(builder: (context) => const WorkoutDetailsPage()));
+                          },
+                          imageURL: workoutData?.imageUrl,
+                          name: workoutData?.name,
+                          desc:workoutData?.desc
+                      ),
+                    );
+                  });
+            }, error: (Object error, StackTrace stackTrace) {
+              return NoData(
+                title: "We couldn't load FAQ List",
+                onTap: () {
+                  ref.invalidate(getAllWorkoutFutureProviderForDiabetesOne);
+                },
+              );
+            },
+                loading: () => const AppLoading());
+        });
   }
 }

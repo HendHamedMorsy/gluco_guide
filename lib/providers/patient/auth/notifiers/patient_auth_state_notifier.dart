@@ -77,7 +77,7 @@ int? getDoctorId(){
     }
   }
 
-  Future<void> loginPatient(
+  Future<bool?> loginPatient(
       {required String? identifier, required String? password}) async {
     state = state.copyWithIsLoading(true);
 
@@ -89,11 +89,13 @@ int? getDoctorId(){
     HiveManager.instance().createOrUpdatePatientBoxValue(response.patientData?.patient);
     HiveManager.instance().createOrUpdatePatientTokenBoxValue(response.patientData?.patientToken);
       state = state.copyWithIsLoading(false);
+      return true;
     } on DioException catch (e) {
       final DioExceptions exception = DioExceptions.fromDioError(e);
       state = PatientBaseStateError(exception.message);
       LogManager.logToConsole(e.message);
       state = state.copyWithIsLoading(false);
+      return false;
     } finally {
       state = state.copyWithIsLoading(false);
     }

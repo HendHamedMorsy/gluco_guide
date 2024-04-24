@@ -145,32 +145,15 @@ class Patient with _$Patient{
 @freezed
 class ResultsWorkout with _$ResultsWorkout{
 
-
   const factory ResultsWorkout({
     int? id,
     @JsonKey(name: "diabetes_type")
     String? diabetesType,
-    WorkoutWorkout? workout,
+    // WorkoutWorkout? workout,
   }) = _ResultsWorkout;
 
   factory ResultsWorkout.fromJson(Map<String, Object?> json) =>
       _$ResultsWorkoutFromJson(json);
-
-}
-
-@freezed
-class WorkoutWorkout with _$WorkoutWorkout{
-
-  const factory WorkoutWorkout({
-    @JsonKey(name: "Maintain healthy life style")
-    String? maintainHealthyLifeStyle,
-    @JsonKey(name: "Loose weight")
-    String? looseWeight,
-    @JsonKey(name: "Gain muscle")
-    String? gainMuscle,
-  }) = _WorkoutWorkout;
-  factory WorkoutWorkout.fromJson(Map<String, Object?> json) =>
-      _$WorkoutWorkoutFromJson(json);
 
 }
 
@@ -197,6 +180,7 @@ class Illness with _$Illness{
 
  const factory Illness({
     int? id,
+
    @JsonKey(name: "name_ar")
     String? nameAr,
    @JsonKey(name: "name_en")
@@ -222,5 +206,19 @@ class PatientPivot with _$PatientPivot{
 
   factory PatientPivot.fromJson(Map<String, Object?> json) =>
       _$PatientPivotFromJson(json);
+
+}
+
+
+@freezed
+class Workout with _$Workout{
+
+  const factory Workout({
+    String? key,
+    String? value,
+  }) = _Workout;
+
+  factory Workout.fromJson(Map<String, Object?> json) =>
+      _$WorkoutFromJson(json);
 
 }

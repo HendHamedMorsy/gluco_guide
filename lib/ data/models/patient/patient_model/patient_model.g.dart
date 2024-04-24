@@ -334,9 +334,6 @@ _$ResultsWorkoutImpl _$$ResultsWorkoutImplFromJson(Map<String, dynamic> json) =>
     _$ResultsWorkoutImpl(
       id: json['id'] as int?,
       diabetesType: json['diabetes_type'] as String?,
-      workout: json['workout'] == null
-          ? null
-          : WorkoutWorkout.fromJson(json['workout'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$ResultsWorkoutImplToJson(
@@ -344,22 +341,6 @@ Map<String, dynamic> _$$ResultsWorkoutImplToJson(
     <String, dynamic>{
       'id': instance.id,
       'diabetes_type': instance.diabetesType,
-      'workout': instance.workout,
-    };
-
-_$WorkoutWorkoutImpl _$$WorkoutWorkoutImplFromJson(Map<String, dynamic> json) =>
-    _$WorkoutWorkoutImpl(
-      maintainHealthyLifeStyle: json['Maintain healthy life style'] as String?,
-      looseWeight: json['Loose weight'] as String?,
-      gainMuscle: json['Gain muscle'] as String?,
-    );
-
-Map<String, dynamic> _$$WorkoutWorkoutImplToJson(
-        _$WorkoutWorkoutImpl instance) =>
-    <String, dynamic>{
-      'Maintain healthy life style': instance.maintainHealthyLifeStyle,
-      'Loose weight': instance.looseWeight,
-      'Gain muscle': instance.gainMuscle,
     };
 
 _$DietImpl _$$DietImplFromJson(Map<String, dynamic> json) => _$DietImpl(
@@ -413,4 +394,16 @@ Map<String, dynamic> _$$PatientPivotImplToJson(_$PatientPivotImpl instance) =>
     <String, dynamic>{
       'user_id': instance.userId,
       'illness_id': instance.illnessId,
+    };
+
+_$WorkoutImpl _$$WorkoutImplFromJson(Map<String, dynamic> json) =>
+    _$WorkoutImpl(
+      key: json['key'] as String?,
+      value: json['value'] as String?,
+    );
+
+Map<String, dynamic> _$$WorkoutImplToJson(_$WorkoutImpl instance) =>
+    <String, dynamic>{
+      'key': instance.key,
+      'value': instance.value,
     };
