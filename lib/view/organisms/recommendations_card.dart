@@ -4,7 +4,11 @@ import 'package:gluco_guide/core/services/extensions.dart';
 import '../molcules/user_info_card.dart';
 
 class RecommendationsCard extends StatelessWidget {
-  const RecommendationsCard({super.key});
+  const RecommendationsCard({super.key, this.calories, this.proteins, this.carbs, this.fats});
+  final String? calories;
+  final String? proteins;
+  final String? carbs ;
+  final String? fats;
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +28,13 @@ class RecommendationsCard extends StatelessWidget {
             UserInfoCard(
               title: "Calories",
               width: 150,
-              value: "98.0",
+              value: calories,
               height: 100,
             ),
             UserInfoCard(
               title: "Proteins",
               width: 150,
-              value: "98.0",
+              value:proteins,
               height: 100,
             )
           ],
@@ -42,13 +46,13 @@ class RecommendationsCard extends StatelessWidget {
             UserInfoCard(
               title: "Carbs",
               width: 150,
-              value: "333.29",
+              value:carbs,
               height: 100,
             ),
             UserInfoCard(
               title: "Fats",
               width: 150,
-              value: "49.00",
+              value:fats,
               height: 100,
             )
           ],

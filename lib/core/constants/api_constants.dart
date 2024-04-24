@@ -19,13 +19,13 @@ abstract class ApiConstants {
   static const String deleteDoctorAccount = "doctor/delete";
   static const String getPatients = "doctor/users";
   ///Patient
-   static const String patientRegister = "doctor/register";
-     static const String patientLogin = "doctor/login";
-    static const String patientProfile = "doctor/profile";
-     static const String patientLogout = "doctor/logout";
-     static const String patientUpdateProfile = "doctor/updateProfile";
-    static const String deletePatientAccount = "doctor/delete";
-  static const String patientResetPassword = "doctor/resetPassword";
+   static const String patientRegister = "user/register";
+     static const String patientLogin = "user/login";
+    static const String patientProfile = "user/profile";
+     static const String patientLogout = "user/logout";
+     static const String patientUpdateProfile = "user/updateProfile";
+    static const String deletePatientAccount = "user/delete";
+  static const String patientResetPassword = "user/resetPassword";
   static const String getDoctors = "doctors";
   static const String getIllnesses = "illnesses";
 

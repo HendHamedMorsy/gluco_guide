@@ -23,7 +23,7 @@ class DoctorHomePage extends StatelessWidget {
         appBar: AppBar(
           toolbarHeight: 100,
           centerTitle: true,
-          title: Text("Your Patient", style: context.textTheme.titleLarge),
+          title: Text("Your Patients", style: context.textTheme.titleLarge),
           actions: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -38,65 +38,50 @@ class DoctorHomePage extends StatelessWidget {
             )
           ],
         ),
-        body:ListView.builder(
-          itemBuilder: (context, index) =>  DoctorUserListTile(
-            name: "Hend Hamed",
-            weight: "75.10",
-            age: "26",
-            onTap: (){
-              context.navigator.push(MaterialPageRoute(builder: (context) => PatientDetailsPage(),));
-            },
-          ),
-          itemCount: 10,
+        body:
+        Padding(
+          padding: AppConstants.shared.defaultScaffoldPadding,
+          child: Consumer(
+              builder: (BuildContext context, WidgetRef ref, Widget? child) {
+                return ref.watch(allPatientsFutureProvider).when(
+                    skipLoadingOnRefresh: false,
+                    skipLoadingOnReload: false,
+                    data: (List<Patient?>? patientsList) {
+                      return patientsList?.isEmpty == true
+                          ? NoData(
+                        title: LocaleKeys.emptyWithInput
+                            .tr(args: <String>["Patients"]),
+                      )
+                          : ListView.separated(
+                          separatorBuilder: (_, __) => context.vSpaceBox16,
+                          itemCount: patientsList?.length ?? 0,
+                          itemBuilder: (BuildContext context, int index) {
+                            Patient? patientData =
+                            patientsList?[index];
+                            return Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 20.0.w),
+                              child:  DoctorUserListTile(
+                                name: patientData?.name,
+                                weight: patientData?.weight,
+                                age:patientData?.age.toString(),
+                                onTap: (){
+                                  context.navigator.push(MaterialPageRoute(builder: (context) =>  PatientDetailsPage(patientData: patientData ,),));
+                                },
+                              )
+                            );
+                          });
+                    },
+                    error: (Object error, StackTrace stackTrace) {
+                      LogManager.logToConsole(error, "error");
+                      return const Center(
+                        child: Text(
+                          "We couldn't load Patients",
+                        ),
+                      );
+                    },
+                    loading: () => const AppLoading());
+              }),
         )
-
-
-
-
-
-        // Padding(
-        //   padding: AppConstants.shared.defaultScaffoldPadding,
-        //   child: Consumer(
-        //       builder: (BuildContext context, WidgetRef ref, Widget? child) {
-        //         return ref.watch(allPatientsFutureProvider).when(
-        //             skipLoadingOnRefresh: false,
-        //             skipLoadingOnReload: false,
-        //             data: (List<Patient?>? patientsList) {
-        //               return patientsList?.isEmpty == true
-        //                   ? NoData(
-        //                 title: LocaleKeys.emptyWithInput
-        //                     .tr(args: <String>["Patients"]),
-        //               )
-        //                   : ListView.separated(
-        //                   separatorBuilder: (_, __) => context.vSpaceBox16,
-        //                   itemCount: patientsList?.length ?? 0,
-        //                   itemBuilder: (BuildContext context, int index) {
-        //                     Patient? patientData =
-        //                     patientsList?[index];
-        //                     return Padding(
-        //                       padding: EdgeInsets.symmetric(horizontal: 20.0.w),
-        //                       child:  DoctorUserListTile(
-        //                         name: patientData?.name,
-        //                         weight: patientData?.weight,
-        //                         age:patientData?.age.toString(),
-        //                         onTap: (){
-        //                           context.navigator.push(MaterialPageRoute(builder: (context) => const PatientDetailsPage(),));
-        //                         },
-        //                       )
-        //                     );
-        //                   });
-        //             },
-        //             error: (Object error, StackTrace stackTrace) {
-        //               LogManager.logToConsole(error, "error");
-        //               return const Center(
-        //                 child: Text(
-        //                   "We couldn't load Patients",
-        //                 ),
-        //               );
-        //             },
-        //             loading: () => const AppLoading());
-        //       }),
-        // )
 
     );
   }

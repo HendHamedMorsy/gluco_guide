@@ -2,16 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
 
 class IllnessesCard extends StatelessWidget {
-  const IllnessesCard({super.key, this.weight, this.height, this.bgl, this.waistCircumference, this.neckCircumference, this.hipCircumference, this.lifeStyleType, this.diabetesType, });
-  final String? weight;
-  final String? height;
-  final String? bgl;
-  final String? waistCircumference ;
-  final String? neckCircumference;
-  final String? hipCircumference;
-  final String? lifeStyleType;
-  final String? diabetesType;
-
+  const IllnessesCard({super.key , this.illnessTitle});
+  final String? illnessTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +20,11 @@ class IllnessesCard extends StatelessWidget {
             SizedBox(
               height: 100,
               child: ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount:3,itemBuilder: (context, index) => SizedBox(
                 height: 30,
                 child: ListTile(
-                  title: Text("Hypertension",style: context.textTheme.labelSmall,),
+                  title: Text(illnessTitle ?? "",style: context.textTheme.labelSmall,),
                 ),
               ),),
             )

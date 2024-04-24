@@ -51,6 +51,15 @@ class PatientAuthStateNotifier extends StateNotifier<PatientBaseState> {
 int? getDoctorId(){
     return _doctorID;
 }
+  String? _gender;
+  void setGenderId(String? gender){
+    _gender= gender;
+  }
+  String? getGenderId(){
+    return _gender;
+  }
+
+
   Future<void> logOutPatient() async {
     state = state.copyWithIsLoading(true);
     try {
@@ -99,7 +108,7 @@ int? getDoctorId(){
     required String? weight,
     required String? height,
     required String? age,
-    required String? gender,
+    required int? gender,
     required String? bgl,
     required String? waistCircumference,
     required String? neckCircumference,

@@ -66,7 +66,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                 ),
                 context.vSpaceBox10,
                 TextFormFieldWithTitle(
-                  controller: patientAuthStateNotifier.emailCont,
+                  controller: patientAuthStateNotifier.mobileCont,
                   action: TextInputAction.next,
                   keyboardType: TextInputType.phone,
                   floatingTitle: LocaleKeys.phoneNumber.tr(),

@@ -13,6 +13,7 @@ class DoctorUserListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      contentPadding: EdgeInsets.zero,
       onTap: onTap,
       leading: Container(
         padding: EdgeInsets.all(10.r),

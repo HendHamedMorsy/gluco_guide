@@ -590,9 +590,13 @@ mixin _$PatientResults {
   int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: "user_id")
   int? get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: "BMR")
   String? get bmr => throw _privateConstructorUsedError;
+  @JsonKey(name: "BMI")
   String? get bmi => throw _privateConstructorUsedError;
+  @JsonKey(name: "BFP")
   String? get bfp => throw _privateConstructorUsedError;
+  @JsonKey(name: "TDEE")
   String? get tdee => throw _privateConstructorUsedError;
   String? get goal => throw _privateConstructorUsedError;
   String? get proteins => throw _privateConstructorUsedError;
@@ -623,10 +627,10 @@ abstract class $PatientResultsCopyWith<$Res> {
   $Res call(
       {int? id,
       @JsonKey(name: "user_id") int? userId,
-      String? bmr,
-      String? bmi,
-      String? bfp,
-      String? tdee,
+      @JsonKey(name: "BMR") String? bmr,
+      @JsonKey(name: "BMI") String? bmi,
+      @JsonKey(name: "BFP") String? bfp,
+      @JsonKey(name: "TDEE") String? tdee,
       String? goal,
       String? proteins,
       String? fats,
@@ -770,10 +774,10 @@ abstract class _$$PatientResultsImplCopyWith<$Res>
   $Res call(
       {int? id,
       @JsonKey(name: "user_id") int? userId,
-      String? bmr,
-      String? bmi,
-      String? bfp,
-      String? tdee,
+      @JsonKey(name: "BMR") String? bmr,
+      @JsonKey(name: "BMI") String? bmi,
+      @JsonKey(name: "BFP") String? bfp,
+      @JsonKey(name: "TDEE") String? tdee,
       String? goal,
       String? proteins,
       String? fats,
@@ -888,10 +892,10 @@ class _$PatientResultsImpl implements _PatientResults {
   const _$PatientResultsImpl(
       {this.id,
       @JsonKey(name: "user_id") this.userId,
-      this.bmr,
-      this.bmi,
-      this.bfp,
-      this.tdee,
+      @JsonKey(name: "BMR") this.bmr,
+      @JsonKey(name: "BMI") this.bmi,
+      @JsonKey(name: "BFP") this.bfp,
+      @JsonKey(name: "TDEE") this.tdee,
       this.goal,
       this.proteins,
       this.fats,
@@ -911,12 +915,16 @@ class _$PatientResultsImpl implements _PatientResults {
   @JsonKey(name: "user_id")
   final int? userId;
   @override
+  @JsonKey(name: "BMR")
   final String? bmr;
   @override
+  @JsonKey(name: "BMI")
   final String? bmi;
   @override
+  @JsonKey(name: "BFP")
   final String? bfp;
   @override
+  @JsonKey(name: "TDEE")
   final String? tdee;
   @override
   final String? goal;
@@ -1011,10 +1019,10 @@ abstract class _PatientResults implements PatientResults {
   const factory _PatientResults(
       {final int? id,
       @JsonKey(name: "user_id") final int? userId,
-      final String? bmr,
-      final String? bmi,
-      final String? bfp,
-      final String? tdee,
+      @JsonKey(name: "BMR") final String? bmr,
+      @JsonKey(name: "BMI") final String? bmi,
+      @JsonKey(name: "BFP") final String? bfp,
+      @JsonKey(name: "TDEE") final String? tdee,
       final String? goal,
       final String? proteins,
       final String? fats,
@@ -1034,12 +1042,16 @@ abstract class _PatientResults implements PatientResults {
   @JsonKey(name: "user_id")
   int? get userId;
   @override
+  @JsonKey(name: "BMR")
   String? get bmr;
   @override
+  @JsonKey(name: "BMI")
   String? get bmi;
   @override
+  @JsonKey(name: "BFP")
   String? get bfp;
   @override
+  @JsonKey(name: "TDEE")
   String? get tdee;
   @override
   String? get goal;

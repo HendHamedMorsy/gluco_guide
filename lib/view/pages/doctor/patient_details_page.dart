@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
 import 'package:gluco_guide/providers/local/doctor_local_provider.dart';
-
+import '../../../ data/models/patient/patient_model/patient_model.dart';
 import '../../../core/services/util.dart';
 import '../../../gen/assets.gen.dart';
 import '../../organisms/illnesses_card.dart';
@@ -12,7 +12,8 @@ import '../../organisms/recommendations_card.dart';
 import '../../organisms/results_card.dart';
 
 class PatientDetailsPage extends StatelessWidget {
-  const PatientDetailsPage({super.key});
+  const PatientDetailsPage({super.key, required this.patientData});
+  final Patient? patientData;
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +23,7 @@ class PatientDetailsPage extends StatelessWidget {
         title: const Text("Patient Details"),
         actions: [
           Consumer(
-            builder: (context, ref, child) =>
-            IconButton(
+            builder: (context, ref, child) => IconButton(
               onPressed: () {
                 String? doctorMobile = ref.read(doctorLocalProvider)?.mobile;
                 Utils.instance().launchWhatsappBrowser("+2$doctorMobile");
@@ -39,39 +39,54 @@ class PatientDetailsPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
               PatientPersonalCard(
-                name: "Hend Hamed",
-                email: "hendhamedmorsy@gmail.com",
-                phone: "01093279897",
-                age: "26",
-                gender: "Female",
+                name: patientData?.name,
+                email: patientData?.email,
+                phone: patientData?.mobile,
+                age: patientData?.age.toString(),
+                gender: patientData?.gender,
               ),
               context.vSpaceBox8,
               PatientHealthCard(
-                weight: "75.8",
-                height: "162",
-                bgl: "150.00",
-                waistCircumference: "100.00",
-                neckCircumference: "100.00",
-                hipCircumference: "100.00",
-                lifeStyleType: "moderate activity",
-                diabetesType: "2",
-                goal: "Loose weight",
+                weight: patientData?.weight,
+                height: patientData?.height,
+                bgl: patientData?.bgl,
+                waistCircumference: patientData?.waistCircumference,
+                neckCircumference: patientData?.neckCircumference,
+                hipCircumference: patientData?.hipCircumference,
+                lifeStyleType: patientData?.lifestyleType,
+                diabetesType: patientData?.diabetesType,
+                goal: patientData?.results?.goal,
               ),
               context.vSpaceBox8,
-              IllnessesCard(),
+              SizedBox(
+                  height: 200,
+                  child: ListView.builder(
+                    itemBuilder: (context, index) {
+                      var illnessData = patientData?.illnesses?[index];
+                      return
+                        IllnessesCard(
+                      illnessTitle: illnessData?.nameEn,
+                    );},
+                    itemCount: patientData?.illnesses?.length,
+                  )),
               context.vSpaceBox8,
               PatientResultsCard(
-                bmr: "1484.18",
-                bmi: "26.67",
-                bfp: "6.64",
-                tdee: "1284.18",
+                bmr: patientData?.results?.bmr,
+                bmi: patientData?.results?.bmi,
+                bfp: patientData?.results?.bfp,
+                tdee: patientData?.results?.tdee,
               ),
               context.vSpaceBox16,
-              RecommendationsCard()
+              RecommendationsCard(
+                calories: patientData?.results?.tdee,
+                proteins: patientData?.results?.proteins,
+                carbs: patientData?.results?.carbs,
+                fats: patientData?.results?.fats,
+              )
             ],
           ),
         ),

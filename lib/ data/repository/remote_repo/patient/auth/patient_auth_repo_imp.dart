@@ -21,7 +21,7 @@ class PatientAuthRepoImp implements PatientAuthRepo {
       required String? weight,
       required String? height,
       required String? age,
-      required String? gender,
+      required int? gender,
       required String? bgl,
       required String? waistCircumference,
       required String? neckCircumference,

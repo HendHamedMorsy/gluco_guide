@@ -59,9 +59,13 @@ class PatientResults with _$PatientResults{
     int? id,
     @JsonKey(name: "user_id")
     int? userId,
+    @JsonKey(name: "BMR")
     String? bmr,
+    @JsonKey(name: "BMI")
     String? bmi,
+    @JsonKey(name: "BFP")
     String? bfp,
+    @JsonKey(name: "TDEE")
     String? tdee,
     String? goal,
     String? proteins,

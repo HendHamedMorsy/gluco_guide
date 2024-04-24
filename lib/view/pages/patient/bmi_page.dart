@@ -51,7 +51,6 @@ class BMIPage extends ConsumerWidget {
                         floatingTitle: LocaleKeys.height.tr(),
                         hint:"0.0",
                         action: TextInputAction.next,
-                        validator: Validator.validateText,
                       ),
                     ),
                     context.hSpaceBox16,
@@ -63,7 +62,7 @@ class BMIPage extends ConsumerWidget {
                         floatingTitle: LocaleKeys.weight.tr(),
                         hint: "0.0",
                         action: TextInputAction.next,
-                        validator: Validator.validateText,
+
                       ),
                     ),
                   ],
@@ -75,7 +74,6 @@ class BMIPage extends ConsumerWidget {
                   keyboardType: TextInputType.number,
                   floatingTitle: LocaleKeys.age.tr(),
                   hint: LocaleKeys.ageHint.tr(),
-                  validator: Validator.validateEmail,
                 ),
                 context.vSpaceBox16,
 
@@ -126,6 +124,12 @@ class BMIPage extends ConsumerWidget {
                   .toList(),
               onChanged: ( UserGender? value) async {
                 ref.read(userGenderProvider.notifier).update((state) => value ?? UserGender.male);
+                if(value == UserGender.female){
+                  ref.read(patientAuthStateNotifierProvider.notifier).setGenderId("f");
+                }
+                else{
+                  ref.read(patientAuthStateNotifierProvider.notifier).setGenderId("m");
+                }
               }),
                 context.vSpaceBox16,
                 Row(
@@ -139,7 +143,6 @@ class BMIPage extends ConsumerWidget {
                         floatingTitle: LocaleKeys.waistCircumference.tr(),
                         hint:"e.g. 80 cm",
                         action: TextInputAction.next,
-                        validator: Validator.validateText,
                       ),
                     ),
                     context.hSpaceBox16,
@@ -151,7 +154,6 @@ class BMIPage extends ConsumerWidget {
                         floatingTitle: LocaleKeys.neckCircumference.tr(),
                         hint: "e.g. 10 cm",
                         action: TextInputAction.next,
-                        validator: Validator.validateText,
                       ),
                     ),
                   ],
@@ -163,7 +165,6 @@ class BMIPage extends ConsumerWidget {
                   keyboardType: TextInputType.number,
                   floatingTitle: "Hip Circumference",
                   hint: "Enter your hip circumference (e.g. 90)",
-                  validator: Validator.validateEmail,
                 ),
                 context.vSpaceBox16,
                 TextFormFieldWithTitle(
@@ -172,7 +173,6 @@ class BMIPage extends ConsumerWidget {
                   keyboardType: TextInputType.number,
                   floatingTitle: "Blod Glucose Level Random (BGL)",
                   hint: "Enter your BGL (e.g. 150)",
-                  validator: Validator.validateEmail,
                 ),
 
                 context.vSpaceBox16,

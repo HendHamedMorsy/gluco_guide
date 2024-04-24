@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
+import 'package:gluco_guide/providers/patient/auth/providers/patient_auth_state_notifier_provider.dart';
 import 'package:gluco_guide/view/pages/patient/main_page.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../gen/colors.gen.dart';
@@ -71,10 +73,36 @@ class WorkoutDaysPage extends StatelessWidget {
           ),
 
           const Spacer(flex: 8,),
-          FilledButton(onPressed: (){
-            context.navigator.pushReplacement(MaterialPageRoute(builder: (context) =>   MainScreen(title: "",) ,));
-
-          }, child: const Text("Continue")),
+          Consumer(
+            builder:(context, ref, child) {
+              return
+                FilledButton(onPressed: () {
+                  var patientAuthProvider =    ref.read(patientAuthStateNotifierProvider.notifier);
+                  patientAuthProvider
+                      .registerPatient(
+                      name: patientAuthProvider.nameCont.text,
+                      email: patientAuthProvider.emailCont.text,
+                      password: patientAuthProvider.passwordCont.text,
+                      mobile: patientAuthProvider.mobileCont.text,
+                      doctorId: patientAuthProvider.getDoctorId(),
+                      weight: patientAuthProvider.weightCont.text,
+                      height: patientAuthProvider.heightCont.text,
+                      age: patientAuthProvider.ageCont.text,
+                      gender: 2,
+                      bgl: patientAuthProvider.bglCont.text,
+                      waistCircumference: patientAuthProvider.waistCont.text,
+                      neckCircumference: patientAuthProvider.neckCont.text,
+                      hipCircumference: patientAuthProvider.hipCont.text,
+                      lifestyleType: "moderate activity",
+                      diabetesType: "2",
+                      workDays: patientAuthProvider.getGenderId(),
+                      illnesses:{1, 2, 3, 4, 5});
+                  context.navigator.pushReplacement(
+                      MaterialPageRoute(builder: (context) => MainScreen(
+                        title: "",),));
+                }, child: const Text("Continue"));
+            }
+          ),
           const Spacer(flex: 1,),
         ],),
       ),
