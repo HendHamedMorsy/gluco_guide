@@ -4,18 +4,46 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
 import 'package:gluco_guide/view/pages/patient/auth/forgot_password_page.dart';
 import 'package:gluco_guide/view/pages/patient/auth/register_page.dart';
+import 'package:gluco_guide/view/pages/patient/main_page.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/services/validator.dart';
 import '../../../../gen/colors.gen.dart';
+import '../../../../providers/patient/auth/notifiers/patient_auth_state_notifier.dart';
+import '../../../../providers/patient/auth/providers/patient_auth_state_notifier_provider.dart';
 import '../../../../translations/locale_keys.g.dart';
 import '../../../atoms/app_logo.dart';
 import '../../../molcules/title_with_subtitle.dart';
 import '../../../molcules/text_form_field_with_title.dart';
 import '../bmi_page.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
+  @override
+  ConsumerState<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends ConsumerState<LoginPage> {
+  late TextEditingController _identifierCont;
+  late TextEditingController _passwordCont;
+  late GlobalKey<FormState> _patientLoginFormKey;
+
+  @override
+  void initState() {
+    _identifierCont = TextEditingController();
+    _passwordCont = TextEditingController();
+    _patientLoginFormKey =
+        GlobalKey<FormState>(debugLabel: "patient_login_Form_Key");
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _identifierCont.dispose();
+    _passwordCont.dispose();
+    super.dispose();
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +52,7 @@ class LoginPage extends StatelessWidget {
         child: Padding(
           padding: AppConstants.shared.defaultScaffoldPadding,
           child: Form(
-            // key: _loginFormKey,
+            key: _patientLoginFormKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -36,52 +64,32 @@ class LoginPage extends StatelessWidget {
                     subtitle: LocaleKeys.enterYourAccount.tr()),
                 context.vSpaceBox30,
                 TextFormFieldWithTitle(
-                  // controller: _passwordCont,
+                  controller: _identifierCont,
                   floatingTitle: LocaleKeys.email.tr(),
                   hint: LocaleKeys.emailHint.tr(),
                   validator: Validator.validateEmail,
-                  action: TextInputAction.done,
-                  suffixIcon: IconButton(
-                    icon:
-                    // ref.watch(isPasswordHiddenProvider)
-                    //     ? const Icon(Icons.visibility_off)
-                    //     :
-                    const Icon(Icons.remove_red_eye),
-                    onPressed: () async {
-                      // ref
-                      //     .read(isPasswordHiddenProvider.notifier)
-                      //     .update((bool state) => !state);
-                    },
-                  ),
+                  action: TextInputAction.next,
                 ),
                 context.vSpaceBox30,
-
                 TextFormFieldWithTitle(
-                  // secure: ref.watch(isPasswordHiddenProvider),
+                  secure: ref.watch(isPatientPasswordHiddenProvider),
                   maxLines: 1,
-                  // controller: _passwordCont,
+                  controller: _passwordCont,
                   floatingTitle: LocaleKeys.password.tr(),
                   hint: LocaleKeys.passwordHint.tr(),
-                  endWidget: TextButton(
-                      onPressed: () async {
-                        context.navigator.push(MaterialPageRoute(builder: (context) => const ForgotPasswordPage()));
-                        // context.push(RouteNames.forgotPasswordPageRoute);
-                        // context.go(
-                        //     "${RouteNames.loginAccountPageRoute}/${RouteNames.forgotPasswordPageSubRoute}");
-                      },
-                      child: Text(LocaleKeys.forgotPassword.tr())),
+
                   validator: Validator.isShortPassword,
                   action: TextInputAction.done,
                   suffixIcon: IconButton(
                     icon:
-                    // ref.watch(isPasswordHiddenProvider)
-                    //     ? const Icon(Icons.visibility_off)
-                    //     :
+                    ref.watch(isPatientPasswordHiddenProvider)
+                        ? const Icon(Icons.visibility_off)
+                        :
                     const Icon(Icons.remove_red_eye),
                     onPressed: () async {
-                      // ref
-                      //     .read(isPasswordHiddenProvider.notifier)
-                      //     .update((bool state) => !state);
+                      ref
+                          .read(isPatientPasswordHiddenProvider.notifier)
+                          .update((bool state) => !state);
                     },
                   ),
                 ),
@@ -103,11 +111,8 @@ class LoginPage extends StatelessWidget {
                   //     });
                   return FilledButton(
                       onPressed: () async {
-                        context.navigator.pushReplacement(MaterialPageRoute(builder: (context) => const BMIPage(),));
-                        // authProvider.login(
-                        //     mobile: completePhoneNumber,
-                        //     password: _passwordCont.text);
-                        // ref.invalidate(userLocalProvider);
+                        ref.read(patientAuthStateNotifierProvider.notifier).loginPatient(identifier: _identifierCont.text, password: _passwordCont.text);
+                        context.navigator.pushReplacement(MaterialPageRoute(builder: (context) => MainScreen(title: "Gluco Guide App"),));
                       },
                       child: Text(LocaleKeys.login.tr()));
                 }),

@@ -66,6 +66,13 @@ class DoctorDioClient {
       final Response<dynamic> response = await _dio.post(
         "/$path",
         data: data,
+        options: Options(headers: <String, String?>{
+          "Accept": "application/json",
+          "Authorization": (await HiveManager.instance()
+              .getLocalUnSecuredDoctorTokenFromStorage() ??
+              "")
+              .toBearerToken()
+        }),
         queryParameters: queryParameters,
         cancelToken: cancelToken,
         onSendProgress: onSendProgress,

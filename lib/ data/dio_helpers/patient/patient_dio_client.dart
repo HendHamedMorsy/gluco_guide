@@ -66,7 +66,13 @@ class PatientDioClient {
         "/$path",
         data: data,
         queryParameters: queryParameters,
-        options: options,
+        options: Options(headers: <String, String?>{
+          "Accept": "application/json",
+          "Authorization": (await HiveManager.instance()
+              .getLocalUnSecuredPatientTokenFromStorage() ??
+              "")
+              .toBearerToken()
+        }),
         cancelToken: cancelToken,
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,

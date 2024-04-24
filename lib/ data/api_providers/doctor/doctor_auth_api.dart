@@ -48,7 +48,7 @@ final class DoctorAuthApi extends DoctorBaseApi {
   Future<Response<dynamic>> logoutDoctorApiRequest() async {
     try {
       final Response<dynamic> response =
-      await doctorDioClient.get(ApiConstants.doctorLogout);
+      await doctorDioClient.post(ApiConstants.doctorLogout);
       return response;
     } on DioException {
       rethrow;

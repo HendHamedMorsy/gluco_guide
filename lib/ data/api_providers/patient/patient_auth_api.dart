@@ -16,14 +16,14 @@ final class PatientAuthApi extends PatientBaseApi {
       required String? weight,
       required String? height,
         required String? age,
-        required int? gender,
+        required String? gender,
         required String? bgl,
         required String? waistCircumference,
         required String? neckCircumference,
         required String? hipCircumference,
         required String? lifestyleType,
         required String? diabetesType,
-        required String? workDays,
+        required int? workDays,
         required Set<int>? illnesses,
       }) async {
     try {
@@ -75,7 +75,7 @@ final class PatientAuthApi extends PatientBaseApi {
   Future<Response<dynamic>> logoutPatientApiRequest() async {
     try {
       final Response<dynamic> response =
-      await patientDioClient.get(ApiConstants.patientLogout);
+      await patientDioClient.post(ApiConstants.patientLogout);
       return response;
     } on DioException {
       rethrow;

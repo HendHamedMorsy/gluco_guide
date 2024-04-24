@@ -17,6 +17,7 @@ class WorkoutDaysPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int? _selectedWorkoutDayNum;
     return Scaffold(
       body: Padding(
         padding: AppConstants.shared.defaultScaffoldPadding,
@@ -54,7 +55,7 @@ class WorkoutDaysPage extends StatelessWidget {
                       ),
                       itemExtent: 60,
                       onSelectedItemChanged: (value) {
-
+                        _selectedWorkoutDayNum = value;
                       }, children:  [
                     Text("1", style: context.textTheme.headlineLarge?.copyWith(color: Colors.white), ),
                     Text("2", style: context.textTheme.headlineLarge?.copyWith(color: Colors.white),),
@@ -88,18 +89,18 @@ class WorkoutDaysPage extends StatelessWidget {
                       weight: patientAuthProvider.weightCont.text,
                       height: patientAuthProvider.heightCont.text,
                       age: patientAuthProvider.ageCont.text,
-                      gender: 2,
+                      gender: patientAuthProvider.getGenderId(),
                       bgl: patientAuthProvider.bglCont.text,
                       waistCircumference: patientAuthProvider.waistCont.text,
                       neckCircumference: patientAuthProvider.neckCont.text,
                       hipCircumference: patientAuthProvider.hipCont.text,
-                      lifestyleType: "moderate activity",
+                      lifestyleType:"2",
                       diabetesType: "2",
-                      workDays: patientAuthProvider.getGenderId(),
+                      workDays: _selectedWorkoutDayNum,
                       illnesses:{1, 2, 3, 4, 5});
-                  context.navigator.pushReplacement(
-                      MaterialPageRoute(builder: (context) => MainScreen(
-                        title: "",),));
+                  // context.navigator.pushReplacement(
+                  //     MaterialPageRoute(builder: (context) => MainScreen(
+                  //       title: "",),));
                 }, child: const Text("Continue"));
             }
           ),

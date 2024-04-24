@@ -21,14 +21,14 @@ class PatientAuthRepoImp implements PatientAuthRepo {
       required String? weight,
       required String? height,
       required String? age,
-      required int? gender,
+      required String? gender,
       required String? bgl,
       required String? waistCircumference,
       required String? neckCircumference,
       required String? hipCircumference,
       required String? lifestyleType,
       required String? diabetesType,
-      required String? workDays,
+      required int? workDays,
       required Set<int>? illnesses}) async {
     Response<dynamic>? response;
     try {

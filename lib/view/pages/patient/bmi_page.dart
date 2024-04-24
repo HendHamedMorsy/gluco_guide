@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/services/enums.dart';
-import '../../../core/services/validator.dart';
 import '../../../gen/colors.gen.dart';
 import '../../../providers/patient/auth/notifiers/patient_auth_state_notifier.dart';
 import '../../../providers/patient/auth/providers/patient_auth_state_notifier_provider.dart';
@@ -139,7 +138,7 @@ class BMIPage extends ConsumerWidget {
                       flex: 1,
                       child: TextFormFieldWithTitle(
                         keyboardType: TextInputType.number,
-                        // controller: authProvider.fullNameCont,
+                        controller: patientAuthStateNotifier.waistCont,
                         floatingTitle: LocaleKeys.waistCircumference.tr(),
                         hint:"e.g. 80 cm",
                         action: TextInputAction.next,
@@ -150,7 +149,7 @@ class BMIPage extends ConsumerWidget {
                       flex: 1,
                       child: TextFormFieldWithTitle(
                         keyboardType: TextInputType.number,
-                        // controller: authProvider.fullNameCont,
+                        controller: patientAuthStateNotifier.neckCont,
                         floatingTitle: LocaleKeys.neckCircumference.tr(),
                         hint: "e.g. 10 cm",
                         action: TextInputAction.next,
