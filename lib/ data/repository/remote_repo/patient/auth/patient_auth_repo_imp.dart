@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:gluco_guide/%20data/models/base/base_model.dart';
 import 'package:gluco_guide/%20data/models/patient/patient_model/patient_model.dart';
+import 'package:gluco_guide/%20data/models/patient/sensor_model/sensor_model.dart';
 import '../../../../api_providers/patient/patient_auth_api.dart';
 import '../../../../models/patient/doctor_list_model/doctor_list_model.dart';
 import '../../../../models/patient/illnesses_list_model/illnesses_list_model.dart';
@@ -98,6 +99,17 @@ class PatientAuthRepoImp implements PatientAuthRepo {
     try {
       response = await _patientAuthApi.illnessesListApiRequest();
       return IllnessesListModel.fromJson(response.data as Map<String, dynamic>);
+    } on DioException {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<SensorModel> getSensorsData() async{
+    Response<dynamic>? response;
+    try {
+      response = await _patientAuthApi.getSensorsDataApiRequest();
+      return SensorModel.fromJson(response.data as Map<String, dynamic>);
     } on DioException {
       rethrow;
     }

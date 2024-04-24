@@ -109,4 +109,13 @@ final class PatientAuthApi extends PatientBaseApi {
       rethrow;
     }
   }
+  Future<Response<dynamic>> getSensorsDataApiRequest() async {
+    try {
+      final Response<dynamic> response =
+      await patientDioClient.get(ApiConstants.getSensor);
+      return response;
+    } on DioException {
+      rethrow;
+    }
+  }
 }

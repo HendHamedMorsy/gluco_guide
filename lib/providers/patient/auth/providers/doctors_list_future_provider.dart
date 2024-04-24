@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../ data/models/patient/doctor_list_model/doctor_list_model.dart';
 import '../../../../ data/models/patient/illnesses_list_model/illnesses_list_model.dart';
+import '../../../../ data/models/patient/sensor_model/sensor_model.dart';
 import '../../../../ data/repository/remote_repo/patient/auth/patient_auth_repo_imp.dart';
 import '../../../../injection/service_locator.dart';
 
@@ -17,4 +18,10 @@ FutureProvider.autoDispose<List<IllnessesListData>>(
         (AutoDisposeFutureProviderRef<List<IllnessesListData>> ref) async {
           IllnessesListModel? response = await getIt.get<PatientAuthRepoImp>().getAllIllnesses();
       return response.illnessesList ?? <IllnessesListData>[];
+    });
+final AutoDisposeFutureProvider<SensorModel> getSensorsDataFutureProvider =
+FutureProvider.autoDispose<SensorModel>(
+        (AutoDisposeFutureProviderRef<SensorModel> ref) async {
+          SensorModel? response = await getIt.get<PatientAuthRepoImp>().getSensorsData();
+      return response;
     });

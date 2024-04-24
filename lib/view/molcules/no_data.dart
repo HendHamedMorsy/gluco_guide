@@ -33,7 +33,7 @@ class NoData extends StatelessWidget {
                       boxShadow: <BoxShadow>[
                         BoxShadow(
                             blurRadius: 20,
-                            color: ColorName.primaryColor.withOpacity(0.7))
+                            color: ColorName.primaryColor.withOpacity(0.4))
                       ]),
                   padding: const EdgeInsets.all(20),
                   child: Container(

@@ -28,5 +28,6 @@ abstract class ApiConstants {
   static const String patientResetPassword = "user/resetPassword";
   static const String getDoctors = "doctors";
   static const String getIllnesses = "illnesses";
+  static const String getSensor = "get_fake_sensors_data";
 
 }
