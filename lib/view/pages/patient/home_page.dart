@@ -6,6 +6,8 @@ import 'package:gluco_guide/providers/patient/auth/providers/doctors_list_future
 import 'package:gluco_guide/view/atoms/app_loading.dart';
 import 'package:gluco_guide/view/molcules/no_data.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../../gen/assets.gen.dart';
+import '../../../gen/colors.gen.dart';
 import '../../molcules/sensor_card.dart';
 
 class HomePage extends ConsumerWidget {
@@ -31,13 +33,24 @@ class HomePage extends ConsumerWidget {
               LogManager.logToConsole(data,"sensors");
               return Column(
               children: [
-                SensorCard(sensorValue: data.heartRate,),
+                SensorCard(sensorValue: data.heartRate,internalIcon: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset(Assets.icons.heartRate.path,color: ColorName.primaryColor.withOpacity(0.5),),
+                )),
                 context.vSpaceBox16,
                 SensorCard(
                   sensorValue: data.oxygenSaturation,
+                  internalIcon: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Image.asset(Assets.icons.oxygen.path,color: ColorName.primaryColor.withOpacity(0.5),),
+                  ),
                 ),
                 context.vSpaceBox16,
-                SensorCard(sensorValue: data.temperature,),
+                SensorCard(sensorValue: data.temperature,
+                  internalIcon: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(Assets.icons.temp.path,color: ColorName.primaryColor.withOpacity(0.5),),
+                  ),),
                 context.vSpaceBox25,
                 FilledButton(onPressed: (){
                   ref.invalidate(getSensorsDataFutureProvider);

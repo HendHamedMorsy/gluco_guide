@@ -58,8 +58,18 @@ class $AssetsIconsGen {
   /// File path: assets/icons/doctor.svg
   SvgGenImage get doctor => const SvgGenImage('assets/icons/doctor.svg');
 
+  /// File path: assets/icons/heart-rate.png
+  AssetGenImage get heartRate =>
+      const AssetGenImage('assets/icons/heart-rate.png');
+
   /// File path: assets/icons/height.png
   AssetGenImage get height => const AssetGenImage('assets/icons/height.png');
+
+  /// File path: assets/icons/oxygen.png
+  AssetGenImage get oxygen => const AssetGenImage('assets/icons/oxygen.png');
+
+  /// File path: assets/icons/temp.png
+  AssetGenImage get temp => const AssetGenImage('assets/icons/temp.png');
 
   /// File path: assets/icons/weight.png
   AssetGenImage get weight => const AssetGenImage('assets/icons/weight.png');
@@ -73,8 +83,18 @@ class $AssetsIconsGen {
       const AssetGenImage('assets/icons/whatsapp_light.png');
 
   /// List of all assets
-  List<dynamic> get values =>
-      [group, age, doctor, height, weight, whatsappDark, whatsappLight];
+  List<dynamic> get values => [
+        group,
+        age,
+        doctor,
+        heartRate,
+        height,
+        oxygen,
+        temp,
+        weight,
+        whatsappDark,
+        whatsappLight
+      ];
 }
 
 class $AssetsImagesGen {
