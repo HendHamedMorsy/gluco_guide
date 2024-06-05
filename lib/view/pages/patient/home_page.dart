@@ -1,3 +1,4 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
@@ -13,11 +14,16 @@ import '../../molcules/sensor_card.dart';
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
+
   @override
   Widget build(BuildContext context,ref) {
     Future<void> _refreshData() async {
-      await Future.delayed(const Duration(seconds:10));
-      ref.invalidate(getSensorsDataFutureProvider);
+      await Future.delayed(const Duration(seconds:60));
+     ref.invalidate(getSensorsDataFutureProvider);
+              showOkAlertDialog(
+                  context: context,
+                  title: "Something Went wrong",
+                  message: "Please connect the band to get correct values");
     }
     return Scaffold(
       appBar: AppBar(
@@ -33,34 +39,48 @@ class HomePage extends ConsumerWidget {
               LogManager.logToConsole(data,"sensors");
               return Column(
               children: [
-                SensorCard(sensorValue: data.heartRate,internalIcon: Padding(
+                SensorCard(
+                    // sensorValue: data.heartRate,
+                  sensorValue: "0 bpm",
+                    internalIcon: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Image.asset(Assets.icons.heartRate.path,color: ColorName.primaryColor.withOpacity(0.5),),
                 )),
                 context.vSpaceBox16,
                 SensorCard(
-                  sensorValue: data.oxygenSaturation,
+                  // sensorValue: data.oxygenSaturation,
+                  sensorValue: "0 %",
                   internalIcon: Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: Image.asset(Assets.icons.oxygen.path,color: ColorName.primaryColor.withOpacity(0.5),),
                   ),
                 ),
                 context.vSpaceBox16,
-                SensorCard(sensorValue: data.temperature,
+                SensorCard(
+                  // sensorValue: data.temperature,
+                  sensorValue: "0.0  °C",
                   internalIcon: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Image.asset(Assets.icons.temp.path,color: ColorName.primaryColor.withOpacity(0.5),),
                   ),),
-                context.vSpaceBox25,
-                FilledButton(onPressed: (){
-                  ref.invalidate(getSensorsDataFutureProvider);
-                }, child: const Text("Read")),
+                // context.vSpaceBox25,
+                // FilledButton(onPressed: (){
+                //   ref.invalidate(getSensorsDataFutureProvider);
+                // }, child: const Text("Read")),
                 context.vSpaceBox50
               ],
                           );
-            }, error: (error, stackTrace) => const NoData(
-              title: "We Can not load sensors data",
-            ), loading:() => const AppLoading())
+            }, error: (error, stackTrace) =>  NoData(
+              title: "We could not   load sensors data",
+              onTap: () {
+                showOkAlertDialog(
+                    context: context,
+                    title: "Something Went wrong",
+                    message: "Please connect the band to get correct values");
+              },
+            ), loading:() {
+              return const AppLoading();
+            })
           ),
         ),
       )
