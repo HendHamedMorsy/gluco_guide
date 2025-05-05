@@ -17,7 +17,7 @@ class WorkoutDaysPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int? _selectedWorkoutDayNum;
+    int? selectedWorkoutDayNum;
     return Scaffold(
       body: Padding(
         padding: AppConstants.shared.defaultScaffoldPadding,
@@ -55,7 +55,7 @@ class WorkoutDaysPage extends StatelessWidget {
                       ),
                       itemExtent: 60,
                       onSelectedItemChanged: (value) {
-                        _selectedWorkoutDayNum = value;
+                        selectedWorkoutDayNum = value;
                       }, children:  [
                     Text("1", style: context.textTheme.headlineLarge?.copyWith(color: Colors.white), ),
                     Text("2", style: context.textTheme.headlineLarge?.copyWith(color: Colors.white),),
@@ -96,7 +96,7 @@ class WorkoutDaysPage extends StatelessWidget {
                       hipCircumference: patientAuthProvider.hipCont.text,
                       lifestyleType:"2",
                       diabetesType: "2",
-                      workDays: _selectedWorkoutDayNum??1,
+                      workDays: selectedWorkoutDayNum??1,
                       illnesses:{1, 2, 3, 4, 5}).then((value) {
 
                           context.navigator.pushReplacement(

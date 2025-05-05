@@ -49,7 +49,7 @@ class UserInfoCard extends StatelessWidget {
           Center(
           child: RichText(
           text:       TextSpan(
-          text:"$value " ?? " ",
+          text:"$value ",
       style: context.textTheme.titleLarge?.copyWith(color: ColorName.primaryColor),
 
           children: <TextSpan>[

@@ -127,7 +127,7 @@ class _DoctorProfilePageState extends ConsumerState<DoctorProfilePage> {
                           ref.invalidate(doctorLocalProvider);
                         });
                         context.navigator.pushReplacement(MaterialPageRoute(
-                          builder: (context) => AdminPage(),
+                          builder: (context) => const AdminPage(),
                         ));
                       });
                     })

@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../ data/models/patient/doctor_list_model/doctor_list_model.dart';
-import '../../../../ data/models/patient/illnesses_list_model/illnesses_list_model.dart';
-import '../../../../ data/models/patient/sensor_model/sensor_model.dart';
-import '../../../../ data/repository/remote_repo/patient/auth/patient_auth_repo_imp.dart';
-import '../../../../injection/service_locator.dart';
+import 'package:gluco_guide/data/models/patient/doctor_list_model/doctor_list_model.dart';
+import 'package:gluco_guide/data/models/patient/illnesses_list_model/illnesses_list_model.dart';
+import 'package:gluco_guide/data/models/patient/sensor_model/sensor_model.dart';
+import 'package:gluco_guide/data/repository/remote_repo/patient/auth/patient_auth_repo_imp.dart';
+import 'package:gluco_guide/injection/service_locator.dart';
 
 final AutoDisposeFutureProvider<List<DoctorListData>> allDoctorsFutureProvider =
 FutureProvider.autoDispose<List<DoctorListData>>(

@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gluco_guide/%20data/models/patient/patient_model/patient_model.dart';
-import '../../../../ data/dio_helpers/dio_exceptions.dart';
-import '../../../../ data/repository/locale_repo/hive_manager.dart';
-import '../../../../ data/repository/remote_repo/patient/auth/patient_auth_repo_imp.dart';
-import '../../../../core/services/log_manager.dart';
-import '../states/patient_base_state.dart';
+import 'package:gluco_guide/core/services/log_manager.dart';
+import 'package:gluco_guide/data/dio_helpers/dio_exceptions.dart';
+import 'package:gluco_guide/data/models/patient/patient_model/patient_model.dart';
+import 'package:gluco_guide/data/repository/locale_repo/hive_manager.dart';
+import 'package:gluco_guide/data/repository/remote_repo/patient/auth/patient_auth_repo_imp.dart';
+import 'package:gluco_guide/providers/patient/auth/states/patient_base_state.dart';
 
 final AutoDisposeStateProvider<bool> isPatientPasswordHiddenProvider =
 StateProvider.autoDispose<bool>((AutoDisposeStateProviderRef<bool> ref) {

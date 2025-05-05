@@ -91,23 +91,10 @@ class _DoctorLoginPageState extends ConsumerState<DoctorLoginPage> {
                 context.vSpaceBox30,
                 Consumer(builder:
                     (BuildContext context, WidgetRef ref, Widget? child) {
-                      // ref.listen(doctorAuthStateNotifierProvider,
-                      //         (DoctorBaseState? previous, DoctorBaseState next) async {
-                      //       if (next is DoctorBaseStateError &&
-                      //          context.navigator.canPop() == false) {
-                      //         showOkAlertDialog(
-                      //             context: context,
-                      //             title: LocaleKeys.somethingWent.tr(),
-                      //             message: next.message);
-                      //       }
-                      //       if (next is DoctorAuthStateLoginSuccess) {
-                      //         ref.invalidate(doctorLocalProvider);
-                      //         context.navigator.pushReplacement(MaterialPageRoute(builder: (context) => DoctorHomePage(),));
-                      //       }
-                      //     });
                       return FilledButton(
                           onPressed: () async {
                             ref.read(doctorAuthStateNotifierProvider.notifier).loginDoctor(identifier: _identifierCont.text, password: _passwordCont.text);
+                            // ignore: prefer_const_constructors
                             context.navigator.pushReplacement(MaterialPageRoute(builder: (context) => DoctorHomePage(),));
                           },
 

@@ -1,21 +1,18 @@
-import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gluco_guide/core/constants/app_constants.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
-import '../../../../core/constants/app_constants.dart';
-import '../../../../core/services/helpers.dart';
-import '../../../../core/services/validator.dart';
-import '../../../../gen/colors.gen.dart';
-import '../../../../providers/doctor/auth/notifiers/doctor_auth_state_notifier.dart';
-import '../../../../providers/doctor/auth/providers/doctor_auth_state_notifier_provider.dart';
-import '../../../../providers/doctor/auth/states/doctor_base_state.dart';
-import '../../../../translations/locale_keys.g.dart';
-import '../../../atoms/app_logo.dart';
-import '../../../molcules/title_with_subtitle.dart';
-import '../../../molcules/text_form_field_with_title.dart';
-import '../doctor_home_page.dart';
+import 'package:gluco_guide/core/services/helpers.dart';
+import 'package:gluco_guide/core/services/validator.dart';
+import 'package:gluco_guide/gen/colors.gen.dart';
+import 'package:gluco_guide/providers/doctor/auth/notifiers/doctor_auth_state_notifier.dart';
+import 'package:gluco_guide/providers/doctor/auth/providers/doctor_auth_state_notifier_provider.dart';
+import 'package:gluco_guide/translations/locale_keys.g.dart';
+import 'package:gluco_guide/view/atoms/app_logo.dart';
+import 'package:gluco_guide/view/molcules/text_form_field_with_title.dart';
+import 'package:gluco_guide/view/molcules/title_with_subtitle.dart';
 import 'doctor_login_page.dart';
 
 class DoctorRegisterPage extends ConsumerStatefulWidget {
@@ -124,7 +121,6 @@ class _DoctorRegisterPageState extends ConsumerState<DoctorRegisterPage> {
                 TextFormFieldWithTitle(
                   secure: ref.watch(isConfirmedDoctorPasswordHiddenProvider),
                   maxLines: 1,
-                  // controller: authProvider.confirmPasswordCont,
                   floatingTitle: LocaleKeys.confirmPassword.tr(),
                   hint: LocaleKeys.passwordHint.tr(),
                   action: TextInputAction.done,
@@ -146,20 +142,7 @@ class _DoctorRegisterPageState extends ConsumerState<DoctorRegisterPage> {
                 context.vSpaceBox30,
                 Consumer(builder:
                     (BuildContext context, WidgetRef ref, Widget? child) {
-                  // ref.listen(doctorAuthStateNotifierProvider,
-                  //     (DoctorBaseState? previous, DoctorBaseState next) async {
-                  //   if(next is DoctorAuthStateRegisterSuccess){
-                  //     context.navigator.pushReplacement(MaterialPageRoute(
-                  //       builder: (context) => const DoctorHomePage(),
-                  //     ));
-                  //   }
-                  //   else if (next is DoctorBaseState) {
-                  //     showOkAlertDialog(
-                  //         context: context,
-                  //         title: LocaleKeys.somethingWent.tr(),
-                  //         message: next.message);
-                  //   }
-                  // });
+                
                   return FilledButton(
                       onPressed: () async {
                         if (_doctorRegisterFormKey.currentState?.validate() ==

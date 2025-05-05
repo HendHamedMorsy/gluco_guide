@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 
-//TODO: 1-kDebug //kRelease //kisWeb
 
 class LogManager {
   LogManager._();

@@ -1,9 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../ data/repository/locale_repo/hive_manager.dart';
-import '../../../../ data/repository/remote_repo/doctor/auth/doctor_auth_repo_imp.dart';
-import '../../../../injection/service_locator.dart';
-import '../notifiers/doctor_auth_state_notifier.dart';
-import '../states/doctor_base_state.dart';
+import 'package:gluco_guide/data/repository/locale_repo/hive_manager.dart';
+import 'package:gluco_guide/data/repository/remote_repo/doctor/auth/doctor_auth_repo_imp.dart';
+import 'package:gluco_guide/injection/service_locator.dart';
+import 'package:gluco_guide/providers/doctor/auth/notifiers/doctor_auth_state_notifier.dart';
+import 'package:gluco_guide/providers/doctor/auth/states/doctor_base_state.dart';
+
 
 final StateNotifierProvider<DoctorAuthStateNotifier, DoctorBaseState>
     doctorAuthStateNotifierProvider =

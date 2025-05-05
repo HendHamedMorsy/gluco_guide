@@ -1,16 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gluco_guide/core/constants/app_constants.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
+import 'package:gluco_guide/translations/locale_keys.g.dart';
+import 'package:gluco_guide/view/atoms/app_logo.dart';
+import 'package:gluco_guide/view/molcules/title_with_subtitle.dart';
 import 'package:gluco_guide/view/pages/patient/workout_days_page.dart';
-import '../../../core/constants/app_constants.dart';
-import '../../../core/services/enums.dart';
-import '../../../gen/colors.gen.dart';
-import '../../../translations/locale_keys.g.dart';
-import '../../atoms/app_logo.dart';
-import '../../molcules/title_with_subtitle.dart';
 
-// final StateProvider<Diseases> userDiseasesProvider = StateProvider<Diseases>((StateProviderRef<Diseases> ref) => Diseases.kidneyDisfunction);
 class ChecklistTileOption {
   final String title;
   bool isSelected;
@@ -25,7 +22,7 @@ class DiseasesPage extends ConsumerStatefulWidget {
 }
 
 class _DiseasesPageState extends ConsumerState<DiseasesPage> {
-  List<ChecklistTileOption> _diseases = [
+  final List<ChecklistTileOption> _diseases = [
     ChecklistTileOption(title: 'Kidney Disfunction '),
     ChecklistTileOption(title: 'Liver Cirrhosis'),
     ChecklistTileOption(title: 'Fatty Liver'),
@@ -35,7 +32,7 @@ class _DiseasesPageState extends ConsumerState<DiseasesPage> {
     ChecklistTileOption(title: 'G6P Dehydrogenase Deficiency'),
     ChecklistTileOption(title: 'Other'),
   ];
-  List<ChecklistTileOption> _complications = [
+  final List<ChecklistTileOption> _complications = [
     ChecklistTileOption(title: 'Peripheral Neuropathy '),
     ChecklistTileOption(title: 'Retinopathy '),
     ChecklistTileOption(title: 'Heart disease '),
@@ -65,7 +62,7 @@ class _DiseasesPageState extends ConsumerState<DiseasesPage> {
                 ),
                 SizedBox(height: 550,
                   child: ListView(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     children: _diseases.map((option) {
                       return CheckboxListTile(
                         title: Text(option.title,style: context.textTheme.displayMedium,),
@@ -85,7 +82,7 @@ class _DiseasesPageState extends ConsumerState<DiseasesPage> {
                 ),
                 SizedBox(height: 250,
                   child: ListView(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     children: _complications.map((option) {
                       return CheckboxListTile(
                         contentPadding: EdgeInsets.zero,

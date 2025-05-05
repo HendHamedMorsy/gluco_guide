@@ -1,22 +1,23 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gluco_guide/core/constants/app_constants.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
+import 'package:gluco_guide/core/services/helpers.dart';
 import 'package:gluco_guide/core/services/log_manager.dart';
+import 'package:gluco_guide/core/services/validator.dart';
+import 'package:gluco_guide/data/models/patient/doctor_list_model/doctor_list_model.dart';
+import 'package:gluco_guide/gen/colors.gen.dart';
+import 'package:gluco_guide/providers/patient/auth/notifiers/patient_auth_state_notifier.dart';
 import 'package:gluco_guide/providers/patient/auth/providers/doctors_list_future_provider.dart';
+import 'package:gluco_guide/providers/patient/auth/providers/patient_auth_state_notifier_provider.dart';
+import 'package:gluco_guide/translations/locale_keys.g.dart';
+import 'package:gluco_guide/view/atoms/app_logo.dart';
+import 'package:gluco_guide/view/molcules/text_form_field_with_title.dart';
+import 'package:gluco_guide/view/molcules/title_with_subtitle.dart';
 import 'package:gluco_guide/view/pages/patient/bmi_page.dart';
 import 'package:gluco_guide/view/pages/patient/auth/login_page.dart';
-import '../../../../ data/models/patient/doctor_list_model/doctor_list_model.dart';
-import '../../../../core/constants/app_constants.dart';
-import '../../../../core/services/helpers.dart';
-import '../../../../core/services/validator.dart';
-import '../../../../gen/colors.gen.dart';
-import '../../../../providers/patient/auth/notifiers/patient_auth_state_notifier.dart';
-import '../../../../providers/patient/auth/providers/patient_auth_state_notifier_provider.dart';
-import '../../../../translations/locale_keys.g.dart';
-import '../../../atoms/app_logo.dart';
-import '../../../molcules/title_with_subtitle.dart';
-import '../../../molcules/text_form_field_with_title.dart';
+
 
 class RegisterPage extends ConsumerStatefulWidget {
   const RegisterPage({super.key});

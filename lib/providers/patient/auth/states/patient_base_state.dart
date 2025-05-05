@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart' show immutable;
-import '../../../../ data/models/patient/patient_model/patient_model.dart';
-import '../../../../core/services/enums.dart';
+import 'package:gluco_guide/core/services/enums.dart';
+import 'package:gluco_guide/data/models/patient/patient_model/patient_model.dart';
 
 
 @immutable

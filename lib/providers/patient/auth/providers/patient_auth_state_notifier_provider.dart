@@ -1,9 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../ data/repository/locale_repo/hive_manager.dart';
-import '../../../../ data/repository/remote_repo/patient/auth/patient_auth_repo_imp.dart';
-import '../../../../injection/service_locator.dart';
-import '../notifiers/patient_auth_state_notifier.dart';
-import '../states/patient_base_state.dart';
+import 'package:gluco_guide/data/repository/locale_repo/hive_manager.dart';
+import 'package:gluco_guide/data/repository/remote_repo/patient/auth/patient_auth_repo_imp.dart';
+import 'package:gluco_guide/injection/service_locator.dart';
+import 'package:gluco_guide/providers/patient/auth/notifiers/patient_auth_state_notifier.dart';
+import 'package:gluco_guide/providers/patient/auth/states/patient_base_state.dart';
+
 
 final StateNotifierProvider<PatientAuthStateNotifier, PatientBaseState>
     patientAuthStateNotifierProvider =

@@ -22,7 +22,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
-  var _bottomNavIndex = 0; //default index of a first screen
+  var _bottomNavIndex = 0; 
 
   late AnimationController _fabAnimationController;
   late AnimationController _borderRadiusAnimationController;
@@ -118,7 +118,6 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    bool isHomeScreen = false;
     return Scaffold(
       extendBody: true,
       appBar: AppBar(),
@@ -136,8 +135,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
           ),
           onPressed: () {
             setState(() {
-              context.navigator.push(MaterialPageRoute(builder: (context) => HomePage(),));
-              // ref.read(bottomNavIndexProvider.notifier).state = HOME_TABS.home
+              context.navigator.push(MaterialPageRoute(builder: (context) => const HomePage(),));
             });
 
             _fabAnimationController.reset();

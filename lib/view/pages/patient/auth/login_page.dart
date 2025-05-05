@@ -1,23 +1,22 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gluco_guide/core/constants/app_constants.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
-import 'package:gluco_guide/view/pages/patient/auth/forgot_password_page.dart';
+import 'package:gluco_guide/core/services/validator.dart';
+import 'package:gluco_guide/gen/colors.gen.dart';
+import 'package:gluco_guide/providers/patient/auth/notifiers/patient_auth_state_notifier.dart';
+import 'package:gluco_guide/providers/patient/auth/providers/patient_auth_state_notifier_provider.dart';
+import 'package:gluco_guide/translations/locale_keys.g.dart';
+import 'package:gluco_guide/view/atoms/app_logo.dart';
+import 'package:gluco_guide/view/molcules/text_form_field_with_title.dart';
+import 'package:gluco_guide/view/molcules/title_with_subtitle.dart';
 import 'package:gluco_guide/view/pages/patient/auth/register_page.dart';
 import 'package:gluco_guide/view/pages/patient/main_page.dart';
-import '../../../../core/constants/app_constants.dart';
-import '../../../../core/services/validator.dart';
-import '../../../../gen/colors.gen.dart';
-import '../../../../providers/patient/auth/notifiers/patient_auth_state_notifier.dart';
-import '../../../../providers/patient/auth/providers/patient_auth_state_notifier_provider.dart';
-import '../../../../translations/locale_keys.g.dart';
-import '../../../atoms/app_logo.dart';
-import '../../../molcules/title_with_subtitle.dart';
-import '../../../molcules/text_form_field_with_title.dart';
-import '../bmi_page.dart';
+
 
 class LoginPage extends ConsumerStatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   ConsumerState<LoginPage> createState() => _LoginPageState();
@@ -56,7 +55,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                // context.vSpaceBox60,
                 const AppLogo(),
 
                 TitleWithSubTitle(
@@ -96,19 +94,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 context.vSpaceBox30,
                 Consumer(builder:
                     (BuildContext context, WidgetRef ref, Widget? child) {
-                  // ref.listen(authStateNotifierProvider,
-                  //         (BaseState? previous, BaseState next) async {
-                  //       if (next is BaseStateError) {
-                  //         showOkAlertDialog(
-                  //             context: context,
-                  //             title: LocaleKeys.somethingWent.tr(),
-                  //             message: next.message);
-                  //       }
-                  //       if (next is AuthStateLoginSuccess) {
-                  //         ref.invalidate(userLocalProvider);
-                  //         context.go(RouteNames.mainPageRoute);
-                  //       }
-                  //     });
                   return FilledButton(
                       onPressed: () async {
                         ref.read(patientAuthStateNotifierProvider.notifier).loginPatient(identifier: _identifierCont.text, password: _passwordCont.text).then((value) {

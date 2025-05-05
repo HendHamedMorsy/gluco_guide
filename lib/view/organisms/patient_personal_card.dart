@@ -22,7 +22,7 @@ class PatientPersonalCard extends StatelessWidget {
               Text(name??"",style:context.textTheme.titleLarge,),
               Text(email??"",style:context.textTheme.titleSmall,),
               Text(phone??"",style:context.textTheme.titleSmall),
-              Text("$age years"??"",style:context.textTheme.titleSmall,),
+              Text("$age years",style:context.textTheme.titleSmall,),
               Text(gender??"",style:context.textTheme.titleSmall,),
 
             ],

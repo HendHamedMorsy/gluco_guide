@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
+import 'package:gluco_guide/core/services/util.dart';
+import 'package:gluco_guide/data/models/patient/patient_model/patient_model.dart';
+import 'package:gluco_guide/gen/assets.gen.dart';
 import 'package:gluco_guide/providers/local/doctor_local_provider.dart';
-import '../../../ data/models/patient/patient_model/patient_model.dart';
-import '../../../core/services/util.dart';
-import '../../../gen/assets.gen.dart';
-import '../../organisms/illnesses_card.dart';
-import '../../organisms/patient_health_card.dart';
-import '../../organisms/patient_personal_card.dart';
-import '../../organisms/recommendations_card.dart';
-import '../../organisms/results_card.dart';
+import 'package:gluco_guide/view/organisms/illnesses_card.dart';
+import 'package:gluco_guide/view/organisms/patient_health_card.dart';
+import 'package:gluco_guide/view/organisms/patient_personal_card.dart';
+import 'package:gluco_guide/view/organisms/recommendations_card.dart';
+import 'package:gluco_guide/view/organisms/results_card.dart';
+
 
 class PatientDetailsPage extends StatelessWidget {
   const PatientDetailsPage({super.key, required this.patientData});

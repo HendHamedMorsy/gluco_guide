@@ -3,13 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
+import 'package:gluco_guide/core/services/log_manager.dart';
+import 'package:gluco_guide/gen/assets.gen.dart';
 import 'package:gluco_guide/gen/colors.gen.dart';
+import 'package:gluco_guide/providers/loading/is_loading_provider.dart';
+import 'package:gluco_guide/view/organisms/loading_overlay.dart';
 import 'package:gluco_guide/view/pages/patient/auth/register_page.dart';
-import '../../../core/services/log_manager.dart';
-import '../../../gen/assets.gen.dart';
-import '../../../providers/loading/is_loading_provider.dart';
-import '../../organisms/loading_overlay.dart';
-import 'auth/doctor_login_page.dart';
 import 'auth/doctor_register_page.dart';
 
 class AdminPage extends ConsumerStatefulWidget {

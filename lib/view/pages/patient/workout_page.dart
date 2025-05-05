@@ -1,16 +1,14 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gluco_guide/core/models/workout_data_model.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
-import 'package:gluco_guide/gen/colors.gen.dart';
-import 'package:gluco_guide/translations/locale_keys.g.dart';
+import 'package:gluco_guide/gen/assets.gen.dart';
+import 'package:gluco_guide/providers/local/patient_local_provider.dart';
 import 'package:gluco_guide/view/atoms/app_loading.dart';
-import '../../../core/models/workout_data_model.dart';
-import '../../../gen/assets.gen.dart';
-import '../../../providers/local/patient_local_provider.dart';
-import '../../molcules/no_data.dart';
-import '../../molcules/workout_list_tile_card.dart';
+import 'package:gluco_guide/view/molcules/no_data.dart';
+import 'package:gluco_guide/view/molcules/workout_list_tile_card.dart';
+
 import 'auth/workout_details_page.dart';
 final AutoDisposeFutureProvider<List<WorkoutData>?>
     getAllWorkoutFutureProviderForDiabetesOne =

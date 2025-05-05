@@ -1,7 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../ data/models/patient/patient_model/patient_model.dart';
-import '../../ data/repository/locale_repo/hive_manager.dart';
-import '../../core/constants/db_constants.dart';
+import 'package:gluco_guide/core/constants/db_constants.dart';
+import 'package:gluco_guide/data/models/patient/patient_model/patient_model.dart';
+import 'package:gluco_guide/data/repository/locale_repo/hive_manager.dart';
+
 
 
 final Provider<Patient?> patientLocalProvider =

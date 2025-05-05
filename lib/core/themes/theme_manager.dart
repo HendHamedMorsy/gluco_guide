@@ -203,8 +203,8 @@ class ThemeManager {
 
         outlinedButtonTheme: OutlinedButtonThemeData(
             style: ButtonStyle(
-          side: const MaterialStatePropertyAll(BorderSide(color: Colors.red)),
-          shape: MaterialStatePropertyAll<RoundedRectangleBorder>(
+          side: const WidgetStatePropertyAll(BorderSide(color: Colors.red)),
+          shape: WidgetStatePropertyAll<RoundedRectangleBorder>(
               RoundedRectangleBorder(
                   side: const BorderSide(
                       width: 2, color: ColorName.primaryColor),
@@ -241,14 +241,14 @@ class ThemeManager {
           color: ColorName.progressGreen,
         ),
         radioTheme: RadioThemeData(
-            fillColor: MaterialStateProperty.all(ColorName.primaryColor),
+            fillColor: WidgetStateProperty.all(ColorName.primaryColor),
             visualDensity: VisualDensity.compact),
 
         checkboxTheme: CheckboxThemeData(
             side:  const BorderSide(color: ColorName.primaryColor,width: 2),
             shape: const RoundedRectangleBorder(
                 side: BorderSide(color: ColorName.primaryColor)),
-            checkColor: MaterialStateProperty.all(Colors.white),
+            checkColor: WidgetStateProperty.all(Colors.white),
             ),
         listTileTheme: ListTileThemeData(
             titleTextStyle: TextStyle(

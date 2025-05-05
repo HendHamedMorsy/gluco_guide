@@ -17,14 +17,6 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context,ref) {
-    Future<void> _refreshData() async {
-      await Future.delayed(const Duration(seconds:60));
-     ref.invalidate(getSensorsDataFutureProvider);
-              showOkAlertDialog(
-                  context: context,
-                  title: "Something Went wrong",
-                  message: "Please connect the band to get correct values");
-    }
     return Scaffold(
       appBar: AppBar(
       ),
@@ -40,7 +32,7 @@ class HomePage extends ConsumerWidget {
               return Column(
               children: [
                 SensorCard(
-                    // sensorValue: data.heartRate,
+                 
                   sensorValue: "0 bpm",
                     internalIcon: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -48,7 +40,6 @@ class HomePage extends ConsumerWidget {
                 )),
                 context.vSpaceBox16,
                 SensorCard(
-                  // sensorValue: data.oxygenSaturation,
                   sensorValue: "0 %",
                   internalIcon: Padding(
                     padding: const EdgeInsets.all(12.0),
@@ -57,16 +48,12 @@ class HomePage extends ConsumerWidget {
                 ),
                 context.vSpaceBox16,
                 SensorCard(
-                  // sensorValue: data.temperature,
                   sensorValue: "0.0  °C",
                   internalIcon: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Image.asset(Assets.icons.temp.path,color: ColorName.primaryColor.withOpacity(0.5),),
                   ),),
-                // context.vSpaceBox25,
-                // FilledButton(onPressed: (){
-                //   ref.invalidate(getSensorsDataFutureProvider);
-                // }, child: const Text("Read")),
+             
                 context.vSpaceBox50
               ],
                           );

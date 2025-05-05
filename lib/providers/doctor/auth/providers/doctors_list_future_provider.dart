@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gluco_guide/%20data/repository/remote_repo/doctor/auth/doctor_auth_repo_imp.dart';
-import '../../../../ data/models/patient/patient_model/patient_model.dart';
-import '../../../../injection/service_locator.dart';
+import 'package:gluco_guide/data/models/patient/patient_model/patient_model.dart';
+import 'package:gluco_guide/data/repository/remote_repo/doctor/auth/doctor_auth_repo_imp.dart';
+import 'package:gluco_guide/injection/service_locator.dart';
 
 final AutoDisposeFutureProvider<List<Patient>> allPatientsFutureProvider =
 FutureProvider.autoDispose<List<Patient>>(

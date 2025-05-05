@@ -2,15 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gluco_guide/core/constants/app_constants.dart';
 import 'package:gluco_guide/core/services/extensions.dart';
-import '../../../ data/models/patient/patient_model/patient_model.dart';
-import '../../../core/constants/app_constants.dart';
-import '../../../core/services/log_manager.dart';
-import '../../../providers/doctor/auth/providers/doctors_list_future_provider.dart';
-import '../../../translations/locale_keys.g.dart';
-import '../../atoms/app_loading.dart';
-import '../../molcules/doctor_user_list_tile.dart';
-import '../../molcules/no_data.dart';
+import 'package:gluco_guide/data/models/patient/patient_model/patient_model.dart';
+import 'package:gluco_guide/providers/doctor/auth/providers/doctors_list_future_provider.dart';
+import 'package:gluco_guide/translations/locale_keys.g.dart';
+import 'package:gluco_guide/view/atoms/app_loading.dart';
+import 'package:gluco_guide/view/molcules/doctor_user_list_tile.dart';
+import 'package:gluco_guide/view/molcules/no_data.dart';
 import 'auth/doctor_profile_page.dart';
 import 'patient_details_page.dart';
 
@@ -72,7 +71,6 @@ class DoctorHomePage extends StatelessWidget {
                           });
                     },
                     error: (Object error, StackTrace stackTrace) {
-                      LogManager.logToConsole(error, "error");
                       return const Center(
                         child: Text(
                           "We couldn't load Patients",
